@@ -1,0 +1,93 @@
+---
+title: "Hello World!"
+date: "05-01-2021"
+description: "The making of this website. From planning to production."
+type: article
+---
+
+### Starting Off
+
+I started this site by first deciding what content I wanted to have on the site.
+
+- Home Page with links to socials much like [my old site](https://2019.sid.fyi)
+- Blog to dump random thoughts I have or stuff that I write about
+- Projects page to showcase a few of the projects I've worked on
+- Photos page to share some of my favorite pictures that I've taken
+- Music page to show some songs I have been listening to
+- Setup page to flex my keyboard collection
+- Contact page to give anyone an easy way to say hello
+
+### Deciding on a Stack
+
+I was heavily debating between two options:
+
+1. A HTML/CSS/JS site with emphasis on animations
+2. An extremely minimal Next.js site
+
+Option 2 fit my needs much better based on the content I had wanted to show on the site, so instead of overthinking, I decided to go with it.
+
+### Starting to Code
+
+I started by using create-next-app, then adding in everything I knew I would need:
+
+- [ESLint](https://eslint.org/) with the [Airbnb](https://www.npmjs.com/package/eslint-config-airbnb) style guide to keep my code clean
+- [Prettier](https://prettier.io/) for code formatting
+- [TailwindCSS](https://tailwindcss.com) for styling
+- [PostCSS](https://postcss.org/) to reduce CSS bundle size
+- [Redis](https://redis.io/) on [Upstash](https://upstash.com/) for API Caching
+- [Feather Icons](https://feathericons.com/) for the beautiful icons
+
+From there, I decided to jump in and begin with the API routes.
+I set up my utility functions, then I did a bit of exploration with redis caching as that was one of my learning goals wit this project.
+Below, you can see the result!
+
+```js
+import redis from "@/lib/redis";
+import { getCurrentlyPlaying } from "@/lib/spotify";
+
+const handler = async (_, res) => {
+  const storedSong = JSON.parse(await redis.get("song"));
+
+  if (storedSong) return res.status(200).json(storedSong);
+
+  const response = await getCurrentlyPlaying();
+
+  if (response.status === 204 || response.status > 400) {
+    const song = { isPlaying: false };
+    await redis.set("song", JSON.stringify(song), "EX", 1);
+    return res.status(200).json({ isPlaying: false });
+  }
+
+  const { item, is_playing: isPlaying } = await response.json();
+
+  const song = {
+    isPlaying,
+    artist: item.artists.map((artist) => artist.name).join(", "),
+    image: item.album.images[0].url,
+    title: item.name,
+    url: item.external_urls.spotify,
+  };
+
+  await redis.set("song", JSON.stringify(song), "EX", 1);
+  return res.status(200).json(song);
+};
+
+export default handler;
+```
+
+After I was happy with the code, I was ready to test it. I began by coding the ["index" route](/) which displays my now playing.
+
+I realized however, that the page kept re-rendering, so I decided to break it into a "currently-playing" component.
+After that issue was fixed, I added a clock because I thought it might be useful for those who contact me to know when I may not be available.
+Learning from my experience with the "currently-playing" component I made a new "time" component.
+Then, I finished off by putting in everything I had in [my old site](https://2019.sid.fyi).
+
+Moving forward, I added in the gradients...
+This was quite a difficult process as choosing lots of nice gradients can be very difficult.
+What I had decided to do, was instead of hard-coding gradients, I would dynamically generate them.
+I had made an object which told my scipt which colors not to put next to each other and you can see [all of the possible gradients](/gradients).
+
+Once this was done, I made the base page [layout](/layout), then I populated my content.
+After that, there was just a bit of minor cleanup and I was ready to deploy to [Vercel](https://vercel.com/)!
+
+Thanks for making it all the way to the end! Please [email](mailto:hi@sid.fyi) me any feedback.
