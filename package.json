@@ -1,0 +1,55 @@
+{
+  "name": "www.sid.fyi",
+  "description": "A bit about sid.",
+  "homepage": "https://sid.fyi",
+  "keywords": [
+    "next.js",
+    "tailwindcss",
+    "sid.fyi",
+    "redis"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shift4id/www.sid.fyi.git"
+  },
+  "author": {
+    "name": "Siddharth Adusumell",
+    "email": "hi@sid.fyi",
+    "url": "https://sid.fyi"
+  },
+  "bugs": {
+    "url": "https://github.com/shift4id/www.sid.fyi/issues",
+    "email": "hi@sid.fyi"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "postbuild": "next-sitemap",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier . --write"
+  },
+  "dependencies": {
+    "ioredis": "^4.28.3",
+    "isomorphic-unfetch": "^3.1.0",
+    "next": "^12.0.10",
+    "next-pwa": "^5.4.4",
+    "next-sitemap": "^1.9.12",
+    "next-themes": "^0.0.15",
+    "prop-types": "^15.8.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-feather": "^2.0.9",
+    "swr": "^1.1.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "eslint": "8.7.0",
+    "eslint-config-next": "12.0.8",
+    "eslint-config-prettier": "^8.3.0",
+    "postcss": "^8.4.5",
+    "prettier": "^2.5.1",
+    "tailwindcss": "^3.0.7"
+  }
+}
