@@ -1,0 +1,10 @@
+{
+  "arrowParens": "always",
+  "printWidth": 140,
+  "overrides": [
+    {
+      "files": [".eslintrc", ".prettierrc"],
+      "options": { "parser": "json" }
+    }
+  ]
+}
