@@ -33,11 +33,11 @@ function ThemeToggle() {
   const theme = resolvedTheme ?? systemTheme;
 
   const updateTheme = useCallback(() => setTheme(theme === "light" ? "dark" : "light"), [setTheme, theme]);
-  
+
   return (
     <button className={`ml-auto transition-transform duration-500 hover:scale-125`} type="button" onClick={updateTheme}>
       <span className="sr-only">Change theme</span>
-      <div className="w-5 h-5 rounded-full bg-gray-500"></div>
+      <div className="h-5 w-5 rounded-full bg-gray-500"></div>
     </button>
   );
 }
