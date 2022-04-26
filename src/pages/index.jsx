@@ -63,7 +63,7 @@ export default function Home() {
           <motion.div className="relative hidden md:flex" transition={transition} variants={childVariants}>
             <Image
               alt=""
-              className="hidden md:block"
+              className="hidden md:block pointer-events-none"
               layout="fill"
               objectFit="contain"
               objectPosition="right"
