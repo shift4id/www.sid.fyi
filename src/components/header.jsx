@@ -1,6 +1,4 @@
 import { faFaceSmile } from "@fortawesome/free-regular-svg-icons/faFaceSmile";
-import { faMoon } from "@fortawesome/free-regular-svg-icons/faMoon";
-import { faSun } from "@fortawesome/free-regular-svg-icons/faSun";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { m as motion } from "framer-motion";
 import { useTheme } from "next-themes";
@@ -16,7 +14,7 @@ function NavLink({ active, href, icon, name }) {
     <li key={href} className={`w-min rounded transition-opacity ${!active ? "opacity-50" : ""}`}>
       <Link className="transition-transform duration-500 hover:scale-125" href={href}>
         <span className="sr-only">{name}</span>
-        <FontAwesomeIcon icon={icon} />
+        <FontAwesomeIcon className="text-xl" icon={icon} />
       </Link>
     </li>
   );
@@ -35,12 +33,11 @@ function ThemeToggle() {
   const theme = resolvedTheme ?? systemTheme;
 
   const updateTheme = useCallback(() => setTheme(theme === "light" ? "dark" : "light"), [setTheme, theme]);
-
+  
   return (
     <button className={`ml-auto transition-transform duration-500 hover:scale-125`} type="button" onClick={updateTheme}>
       <span className="sr-only">Change theme</span>
-      {theme === "light" && <FontAwesomeIcon icon={faMoon} />}
-      {theme === "dark" && <FontAwesomeIcon icon={faSun} />}
+      <div className="w-5 h-5 rounded-full bg-gray-500"></div>
     </button>
   );
 }

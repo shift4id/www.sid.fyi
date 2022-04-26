@@ -1,5 +1,4 @@
 import { m as motion } from "framer-motion";
-import Image from "next/image";
 import Container from "@/components/container";
 import { getGradient } from "@/lib/gradients";
 
@@ -37,9 +36,9 @@ export default function Home() {
         initial="hidden"
         variants={sectionVariants}
       >
-        <div className="my-auto grid gap-8 md:my-0 md:grid-cols-2">
+        <div className="my-auto md:my-0">
           <div className="flex flex-col justify-center space-y-4 md:h-full">
-            <div className="space-y-2 font-serif text-4xl">
+            <div className="space-y-2 font-serif text-4xl md:text-6xl">
               <motion.p transition={transition} variants={childVariants}>
                 Hello I&apos;m
               </motion.p>
@@ -54,22 +53,12 @@ export default function Home() {
                 Software Engineer
               </motion.p>
             </div>
-            <motion.p transition={transition} variants={childVariants}>
+            <motion.p className="text-lg md:text-2xl" transition={transition} variants={childVariants}>
               I&apos;m, an {age} year old from <em>Silicon Valley, California</em>. I spend my time creating{" "}
               <em>unique</em> and <em>elegant</em> unique user experiences. Passionate about <em>music</em>,{" "}
               <em>reading</em>, and <em>travel</em>.
             </motion.p>
           </div>
-          <motion.div className="relative hidden md:flex" transition={transition} variants={childVariants}>
-            <Image
-              alt=""
-              className="hidden md:block pointer-events-none"
-              layout="fill"
-              objectFit="contain"
-              objectPosition="right"
-              src="/images/me.png"
-            />
-          </motion.div>
         </div>
       </motion.section>
     </Container>

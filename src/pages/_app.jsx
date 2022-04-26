@@ -29,11 +29,11 @@ export default function App({ Component, pageProps }) {
               strategy="afterInteractive"
             />
             <Script id="google-analytics" strategy="afterInteractive">{`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${NEXT_PUBLIC_GTAG_ID}');
-          `}</Script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${NEXT_PUBLIC_GTAG_ID}');
+            `}</Script>
           </>
         )}
         <main className="flex min-h-screen w-full flex-col px-8">

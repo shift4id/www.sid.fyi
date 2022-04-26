@@ -8,9 +8,8 @@ const Particles = {
 
   mouse: { x: undefined, y: undefined },
 
-  hoverRange: 50,
+  hoverRadius: 100,
   radius: 0.5,
-  maxRadius: 1.5,
 
   init: function () {
     this.canvas = document.getElementById("particles");
@@ -19,7 +18,7 @@ const Particles = {
 
     this.context = this.canvas.getContext("2d");
 
-    this.count = Math.floor(Math.sqrt(window.innerWidth * window.innerWidth) * 0.75);
+    this.count = Math.floor(Math.sqrt(window.innerWidth * window.innerWidth) * 0.25);
 
     window.addEventListener("mousemove", this.handleMouseMove);
     window.addEventListener("resize", this.handleResize);
@@ -39,7 +38,6 @@ const Particles = {
     this.dx = dx;
     this.dy = dy;
     this.radius = radius;
-    this.minRadius = this.radius;
 
     this.draw = function () {
       Particles.context.beginPath();
@@ -56,14 +54,14 @@ const Particles = {
       this.y += this.dy;
 
       if (
-        Particles.mouse.x - this.x < Particles.hoverRange &&
-        Particles.mouse.x - this.x > -Particles.hoverRange &&
-        Particles.mouse.y - this.y < Particles.hoverRange &&
-        Particles.mouse.y - this.y > -Particles.hoverRange
+        Particles.mouse.x - this.x < Particles.hoverRadius &&
+        Particles.mouse.x - this.x > -Particles.hoverRadius &&
+        Particles.mouse.y - this.y < Particles.hoverRadius &&
+        Particles.mouse.y - this.y > -Particles.hoverRadius
       ) {
-        this.radius = this.minRadius + 1;
-      } else if (this.radius > this.minRadius) {
-        this.radius = this.minRadius;
+        this.radius = Math.min(this.radius * 1.05, Particles.radius * 5);
+      } else if (this.radius > Particles.radius) {
+        this.radius = Math.min(this.radius * 0.95, Particles.radius);
       }
 
       this.draw();
@@ -77,8 +75,8 @@ const Particles = {
       const radius = Particles.radius;
       const x = Math.random() * (this.canvas.width - radius * 2) + radius;
       const y = Math.random() * (this.canvas.height - radius * 2) + radius;
-      const dx = Math.random() - 0.5;
-      const dy = Math.random() - 1;
+      const dx = (Math.random() - 0.5) / 4;
+      const dy = (Math.random() - 1) / 4;
       const fill = colors[Math.floor(Math.random() * colors.length)];
 
       this.particleArray.push(new this.Star(x, y, dx, dy, radius, fill));

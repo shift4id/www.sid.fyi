@@ -49,8 +49,15 @@ export default function Error({ statusCode }) {
         <motion.p className="md:text-xl" transition={transition} variants={childVariants}>
           Not sure how you managed to get lost, but here&apos;s a link to take you home.
         </motion.p>
-        <motion.div transition={transition} variants={childVariants}>
-          <Link className={`bg-gradient-to-r bg-clip-text font-serif text-4xl text-transparent ${gradient}`} href="/">
+        <motion.div
+          className="rounded-sm bg-black !bg-opacity-10 p-2 px-4 dark:bg-white"
+          transition={transition}
+          variants={childVariants}
+        >
+          <Link
+            className={`bg-gradient-to-r bg-[length:150%] bg-clip-text font-serif text-4xl text-transparent transition-all duration-500 hover:bg-right ${gradient}`}
+            href="/"
+          >
             Return Home
           </Link>
         </motion.div>
