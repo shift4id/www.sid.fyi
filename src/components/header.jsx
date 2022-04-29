@@ -14,7 +14,7 @@ function NavLink({ active, href, icon, name }) {
     <li key={href} className={`w-min rounded transition-opacity ${!active ? "opacity-50" : ""}`}>
       <Link className="transition-transform duration-500 hover:scale-125" href={href}>
         <span className="sr-only">{name}</span>
-        <FontAwesomeIcon className="text-xl" icon={icon} />
+        <FontAwesomeIcon className="text-2xl" icon={icon} />
       </Link>
     </li>
   );
@@ -37,7 +37,7 @@ function ThemeToggle() {
   return (
     <button className={`ml-auto transition-transform duration-500 hover:scale-125`} type="button" onClick={updateTheme}>
       <span className="sr-only">Change theme</span>
-      <div className="h-5 w-5 rounded-full bg-gray-500"></div>
+      <div className="h-6 w-6 rounded-xl bg-gray-500 transition-all hover:rotate-90 hover:scale-105 hover:rounded-none"></div>
     </button>
   );
 }
