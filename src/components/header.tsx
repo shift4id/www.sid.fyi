@@ -1,10 +1,16 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faFaceSmile } from "@fortawesome/free-regular-svg-icons/faFaceSmile";
+import { faCamera } from "@fortawesome/free-solid-svg-icons/faCamera";
+import { faHeadphones } from "@fortawesome/free-solid-svg-icons/faHeadphones";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import Link from "./link";
 
-const links = [{ href: "/", name: "home", icon: faFaceSmile }];
+const links = [
+  { href: "/", name: "home", icon: faFaceSmile },
+  { href: "/music", name: "music", icon: faHeadphones },
+  { href: "/photography", name: "photography", icon: faCamera },
+];
 
 type NavLinkProps = {
   active: boolean;
