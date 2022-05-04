@@ -1,5 +1,5 @@
 /**
- * @type import("eslint").Linter.Config
+ * @type {import("eslint").Linter.Config}
  */
 
 module.exports = {

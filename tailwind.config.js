@@ -1,5 +1,5 @@
 /**
- * @type import("tailwindcss")
+ * @type {import("tailwindcss/tailwind-config").TailwindConfig}
  */
 module.exports = {
   content: ["./src/**/*.{ts,tsx}"],
@@ -20,7 +20,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['"SuisseIntl"', "sans-serif"],
+        sans: ["SuisseIntl", "sans-serif"],
         serif: ["GrandSlang", "serif"],
       },
     },
