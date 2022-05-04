@@ -18,6 +18,8 @@ const photos: Photo[] = [
   { w: 4752, h: 3168, id: 15 },
   { w: 3168, h: 4752, id: 16 },
   { w: 4032, h: 3024, id: 17 },
+  { w: 4752, h: 3168, id: 18 },
+  { w: 4752, h: 3168, id: 19 },
 ];
 
 const TopPhotos = function () {
