@@ -12,7 +12,7 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = function ({ photo }) {
   return (
-    <div key={photo.id} className="border border-white">
+    <div>
       <Image
         alt=""
         height={640 * (photo.h / photo.w)}

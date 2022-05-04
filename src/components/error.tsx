@@ -13,7 +13,7 @@ const Error: NextPage<ErrorProps> = function ({ statusCode }) {
   return (
     <Container description="You seem lost." title="404">
       <section className="flex grow flex-col items-start justify-center space-y-8">
-        <p className="font-serif text-6xl md:text-9xl">
+        <p className="font-serif text-6xl leading-relaxed md:text-9xl">
           {statusCode ? (
             <>
               Error: <em className={`bg-gradient-to-r bg-clip-text text-transparent ${gradient}`}>{statusCode}</em>

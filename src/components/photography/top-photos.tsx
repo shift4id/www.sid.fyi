@@ -22,7 +22,7 @@ const photos: Photo[] = [
 
 const TopPhotos = function () {
   return (
-    <div className="w-full columns-2 gap-4">
+    <div className="w-full columns-2 gap-4 space-y-4">
       {photos.map((photo) => (
         <Card key={photo.id} photo={photo} />
       ))}
