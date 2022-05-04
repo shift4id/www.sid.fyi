@@ -1,16 +1,21 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import PropTypes from "prop-types";
 
 const { NEXT_PUBLIC_WEBSITE_URL } = process.env;
 
-export default function Container({ title, description, children }) {
+type ContainerProps = {
+  title: string;
+  description: string;
+  children: React.ReactNode;
+};
+
+const Container: React.FC<ContainerProps> = function ({ title, description, children }) {
   const router = useRouter();
 
   return (
     <>
       <Head>
-        <title>{title} - Sid A</title>
+        <title>{`${title} - Sid A`}</title>
         <meta content="follow, index" name="robots" />
         <meta content={description} name="description" />
 
@@ -32,10 +37,6 @@ export default function Container({ title, description, children }) {
       {children}
     </>
   );
-}
-
-Container.propTypes = {
-  children: PropTypes.node.isRequired,
-  description: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
 };
+
+export default Container;

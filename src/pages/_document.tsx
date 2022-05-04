@@ -1,6 +1,6 @@
 import { Head, Html, Main, NextScript } from "next/document";
 
-export default function Document() {
+const Document: React.FC = function () {
   return (
     <Html lang="en">
       <Head>
@@ -20,10 +20,12 @@ export default function Document() {
         <meta content="/favicons/browserconfig.xml" name="msapplication-config" />
         <meta content="#8080ff" name="theme-color" />
       </Head>
-      <body className="mx-auto max-w-4xl bg-white text-black transition duration-500 dark:bg-black dark:text-white">
+      <body className="mx-auto max-w-4xl bg-black text-white transition duration-500">
         <Main />
         <NextScript />
       </body>
     </Html>
   );
-}
+};
+
+export default Document;

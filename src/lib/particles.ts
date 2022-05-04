@@ -1,3 +1,4 @@
+/* eslint-disable */
 const colors = ["#ff8080", "#ffff80", "#80ff80", "#80ffff", "#8080ff", "#ff80ff"];
 
 const Particles = {
@@ -5,9 +6,7 @@ const Particles = {
   context: null,
   count: 0,
   particleArray: [],
-
   mouse: { x: undefined, y: undefined },
-
   hoverRadius: 100,
   radius: 0.5,
 
@@ -15,17 +14,12 @@ const Particles = {
     this.canvas = document.getElementById("particles");
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
-
     this.context = this.canvas.getContext("2d");
-
     this.count = Math.floor(Math.sqrt(window.innerWidth * window.innerWidth) * 0.25);
-
     window.addEventListener("mousemove", this.handleMouseMove);
     window.addEventListener("resize", this.handleResize);
-
     this.generateParticles();
     this.drawParticles();
-
     return () => {
       window.removeEventListener("mousemove", this.handleMouseMove);
       window.removeEventListener("resize", this.handleResize);
@@ -38,21 +32,17 @@ const Particles = {
     this.dx = dx;
     this.dy = dy;
     this.radius = radius;
-
     this.draw = function () {
       Particles.context.beginPath();
       Particles.context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
       Particles.context.fillStyle = fill;
       Particles.context.fill();
     };
-
     this.update = function () {
       if (this.x + this.radius > Particles.canvas.width || this.x - this.radius < 0) this.dx = -this.dx;
       if (this.y + this.radius > Particles.canvas.height || this.y - this.radius < 0) this.dy = -this.dy;
-
       this.x += this.dx;
       this.y += this.dy;
-
       if (
         Particles.mouse.x - this.x < Particles.hoverRadius &&
         Particles.mouse.x - this.x > -Particles.hoverRadius &&
@@ -63,14 +53,12 @@ const Particles = {
       } else if (this.radius > Particles.radius) {
         this.radius = Math.min(this.radius * 0.95, Particles.radius);
       }
-
       this.draw();
     };
   },
 
   generateParticles: function () {
     this.particleArray = [];
-
     for (let i = 0; i < this.count; i++) {
       const radius = Particles.radius;
       const x = Math.random() * (this.canvas.width - radius * 2) + radius;
@@ -85,12 +73,10 @@ const Particles = {
 
   drawParticles: function () {
     Particles.context.clearRect(0, 0, Particles.canvas.width, Particles.canvas.height);
-
     for (let i = 0; i < Particles.particleArray.length; i++) {
       const circle = Particles.particleArray[i];
       circle.update();
     }
-
     requestAnimationFrame(Particles.drawParticles);
   },
 

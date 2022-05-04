@@ -1,8 +1,24 @@
+/**
+ * @type import("tailwindcss")
+ */
 module.exports = {
-  content: ["./src/**/*.{js,jsx}"],
+  content: ["./src/**/*.{ts,tsx}"],
   darkMode: "class",
   theme: {
     extend: {
+      colors: {
+        gray: {
+          100: "#e6e6e6",
+          200: "#ccc",
+          300: "#b3b3b3",
+          400: "#999",
+          500: "#808080",
+          600: "#666",
+          700: "#4d4d4d",
+          800: "#333",
+          900: "#1a1a1a",
+        },
+      },
       fontFamily: {
         sans: ['"SuisseIntl"', "sans-serif"],
         serif: ["GrandSlang", "serif"],

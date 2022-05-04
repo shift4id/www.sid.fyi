@@ -1,4 +1,28 @@
-const ugly = {
+type Color =
+  | "amber"
+  | "blue"
+  | "cyan"
+  | "emerald"
+  | "fuchsia"
+  | "green"
+  | "indigo"
+  | "lime"
+  | "orange"
+  | "pink"
+  | "purple"
+  | "red"
+  | "rose"
+  | "sky"
+  | "teal"
+  | "violet"
+  | "yellow";
+type Gradient = `from-${Color}-500 via-${Color}-500 to-${Color}-500`;
+
+type ColorPreferences = {
+  [color in Color]: Color[];
+};
+
+const ugly: ColorPreferences = {
   amber: ["blue", "cyan", "emerald", "green", "indigo", "lime", "purple", "sky", "teal", "violet"],
   blue: ["amber", "lime", "orange", "red", "rose", "yellow"],
   cyan: ["amber", "orange", "pink", "red", "rose", "yellow"],
@@ -18,7 +42,7 @@ const ugly = {
   yellow: ["blue", "cyan", "emerald", "green", "indigo", "lime", "purple", "sky", "teal", "violet"],
 };
 
-const similar = {
+const similar: ColorPreferences = {
   amber: ["yellow"],
   blue: ["sky"],
   cyan: ["teal"],
@@ -38,12 +62,12 @@ const similar = {
   yellow: ["amber", "orange"],
 };
 
-const colors = Object.keys(ugly);
+const colors: Color[] = Object.keys(ugly) as Color[];
 
-const gradients = colors
-  .map((from) =>
-    colors.map((via) =>
-      colors.map(
+const gradients: Gradient[] = colors
+  .flatMap((from) =>
+    colors.flatMap((via) =>
+      colors.flatMap(
         (to) =>
           from !== to &&
           from !== via &&
@@ -58,13 +82,12 @@ const gradients = colors
       )
     )
   )
-  .flat(2)
-  .filter((i) => i);
+  .filter((i) => i) as Gradient[];
 
-export const getGradient = function () {
+export const getGradient = function (): Gradient {
   return gradients[Math.floor(Math.random() * gradients.length)];
 };
 
-export const getGradients = function () {
+export const getGradients = function (): Gradient[] {
   return gradients;
 };

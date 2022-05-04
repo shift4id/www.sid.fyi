@@ -1,0 +1,41 @@
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { faFaceSmile } from "@fortawesome/free-regular-svg-icons/faFaceSmile";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRouter } from "next/router";
+import Link from "./link";
+
+const links = [{ href: "/", name: "home", icon: faFaceSmile }];
+
+type NavLinkProps = {
+  active: boolean;
+  href: string;
+  name: string;
+  icon: IconDefinition;
+};
+
+const NavLink: React.FC<NavLinkProps> = function ({ active, href, icon, name }) {
+  return (
+    <li key={href} className={`w-min rounded transition-opacity ${!active ? "opacity-50" : ""}`}>
+      <Link className="transition-transform duration-500 hover:scale-125" href={href}>
+        <span className="sr-only">{name}</span>
+        <FontAwesomeIcon className="text-2xl" icon={icon} />
+      </Link>
+    </li>
+  );
+};
+
+const Header: React.FC = function () {
+  const { pathname } = useRouter();
+
+  return (
+    <header className="flex w-full justify-between py-6 text-lg">
+      <ul className="flex space-x-4">
+        {links.map((link) => (
+          <NavLink key={link.href} active={pathname === link.href} {...link} />
+        ))}
+      </ul>
+    </header>
+  );
+};
+
+export default Header;

@@ -1,3 +1,4 @@
+import { NextPage } from "next";
 import Container from "@/components/container";
 import { getGradients } from "@/lib/gradients";
 
@@ -61,11 +62,11 @@ import { getGradients } from "@/lib/gradients";
   ],
 ];
 
-export default function Gradients() {
+const Gradients: NextPage = function () {
   const all = getGradients();
 
   return (
-    <Container>
+    <Container description="A collection of all the gradients that are used on this website." title="Gradients">
       <div className="mt-4 grid w-full grid-cols-1 gap-4 md:grid-cols-4">
         {all.map((gradient) => (
           <div key={gradient} className={`mb-2 h-16 w-full rounded-md bg-gradient-to-r ${gradient}`} />
@@ -73,4 +74,6 @@ export default function Gradients() {
       </div>
     </Container>
   );
-}
+};
+
+export default Gradients;
