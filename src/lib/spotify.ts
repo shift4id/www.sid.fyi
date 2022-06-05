@@ -1,15 +1,16 @@
 import fetch from "isomorphic-unfetch";
 import redis from "@/lib/redis";
 
-// credentials are optional
 const clientId = process.env.SPOTIFY_CLIENT_ID;
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
 
 const authorization = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
 const TOKEN_URL = `https://accounts.spotify.com/api/token`;
-const CURRENTLY_PLAYING_URL = `https://api.spotify.com/v1/me/player/currently-playing`;
-const TOP_TRACKS_URL = `https://api.spotify.com/v1/me/top/tracks`;
+const BASE_URL = "https://api.spotify.com/v1/me";
+const CURRENTLY_PLAYING_URL = `${BASE_URL}/player/currently-playing`;
+const TOP_TRACKS_URL = `${BASE_URL}/top/tracks`;
+const PLAYLISTS_URL = `${BASE_URL}/playlists`;
 
 type SpotifySong = {
   album: { images: { url: string }[] };
@@ -18,12 +19,31 @@ type SpotifySong = {
   external_urls: { spotify: string };
 };
 
+type SpotifyPlaylist = {
+  name: string;
+  href: string;
+  images: { url: string }[];
+  external_urls: { spotify: string };
+  public: boolean;
+  tracks: { total: number };
+};
+
 type Song = {
   isPlaying?: boolean;
   artist: string;
   image: string;
   title: string;
   url: string;
+  type: "song";
+};
+
+type Playlist = {
+  image: string;
+  title: string;
+  url: string;
+  count: number;
+  public: boolean;
+  type: "playlist";
 };
 
 type CurrentSong =
@@ -66,6 +86,18 @@ const getSongData = function (item: SpotifySong): Song {
     image: item.album.images[0].url,
     title: item.name,
     url: item.external_urls.spotify,
+    type: "song",
+  };
+};
+
+const getPlaylistData = function (item: SpotifyPlaylist): Playlist {
+  return {
+    image: item.images[0].url,
+    title: item.name,
+    url: item.external_urls.spotify,
+    count: item.tracks.total,
+    public: item.public,
+    type: "playlist",
   };
 };
 
@@ -95,6 +127,28 @@ const getCurrentlyPlaying = async function (): Promise<Song | CurrentSong> {
   return song;
 };
 
+const getPlaylists = async function (): Promise<Playlist[]> {
+  const storedPlaylists = JSON.parse(await redis.get("playlists")) as Playlist[];
+  if (storedPlaylists) return storedPlaylists;
+
+  const accessToken = await getAccessToken();
+
+  type PlaylistsResponse = {
+    items: SpotifyPlaylist[];
+  };
+
+  const { items } = (await fetch(
+    `${PLAYLISTS_URL}?${new URLSearchParams({
+      limit: "10",
+    }).toString()}`,
+    { headers: { Authorization: `Bearer ${accessToken}` } }
+  ).then((r) => r.json())) as PlaylistsResponse;
+
+  const playlists: Playlist[] = items.map(getPlaylistData).filter((playlist) => playlist.public);
+  await redis.set("playlists", JSON.stringify(playlists), "EX", 24 * 60 * 60);
+  return playlists;
+};
+
 const getTopSongs = async function (): Promise<Song[]> {
   const storedTopSongs = JSON.parse(await redis.get("top_songs")) as Song[];
   if (storedTopSongs) return storedTopSongs;
@@ -118,5 +172,5 @@ const getTopSongs = async function (): Promise<Song[]> {
   return topSongs;
 };
 
-export type { Song };
-export { getCurrentlyPlaying, getTopSongs };
+export type { Playlist, Song };
+export { getCurrentlyPlaying, getPlaylists, getTopSongs };
