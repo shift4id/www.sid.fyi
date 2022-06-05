@@ -15,7 +15,7 @@ const Particles = {
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
     this.context = this.canvas.getContext("2d");
-    this.count = Math.floor(Math.sqrt(window.innerWidth * window.innerWidth) * 0.25);
+    this.count = Math.floor(Math.sqrt(window.innerHeight * window.innerWidth) * 0.2);
     window.addEventListener("mousemove", this.handleMouseMove);
     window.addEventListener("resize", this.handleResize);
     this.generateParticles();
