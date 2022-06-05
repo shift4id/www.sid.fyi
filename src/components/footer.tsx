@@ -1,4 +1,5 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons/faFacebook";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram";
@@ -24,6 +25,7 @@ const Social: React.FC<SocialProps> = function ({ href, icon, name }) {
 };
 
 const socials = [
+  { href: "https://open.spotify.com/user/sidfrostbear", icon: faSpotify, name: "Spotify" },
   { href: "https://facebook.com/sid.adusumelli", icon: faFacebook, name: "Facebook" },
   { href: "https://github.com/shift4id", icon: faGithub, name: "Github" },
   { href: "https://instagram.com/shift4id", icon: faInstagram, name: "Instagram" },
