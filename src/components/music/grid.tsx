@@ -20,7 +20,7 @@ const Grid: React.FC<GridProps> = function ({ title, url }) {
       <p className="text-xl text-gray-100">
         <em>{title}</em>
       </p>
-      <div className="grid w-full gap-2 md:grid-cols-2">
+      <div className="w-full space-y-2 md:grid md:grid-cols-2 md:gap-2 md:space-y-0">
         {items?.map((item: Playlist | Song) => (
           <Card key={item.title} item={item} />
         ))}
