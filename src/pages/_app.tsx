@@ -4,7 +4,6 @@ import Head from "next/head";
 import Script from "next/script";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import Particles from "@/components/particles";
 
 import "@/styles/main.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -19,6 +18,7 @@ const App: React.FC<AppProps> = function ({ Component, pageProps }) {
       {NEXT_PUBLIC_GTAG_ID && (
         <>
           <Head>
+            <title>Sid A</title>
             <link href="https://www.google-analytics.com" rel="preconnect" />
             <link href="https://www.googletagmanager.com" rel="preconnect" />
           </Head>
@@ -39,7 +39,6 @@ const App: React.FC<AppProps> = function ({ Component, pageProps }) {
         <Component {...pageProps} />
         <Footer />
       </main>
-      <Particles />
     </>
   );
 };

@@ -128,8 +128,8 @@ const getCurrentlyPlaying = async function (): Promise<Song | CurrentSong> {
 };
 
 const getPlaylists = async function (): Promise<Playlist[]> {
-  const storedPlaylists = JSON.parse(await redis.get("playlists")) as Playlist[];
-  if (storedPlaylists) return storedPlaylists;
+  // const storedPlaylists = JSON.parse(await redis.get("playlists")) as Playlist[];
+  // if (storedPlaylists) return storedPlaylists;
 
   const accessToken = await getAccessToken();
 
