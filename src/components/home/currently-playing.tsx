@@ -13,9 +13,9 @@ const CurrentlyPlaying = function () {
       className="flex w-full max-w-xs rounded-md bg-gray-900 p-2"
       href={song?.isPlaying ? song.url : "https://open.spotify.com/user/sidfrostbear"}
     >
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center">
+      <div className="relative flex h-12 w-12 shrink-0 items-center justify-center">
         {song?.isPlaying ? (
-          <Image alt="" className="rounded-md" height={96} src={song.image} width={96} />
+          <Image alt="" className="rounded-md" height={96} layout="fill" src={song.image} width={96} />
         ) : (
           <FontAwesomeIcon icon={faPauseCircle} size="2x" />
         )}

@@ -9,8 +9,8 @@ type CardProps = {
 const Card: React.FC<CardProps> = function ({ item }) {
   return (
     <Link className="flex w-full rounded-md bg-gray-900 p-2" href={item.url}>
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center">
-        <Image alt="" className="rounded-md" height={96} src={item.image} width={96} />
+      <div className="relative flex h-12 w-12 shrink-0 items-center justify-center">
+        <Image alt="" className="rounded-md" height={96} layout="fill" src={item.image} width={96} />
       </div>
       <div className="ml-2 flex w-full flex-col justify-center overflow-hidden text-left">
         <p className="truncate text-sm">{item.title}</p>
