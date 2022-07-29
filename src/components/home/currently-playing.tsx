@@ -15,7 +15,7 @@ const CurrentlyPlaying = function () {
     >
       <div className="relative flex h-12 w-12 shrink-0 items-center justify-center">
         {song?.isPlaying ? (
-          <Image alt="" className="rounded-md" height={96} layout="fill" src={song.image} width={96} />
+          <Image alt="" className="rounded-md" layout="fill" src={song.image} />
         ) : (
           <FontAwesomeIcon icon={faPauseCircle} size="2x" />
         )}

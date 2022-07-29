@@ -1,3 +1,5 @@
+const defaultConfig = require("tailwindcss/defaultConfig");
+
 /**
  * @type {import("tailwindcss/tailwind-config").TailwindConfig}
  */
@@ -20,8 +22,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["SuisseIntl", "sans-serif"],
-        serif: ["GrandSlang", "serif"],
+        sans: ["SuisseIntl", ...defaultConfig.theme.fontFamily.sans],
+        serif: ["GrandSlang", ...defaultConfig.theme.fontFamily.serif],
       },
     },
   },
