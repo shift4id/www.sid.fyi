@@ -10,9 +10,13 @@ module.exports = withPWA({
   images: {
     domains: ["i.scdn.co", "cdn.sid.fyi"],
   },
-  pwa: {
-    dest: "public",
-    disable: process.env.NODE_ENV === "development",
-    runtimeCaching,
-  },
+  webpack(config, options) {
+    options.config.pwa = {
+      dest: "public",
+      disable: process.env.NODE_ENV !== 'production',
+      runtimeCaching  
+    }
+
+    return config;
+  }
 });
