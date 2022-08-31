@@ -7,7 +7,7 @@ type GridProps = {
   url: string;
 };
 
-const Grid: React.FC<GridProps> = function ({ title, url }) {
+const Grid: React.FC<GridProps> = function Grid({ title, url }) {
   const { data: items } = useSWR<Playlist[] | Song[]>(url, (url: string) => fetch(url).then((r) => r.json()), {
     revalidateIfStale: false,
     revalidateOnFocus: false,
