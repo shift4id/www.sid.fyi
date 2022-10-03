@@ -3,9 +3,7 @@ import { getGradient } from "@/lib/gradients";
 import Container from "./container";
 import Link from "./link";
 
-type ErrorProps = {
-  statusCode: number;
-};
+type ErrorProps = { statusCode: number };
 
 const Error: NextPage<ErrorProps> = function ({ statusCode }) {
   const gradient = getGradient();

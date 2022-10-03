@@ -84,10 +84,5 @@ const gradients: Gradient[] = colors
   )
   .filter((i) => i) as Gradient[];
 
-export const getGradient = function (): Gradient {
-  return gradients[Math.floor(Math.random() * gradients.length)];
-};
-
-export const getGradients = function (): Gradient[] {
-  return gradients;
-};
+export const getGradient = (): Gradient => gradients[Math.floor(Math.random() * gradients.length)];
+export const getGradients = (): Gradient[] => gradients;

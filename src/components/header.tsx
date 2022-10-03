@@ -21,8 +21,8 @@ type NavLinkProps = {
 
 const NavLink: React.FC<NavLinkProps> = function ({ active, href, icon, name }) {
   return (
-    <li key={href} className={`w-min rounded transition-opacity ${!active ? "opacity-50" : ""}`}>
-      <Link className="transition-transform duration-500 hover:scale-125" href={href}>
+    <li key={href} className={`w-min rounded transition duration-500 hover:scale-125 ${!active ? "opacity-50" : ""}`}>
+      <Link href={href}>
         <span className="sr-only">{name}</span>
         <FontAwesomeIcon className="text-2xl" icon={icon} />
       </Link>
