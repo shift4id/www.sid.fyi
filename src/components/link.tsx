@@ -1,14 +1,13 @@
-import NextLink from "next/link";
+import NextLink, { LinkProps as NextLinkProps } from "next/link";
 
-interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+interface LinkProps extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof NextLinkProps>, NextLinkProps {  
   external?: boolean;
+  children?: React.ReactNode;
 }
 
-const Link: React.FC<LinkProps> = function ({ href, external, ...props }) {
+const Link: React.FC<LinkProps> = function ({ external, ...props }) {
   return (
-    <NextLink href={href}>
-      <a {...props} rel="noopener noreferrer" target={external ? "_blank" : "_self"} />
-    </NextLink>
+    <NextLink {...props} rel="noopener noreferrer" target={external ? "_blank" : "_self"}  />
   );
 };
 
