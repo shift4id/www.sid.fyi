@@ -19,7 +19,7 @@ const Home: NextPage = function () {
           </div>
           <p className="text-lg md:text-2xl">
             I&apos;m, an {age} year old software engineer from <em>Silicon Valley, California</em>. I enjoy creating{" "}
-            <em>unique</em> and <em>elegant</em> unique user experiences. My passions are{" "}
+            <em>unique</em> and <em>elegant</em> user experiences. My passions are{" "}
             <PrettyLink href="/music">music</PrettyLink> and <PrettyLink href="/photography">photography</PrettyLink>.
           </p>
           <CurrentlyPlaying />
