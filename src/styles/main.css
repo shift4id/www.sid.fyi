@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply selection:bg-white/10;
+  }
+
+  em {
+    @apply font-serif tracking-tighter;
+  }
+
+  strong {
+    @apply font-medium text-gray-400;
+  }
+}
