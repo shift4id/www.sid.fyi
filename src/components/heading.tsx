@@ -9,7 +9,7 @@ const Heading: React.FC<HeadingProps> = function ({ title, description }) {
       <h1 className="text-xl">
         <em>{title}</em>
       </h1>
-      <h2 className="text-gray-400">{description}</h2>
+      <h2 className="text-gray-300">{description}</h2>
     </div>
   );
 };

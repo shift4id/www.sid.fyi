@@ -21,7 +21,7 @@ type SocialProps = {
 
 const Social: React.FC<SocialProps> = function ({ item }) {
   return (
-    <Link external className="mr-4 text-gray-400 transition duration-300 hover:text-pink-200" href={item.href}>
+    <Link external className="mr-2 mt-2 px-2 py-1 bg-gray-800 rounded text-gray-300 transition duration-300 hover:text-pink-200" href={item.href}>
       {item.name.toLowerCase()}
     </Link>
   );

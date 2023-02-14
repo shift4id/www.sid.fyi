@@ -34,10 +34,10 @@ const Essay: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = function
 
   return (
     <Container {...md}>
-      <time className="font-mono text-xs text-gray-500">{formatDate(item.date)}</time>
+      <time className="font-mono text-xs text-gray-400">{formatDate(item.date)}</time>
       <article>
         <Heading description={item.description} title={item.title} />
-        <div dangerouslySetInnerHTML={{ __html: item.content }} className="prose !prose-invert prose-gray mt-8" />
+        <div dangerouslySetInnerHTML={{ __html: item.content }} className="prose break-words !prose-invert prose-gray mt-8" />
       </article>
     </Container>
   );

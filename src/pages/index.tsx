@@ -23,7 +23,7 @@ const Home: NextPage = function () {
       </p>
       <div>
         <p>In my free time, you can find me</p>
-        <ul className="list-inside list-disc">
+        <ul className="list-inside list-disc space-y-1.5 mt-2">
           <li>
             <PrettyLink href={"/jukebox"}>listening to music</PrettyLink>
           </li>

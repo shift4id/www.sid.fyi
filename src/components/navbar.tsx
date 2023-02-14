@@ -27,7 +27,7 @@ const NavLink: React.FC<NavLinkProps> = function ({ active, item }) {
       <Link
         href={item.href}
         className={`flex items-center space-x-2 transition duration-300 ${
-          active ? "text-pink-200" : "hover:text-gray-400"
+          active ? "text-pink-200" : "hover:text-gray-300"
         }`}
       >
         <item.Icon size="1rem" />

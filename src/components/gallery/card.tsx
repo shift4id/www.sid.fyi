@@ -12,7 +12,7 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = function ({ item }) {
   return (
-    <Image alt="" height={640 * (item.h / item.w)} src={`https://cdn.sid.fyi/photos/${item.id}.jpeg`} width={640} />
+    <Image  alt="" height={640 * (item.h / item.w)} sizes="640w" src={`https://cdn.sid.fyi/photos/${item.id}.jpeg`} width={640} />
   );
 };
 

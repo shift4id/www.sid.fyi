@@ -9,9 +9,9 @@ type CardProps = {
 const Card: React.FC<CardProps> = function ({ item }) {
   return (
     <Link className="transition duration-300 hover:text-pink-200" href={"/journal/" + item.slug}>
-      <p className="mb-2 font-mono text-xs text-gray-500">{formatDate(item.date)}</p>
-      <p>{item.title}</p>
-      <p className="text-sm text-gray-400">{item.description}</p>
+      <p className="font-mono text-xs text-gray-400">{formatDate(item.date)}</p>
+      <p className="mt-2 mb-1">{item.title}</p>
+      <p className="text-sm text-gray-300">{item.description}</p>
     </Link>
   );
 };
