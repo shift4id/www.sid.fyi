@@ -35,7 +35,7 @@ const Container: React.FC<ContainerProps> = function ({ title, description, chil
         <meta content={`${baseUrl}/images/open-graph.png`} name="twitter:image" />
       </Head>
       <section className="flex w-full grow flex-col items-center justify-center py-10">
-        <div className="relative flex w-full flex-col space-y-8">{children}</div>
+        <div className="flex w-full flex-col space-y-8">{children}</div>
       </section>
     </>
   );

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { Book, Camera, Icon, Music, PenTool, Smile } from "react-feather";
+import { Book, Camera, Icon, Music, Smile } from "react-feather";
 import Link, { LinkProps } from "@/components/link";
 
 type NavItem = {
@@ -11,7 +11,6 @@ type NavItem = {
 const links: NavItem[] = [
   { href: "/", name: "home", Icon: Smile },
   { href: "/jukebox", name: "jukebox", Icon: Music },
-  { href: "/journal", name: "journal", Icon: PenTool },
   { href: "/gallery", name: "gallery", Icon: Camera },
   { href: "/library", name: "library", Icon: Book },
 ];
