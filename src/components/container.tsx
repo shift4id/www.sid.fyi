@@ -1,6 +1,7 @@
+import { motion } from "framer-motion";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React from "react";
+import { useEffect } from "react";
 
 type ContainerProps = {
   title: string;
@@ -11,6 +12,8 @@ type ContainerProps = {
 const Container: React.FC<ContainerProps> = function ({ title, description, children }) {
   const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_WEBSITE_URL;
+
+  useEffect(() => window.scroll({ top: 0, left: 0, behavior: "smooth" }));
 
   return (
     <>
@@ -34,9 +37,15 @@ const Container: React.FC<ContainerProps> = function ({ title, description, chil
         <meta content="@shift4id" name="twitter:site" />
         <meta content={`${baseUrl}/images/open-graph.png`} name="twitter:image" />
       </Head>
-      <section className="flex w-full grow flex-col items-center justify-center py-10">
+      <motion.section
+        animate={{ y: 0, opacity: 1 }}
+        className="flex w-full grow flex-col items-center justify-center py-10"
+        exit={{ opacity: 0 }}
+        initial={{ y: "2rem", opacity: 0 }}
+        transition={{ type: "tween", duration: 0.75, delay: -0.15, ease: "easeInOut" }}
+      >
         <div className="flex w-full flex-col space-y-8">{children}</div>
-      </section>
+      </motion.section>
     </>
   );
 };

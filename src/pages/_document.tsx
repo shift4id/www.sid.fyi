@@ -16,7 +16,7 @@ const Document: React.FC = function () {
         <meta content="/favicons/browserconfig.xml" name="msapplication-config" />
         <meta content="#333" name="theme-color" />
       </Head>
-      <body className="mx-auto max-w-3xl bg-gray-900 text-white">
+      <body className="mx-auto max-w-3xl scroll-smooth bg-gray-900 text-white">
         <Main />
         <NextScript />
       </body>

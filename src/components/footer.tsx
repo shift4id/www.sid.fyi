@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Link from "./link";
 
 type Social = {
@@ -33,14 +34,19 @@ const Social: React.FC<SocialProps> = function ({ item }) {
 
 const Footer: React.FC = function () {
   return (
-    <footer className="-mx-6 flex flex-col items-start justify-between space-y-4 p-6 text-sm">
-      <div className="flex flex-wrap">
+    <motion.footer
+      animate={{ y: 0, opacity: 1 }}
+      className="sticky bottom-0 flex flex-col items-center justify-between space-y-4 bg-gray-900 py-6 text-sm"
+      initial={{ y: "1rem", opacity: 0 }}
+      transition={{ type: "tween", duration: 0.75, ease: "easeInOut" }}
+    >
+      <div className="flex flex-wrap items-center justify-center">
         {socials.map((item) => (
           <Social key={item.name} item={item} />
         ))}
       </div>
-      <p>&copy; {new Date().getFullYear()} Siddharth Adusumelli. All rights reserved.</p>
-    </footer>
+      <p className="text-center">&copy; {new Date().getFullYear()} Siddharth Adusumelli. All rights reserved.</p>
+    </motion.footer>
   );
 };
 

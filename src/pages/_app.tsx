@@ -1,4 +1,5 @@
 import localFont from "@next/font/local";
+import { AnimatePresence } from "framer-motion";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import Script from "next/script";
@@ -30,8 +31,7 @@ const mono = localFont({
 
 const gtagId = process.env.NEXT_PUBLIC_GTAG_ID;
 
-const App: React.FC<AppProps> = function ({ Component, pageProps }) {
-
+const App: React.FC<AppProps> = function ({ Component, pageProps, router }) {
   return (
     <>
       {gtagId && (
@@ -41,10 +41,7 @@ const App: React.FC<AppProps> = function ({ Component, pageProps }) {
             <link href="https://www.google-analytics.com" rel="preconnect" />
             <link href="https://www.googletagmanager.com" rel="preconnect" />
           </Head>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${gtagId}`}
-            strategy="afterInteractive"
-          />
+          <Script src={`https://www.googletagmanager.com/gtag/js?id=${gtagId}`} strategy="afterInteractive" />
           <Script id="google-analytics" strategy="afterInteractive">{`
             window.dataLayer = window.dataLayer || [];
             function gtag(){window.dataLayer.push(arguments);}
@@ -55,7 +52,9 @@ const App: React.FC<AppProps> = function ({ Component, pageProps }) {
       )}
       <main className={`${sans.variable} ${serif.variable} ${mono.variable} flex min-h-screen w-full flex-col px-8`}>
         <Navbar />
-        <Component {...pageProps} />
+        <AnimatePresence mode="wait">
+          <Component {...pageProps} key={router.asPath} />
+        </AnimatePresence>
         <Footer />
       </main>
     </>

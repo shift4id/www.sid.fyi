@@ -5,7 +5,7 @@ interface LinkProps extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 
 }
 
 const Link: React.FC<LinkProps> = function ({ external, ...props }) {
-  return <NextLink {...props} rel="noopener noreferrer" target={external ? "_blank" : "_self"} />;
+  return <NextLink rel="noopener noreferrer" scroll={false} target={external ? "_blank" : "_self"} {...props} />;
 };
 
 export type { LinkProps };
