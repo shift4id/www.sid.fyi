@@ -8,7 +8,7 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = function ({ item }) {
   return (
-    <Link external className="group flex space-x-4 bg-white/5 p-4" href={item.url}>
+    <Link external className="group flex space-x-4 bg-gray-800 p-4" href={item.url}>
       <div className="relative h-12 w-12 shrink-0 bg-black">
         {item?.image && <Image fill alt="" sizes="3rem" src={item.image} />}
       </div>

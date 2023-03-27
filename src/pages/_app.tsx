@@ -1,6 +1,6 @@
-import localFont from "@next/font/local";
 import { AnimatePresence } from "framer-motion";
 import { AppProps } from "next/app";
+import localFont from "next/font/local";
 import Head from "next/head";
 import Script from "next/script";
 import Footer from "@/components/footer";
@@ -20,13 +20,6 @@ const serif = localFont({
   preload: true,
   display: "swap",
   variable: "--font-serif",
-});
-
-const mono = localFont({
-  src: [{ path: "./fonts/SuisseIntlMono/Regular.woff2", weight: "400", style: "normal" }],
-  preload: true,
-  display: "swap",
-  variable: "--font-mono",
 });
 
 const gtagId = process.env.NEXT_PUBLIC_GTAG_ID;
@@ -50,7 +43,7 @@ const App: React.FC<AppProps> = function ({ Component, pageProps, router }) {
             `}</Script>
         </>
       )}
-      <main className={`${sans.variable} ${serif.variable} ${mono.variable} flex min-h-screen w-full flex-col px-8`}>
+      <main className={`${sans.variable} ${serif.variable} flex min-h-screen w-full flex-col px-8`}>
         <Navbar />
         <AnimatePresence mode="wait">
           <Component {...pageProps} key={router.asPath} />

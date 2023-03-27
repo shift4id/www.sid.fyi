@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Book, Camera, Icon, Music, Smile } from "react-feather";
 import Link, { LinkProps } from "@/components/link";
@@ -41,18 +40,13 @@ const Navbar: React.FC = function () {
   const { pathname } = useRouter();
 
   return (
-    <motion.header
-      animate={{ y: 0, opacity: 1 }}
-      className="sticky top-0 z-10 bg-gray-900 py-6"
-      initial={{ y: "-1rem", opacity: 0 }}
-      transition={{ type: "tween", duration: 0.75, ease: "easeInOut" }}
-    >
+    <header className="sticky top-0 z-10 -mx-6 bg-gray-900 p-6">
       <ul className="flex space-x-6 leading-none">
         {links.map((item) => (
           <NavLink key={item.name} active={pathname === item.href} item={item} />
         ))}
       </ul>
-    </motion.header>
+    </header>
   );
 };
 

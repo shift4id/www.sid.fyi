@@ -16,10 +16,10 @@ const Home: NextPage = function () {
         Computer Science at San José State University.
       </p>
       <p>
-        My areas of interest include the fields of: <em>psychology</em>, <em>philosophy</em>, <em>architecture</em>, and{" "}
-        <em>product design</em>. Drawing from all of these fields, I aim to create products that are not only
-        functional, but also <em>unique</em> and <em>elegant</em>. I believe that good design should be intuitive,
-        visually pleasing, and accessible to all users.
+        I am very interested in <em>psychology</em> (behavioral + social), <em>philosophy</em> (metaphysics +
+        epistemology), and <em>design</em> (architecture + product design). I aim to create aesthetically pleasing and
+        functional products drawing from these fields. I am also interested in <em>art</em> (photography + music)
+        because of its ability to express complex emotions and ideas.
       </p>
       <div>
         <p>In my free time, you can find me</p>

@@ -23,7 +23,6 @@ module.exports = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...defaultConfig.theme.fontFamily.sans],
-        mono: ["var(--font-mono)", ...defaultConfig.theme.fontFamily.mono],
         serif: ["var(--font-serif)", ...defaultConfig.theme.fontFamily.serif],
       },
     },
