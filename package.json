@@ -29,6 +29,7 @@
     "format": "prettier . --write"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^13.2.4",
     "@notionhq/client": "^2.2.3",
     "@tailwindcss/typography": "^0.5.9",
     "framer-motion": "^10.9.1",
@@ -37,7 +38,7 @@
     "next": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-feather": "^2.0.10",
+    "react-icons": "^4.8.0",
     "sharp": "^0.32.0",
     "swr": "^2.1.1"
   },

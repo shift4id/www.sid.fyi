@@ -1,18 +1,19 @@
 import { useRouter } from "next/router";
-import { Book, Camera, Icon, Music, Smile } from "react-feather";
+import { IconType } from "react-icons";
+import { FiBook, FiCamera, FiMusic, FiSmile } from "react-icons/fi";
 import Link, { LinkProps } from "@/components/link";
 
 type NavItem = {
   name: string;
   href: LinkProps["href"];
-  Icon: Icon;
+  Icon: IconType;
 };
 
 const links: NavItem[] = [
-  { href: "/", name: "home", Icon: Smile },
-  { href: "/jukebox", name: "jukebox", Icon: Music },
-  { href: "/gallery", name: "gallery", Icon: Camera },
-  { href: "/library", name: "library", Icon: Book },
+  { href: "/", name: "home", Icon: FiSmile },
+  { href: "/jukebox", name: "jukebox", Icon: FiMusic },
+  { href: "/gallery", name: "gallery", Icon: FiCamera },
+  { href: "/library", name: "library", Icon: FiBook },
 ];
 
 type NavLinkProps = {

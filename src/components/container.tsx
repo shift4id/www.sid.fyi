@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -37,7 +37,7 @@ const Container: React.FC<ContainerProps> = function ({ title, description, chil
         <meta content="@shift4id" name="twitter:site" />
         <meta content={`${baseUrl}/images/open-graph.png`} name="twitter:image" />
       </Head>
-      <motion.section
+      <m.section
         animate={{ y: 0, opacity: 1 }}
         className="flex w-full grow flex-col items-center justify-center py-10"
         exit={{ opacity: 0 }}
@@ -45,7 +45,7 @@ const Container: React.FC<ContainerProps> = function ({ title, description, chil
         transition={{ type: "tween", duration: 0.5, delay: -0.1, ease: "easeInOut" }}
       >
         <div className="flex w-full flex-col space-y-8">{children}</div>
-      </motion.section>
+      </m.section>
     </>
   );
 };

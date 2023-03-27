@@ -1,4 +1,4 @@
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, domAnimation, LazyMotion } from "framer-motion";
 import { AppProps } from "next/app";
 import localFont from "next/font/local";
 import Head from "next/head";
@@ -26,7 +26,7 @@ const gtagId = process.env.NEXT_PUBLIC_GTAG_ID;
 
 const App: React.FC<AppProps> = function ({ Component, pageProps, router }) {
   return (
-    <>
+    <LazyMotion features={domAnimation}>
       {gtagId && (
         <>
           <Head>
@@ -50,7 +50,7 @@ const App: React.FC<AppProps> = function ({ Component, pageProps, router }) {
         </AnimatePresence>
         <Footer />
       </main>
-    </>
+    </LazyMotion>
   );
 };
 
