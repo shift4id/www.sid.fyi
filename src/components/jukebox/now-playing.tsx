@@ -8,13 +8,17 @@ const NowPlaying: React.FC = function () {
   const item: Song = song?.isPlaying
     ? song
     : {
-        title: "Nothing",
+        title: "My Profile",
         artist: "Spotify",
         url: "https://open.spotify.com/user/sidfrostbear",
         type: "song",
       };
 
-  return <Card item={item} />;
+  return (
+    <div className="md:w-1/2 md:pr-1">
+      <Card item={item} />
+    </div>
+  );
 };
 
 export default NowPlaying;

@@ -25,9 +25,7 @@ const Jukebox: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = functi
     <Container {...md}>
       <Heading {...md} />
       <Section title="Now Playing">
-        <div className="md:w-1/2 md:pr-1">
-          <NowPlaying />
-        </div>
+        <NowPlaying />
       </Section>
       <Section title="My Playlists">
         <Grid items={playlists} />

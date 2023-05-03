@@ -38,10 +38,10 @@ const Container: React.FC<ContainerProps> = function ({ title, description, chil
         <meta content={`${baseUrl}/images/open-graph.png`} name="twitter:image" />
       </Head>
       <m.section
-        animate={{ y: 0, opacity: 1 }}
+        animate={{ opacity: 1 }}
         className="flex w-full grow flex-col items-center justify-center py-10"
         exit={{ opacity: 0 }}
-        initial={{ y: "2rem", opacity: 0 }}
+        initial={{ opacity: 0 }}
         transition={{ type: "tween", duration: 0.5, delay: -0.1, ease: "easeInOut" }}
       >
         <div className="flex w-full flex-col space-y-8">{children}</div>
