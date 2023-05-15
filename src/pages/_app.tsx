@@ -22,28 +22,24 @@ const serif = localFont({
   variable: "--font-serif",
 });
 
-const gtagId = process.env.NEXT_PUBLIC_GTAG_ID;
+const gtagId = process.env.NEXT_PUBLIC_GTAG_ID || "";
 
 const App: React.FC<AppProps> = function ({ Component, pageProps, router }) {
   return (
     <LazyMotion features={domAnimation}>
-      {gtagId && (
-        <>
-          <Head>
-            <title>Sid A</title>
-            <link href="https://www.google-analytics.com" rel="preconnect" />
-            <link href="https://www.googletagmanager.com" rel="preconnect" />
-          </Head>
-          <Script src={`https://www.googletagmanager.com/gtag/js?id=${gtagId}`} strategy="afterInteractive" />
-          <Script id="google-analytics" strategy="afterInteractive">{`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){window.dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${gtagId}');
-            `}</Script>
-        </>
-      )}
-      <main className={`${sans.variable} ${serif.variable} flex min-h-screen w-full flex-col px-8`}>
+      <Head>
+        <title>Sid A</title>
+        <link href="https://www.google-analytics.com" rel="preconnect" />
+        <link href="https://www.googletagmanager.com" rel="preconnect" />
+      </Head>
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${gtagId}`} strategy="afterInteractive" />
+      <Script id="google-analytics" strategy="afterInteractive">{`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${gtagId}');
+      `}</Script>
+      <main className={`${sans.variable} ${serif.variable} flex min-h-screen w-full flex-col p-8`}>
         <Navbar />
         <AnimatePresence mode="wait">
           <Component {...pageProps} key={router.asPath} />

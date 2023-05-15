@@ -3,6 +3,17 @@ import Container from "@/components/container";
 import Heading from "@/components/heading";
 import PrettyLink from "@/components/pretty-link";
 
+type Link = {
+  text: string;
+  href: string;
+};
+
+const links: Link[] = [
+  { text: "listening to music", href: "/jukebox" },
+  { text: "taking pictures", href: "/gallery" },
+  { text: "reading books", href: "/library" },
+];
+
 const Home: NextPage = function () {
   const age = new Date(new Date().getTime() - new Date("October 6, 2003").getTime()).getFullYear() - 1970;
 
@@ -24,15 +35,11 @@ const Home: NextPage = function () {
       <div>
         <p>In my free time, you can find me</p>
         <ul className="mt-2 list-inside list-disc space-y-1.5">
-          <li>
-            <PrettyLink href={"/jukebox"}>listening to music</PrettyLink>
-          </li>
-          <li>
-            <PrettyLink href={"/gallery"}>taking photos</PrettyLink>
-          </li>
-          <li>
-            <PrettyLink href={"/library"}>reading books</PrettyLink>
-          </li>
+          {links.map(({ text, href }) => (
+            <li key={href}>
+              <PrettyLink href={href}>{text}</PrettyLink>
+            </li>
+          ))}
         </ul>
       </div>
     </Container>

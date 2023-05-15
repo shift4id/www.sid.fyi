@@ -9,10 +9,7 @@ import { getPlaylists, getTopSongs } from "@/lib/spotify";
 const getStaticProps = async function () {
   const playlists = await getPlaylists();
   const topSongs = await getTopSongs();
-  return {
-    props: { playlists, topSongs },
-    revalidate: 60 * 60,
-  };
+  return { props: { playlists, topSongs }, revalidate: 60 * 60 };
 };
 
 const Jukebox: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = function ({ playlists, topSongs }) {

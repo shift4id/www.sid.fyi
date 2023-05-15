@@ -1,4 +1,4 @@
-import fetch from "isomorphic-unfetch";
+import fetch from "cross-fetch";
 import redis from "@/lib/redis";
 
 const clientId = process.env.SPOTIFY_CLIENT_ID;
@@ -29,11 +29,11 @@ type SpotifyPlaylist = {
 };
 
 type Song = {
-  isPlaying?: boolean;
-  artist: string;
   image?: string;
   title: string;
   url: string;
+  artist: string;
+  isPlaying?: boolean;
   type: "song";
 };
 

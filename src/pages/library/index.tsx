@@ -6,10 +6,7 @@ import { getBooks } from "@/lib/notion";
 
 const getStaticProps = async function () {
   const books = await getBooks();
-  return {
-    props: { books },
-    revalidate: 60 * 60,
-  };
+  return { props: { books }, revalidate: 60 * 60 };
 };
 
 const Library: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = function ({ books }) {
