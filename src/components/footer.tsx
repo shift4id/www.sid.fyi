@@ -20,7 +20,7 @@ const Footer: React.FC = function () {
     <footer className="space-y-4 py-6 text-sm">
       <div className="flex flex-wrap items-center justify-center">
         {socials.map((item) => (
-          <PrettyLink key={item.name} external className="mx-2" href={item.href}>
+          <PrettyLink key={item.name} external className="mx-1 p-1" href={item.href}>
             {item.name.toLowerCase()}
           </PrettyLink>
         ))}
