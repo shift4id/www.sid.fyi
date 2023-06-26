@@ -1,5 +1,5 @@
 import fetch from "cross-fetch";
-import redis from "@/lib/redis";
+import redis from "./redis";
 
 const clientId = process.env.SPOTIFY_CLIENT_ID;
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -49,7 +49,7 @@ type Playlist = {
 type CurrentSong = { isPlaying: boolean } | Song;
 
 const getAccessToken = async function (): Promise<string> {
-  const storedToken = await redis.get("access_token");
+  const storedToken = await redis.get<string>("access_token");
   if (storedToken) return storedToken;
 
   type TokenResponse = {
@@ -72,7 +72,7 @@ const getAccessToken = async function (): Promise<string> {
     }
   ).then((r) => r.json())) as TokenResponse;
 
-  await redis.set("access_token", accessToken, "EX", expiresIn);
+  await redis.set("access_token", accessToken, { ex: expiresIn });
   return accessToken;
 };
 
@@ -98,7 +98,7 @@ const getPlaylistData = function (item: SpotifyPlaylist): Playlist {
 };
 
 const getNowPlaying = async function (): Promise<CurrentSong> {
-  const storedSong = JSON.parse(await redis.get("song")) as Song;
+  const storedSong = await redis.get<CurrentSong>("song");
   if (storedSong) return storedSong;
 
   const accessToken = await getAccessToken();
@@ -112,19 +112,19 @@ const getNowPlaying = async function (): Promise<CurrentSong> {
 
   if (response.status === 204 || response.status > 400) {
     const song = { isPlaying: false };
-    await redis.set("song", JSON.stringify(song), "EX", 60);
+    await redis.set("song", song, { ex: 60 });
     return { isPlaying: false };
   }
 
   const { item, is_playing: isPlaying } = (await response.json()) as CurrentlyPlayingResponse;
 
   const song: Song = { isPlaying, ...getSongData(item) };
-  await redis.set("song", JSON.stringify(song), "EX", 60);
+  await redis.set("song", song, { ex: 60 });
   return song;
 };
 
 const getPlaylists = async function (): Promise<Playlist[]> {
-  const storedPlaylists = JSON.parse(await redis.get("playlists")) as Playlist[];
+  const storedPlaylists = await redis.get<Playlist[]>("playlists");
   if (storedPlaylists) return storedPlaylists;
 
   const accessToken = await getAccessToken();
@@ -136,12 +136,12 @@ const getPlaylists = async function (): Promise<Playlist[]> {
   }).then((r) => r.json())) as PlaylistsResponse;
 
   const playlists: Playlist[] = items.map(getPlaylistData).filter((playlist) => playlist.public);
-  await redis.set("playlists", JSON.stringify(playlists), "EX", 24 * 60 * 60);
+  await redis.set("playlists", playlists, { ex: 24 * 60 * 60 });
   return playlists;
 };
 
 const getTopSongs = async function (): Promise<Song[]> {
-  const storedTopSongs = JSON.parse(await redis.get("top_songs")) as Song[];
+  const storedTopSongs = await redis.get<Song[]>("top_songs");
   if (storedTopSongs) return storedTopSongs;
 
   const accessToken = await getAccessToken();
@@ -157,7 +157,7 @@ const getTopSongs = async function (): Promise<Song[]> {
   ).then((r) => r.json())) as TopTracksResponse;
 
   const topSongs: Song[] = items.map(getSongData);
-  await redis.set("top_songs", JSON.stringify(topSongs), "EX", 24 * 60 * 60);
+  await redis.set("top_songs", topSongs, { ex: 24 * 60 * 60 });
   return topSongs;
 };
 

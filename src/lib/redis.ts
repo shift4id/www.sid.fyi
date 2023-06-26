@@ -1,5 +1,5 @@
-import Redis from "ioredis";
+import { createClient } from "@vercel/kv";
 
-const redis = new Redis(process.env.REDIS_URL);
+const redis = createClient({ url: process.env.REDIS_REST_API_URL, token: process.env.REDIS_REST_API_TOKEN });
 
 export default redis;
