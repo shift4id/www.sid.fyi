@@ -46,7 +46,7 @@ type Playlist = {
   type: "playlist";
 };
 
-type CurrentSong = { isPlaying: boolean } | Song;
+type CurrentSong = { isPlaying: false } | Song;
 
 const getAccessToken = async function (): Promise<string> {
   const storedToken = await redis.get<string>("access_token");
