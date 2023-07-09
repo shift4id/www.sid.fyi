@@ -7,7 +7,7 @@ type GridProps = {
 
 const Grid: React.FC<GridProps> = function ({ items }) {
   return (
-    <div className="grid w-full grid-cols-1 gap-2 md:grid-cols-2">
+    <div className="grid gap-2 md:grid-cols-2">
       {items?.map((item: Playlist | Song) => <Card key={item.title} item={item} />)}
     </div>
   );

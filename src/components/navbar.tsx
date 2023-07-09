@@ -42,7 +42,7 @@ const Navbar: React.FC = function () {
 
   return (
     <header className="sticky top-0 z-10 -mx-6 bg-gray-900 p-6">
-      <ul className="flex space-x-6 leading-none">
+      <ul className="flex space-x-6">
         {links.map((item) => (
           <NavLink key={item.name} active={pathname === item.href} item={item} />
         ))}

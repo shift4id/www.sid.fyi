@@ -18,14 +18,14 @@ const socials: Social[] = [
 const Footer: React.FC = function () {
   return (
     <footer className="space-y-4 py-6 text-sm">
-      <div className="flex flex-wrap items-center justify-center">
+      <div className="flex flex-wrap">
         {socials.map((item) => (
-          <PrettyLink key={item.name} external className="mx-1 p-1" href={item.href}>
+          <PrettyLink key={item.name} external className="mr-2" href={item.href}>
             {item.name.toLowerCase()}
           </PrettyLink>
         ))}
       </div>
-      <p className="text-center">&copy; {new Date().getFullYear()} Siddharth Adusumelli. All rights reserved.</p>
+      <p>&copy; {new Date().getFullYear()} Siddharth Adusumelli. All rights reserved.</p>
     </footer>
   );
 };

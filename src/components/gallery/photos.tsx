@@ -24,7 +24,7 @@ const photos: Photo[] = [
 
 const Photos: React.FC = function () {
   return (
-    <div className="w-full gap-4 space-y-4 md:columns-2">
+    <div className="gap-4 space-y-4 md:columns-2">
       {photos.map((item) => (
         <Card key={item.id} item={item} />
       ))}

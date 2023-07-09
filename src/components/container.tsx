@@ -44,7 +44,7 @@ const Container: React.FC<ContainerProps> = function ({ title, description, chil
         initial={{ opacity: 0 }}
         transition={{ type: "tween", duration: 0.5, delay: -0.1, ease: "easeInOut" }}
       >
-        <div className="flex w-full flex-col space-y-8">{children}</div>
+        <div className="w-full space-y-8">{children}</div>
       </m.section>
     </>
   );
