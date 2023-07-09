@@ -69,7 +69,7 @@ const getAccessToken = async function (): Promise<string> {
         Authorization: `Basic ${authorization}`,
         "Content-Type": "application/x-www-form-urlencoded",
       },
-    }
+    },
   ).then((r) => r.json())) as TokenResponse;
 
   await redis.set("access_token", accessToken, { ex: expiresIn });
@@ -153,7 +153,7 @@ const getTopSongs = async function (): Promise<Song[]> {
       time_range: "short_term",
       limit: "10",
     }).toString()}`,
-    { headers: { Authorization: `Bearer ${accessToken}` } }
+    { headers: { Authorization: `Bearer ${accessToken}` } },
   ).then((r) => r.json())) as TopTracksResponse;
 
   const topSongs: Song[] = items.map(getSongData);
