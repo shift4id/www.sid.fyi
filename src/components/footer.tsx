@@ -18,9 +18,9 @@ const socials: Social[] = [
 const Footer: React.FC = function () {
   return (
     <footer className="space-y-4 py-6 text-sm">
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap -my-1.5">
         {socials.map((item) => (
-          <PrettyLink key={item.name} external className="mr-2" href={item.href}>
+          <PrettyLink key={item.name} external className="mr-4 py-1 my-0.5" href={item.href}>
             {item.name.toLowerCase()}
           </PrettyLink>
         ))}
