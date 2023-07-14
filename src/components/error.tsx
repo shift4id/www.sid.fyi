@@ -13,10 +13,12 @@ const Error: NextPage<ErrorProps> = function ({ statusCode }) {
   return (
     <Container {...md}>
       <Heading
-        description={"You seem lost, here's a link to get you back on track."}
+        description="You seem lost, here's a link to get you back on track."
         title={statusCode ? `Error: ${statusCode}` : "Client Error"}
       />
-      <PrettyLink href="/">&larr; Return home</PrettyLink>
+      <div>
+        <PrettyLink href="/">&larr; Return home</PrettyLink>
+      </div>
     </Container>
   );
 };
