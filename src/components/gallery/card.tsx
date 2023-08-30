@@ -6,9 +6,7 @@ type Photo = {
   id: number;
 };
 
-type CardProps = {
-  item: Photo;
-};
+type CardProps = { item: Photo };
 
 const Card: React.FC<CardProps> = function ({ item }) {
   return (

@@ -1,9 +1,7 @@
 import Image from "next/image";
 import { Book } from "@/lib/notion";
 
-type CardProps = {
-  item: Book;
-};
+type CardProps = { item: Book };
 
 const Card: React.FC<CardProps> = function ({ item }) {
   return (
@@ -13,7 +11,7 @@ const Card: React.FC<CardProps> = function ({ item }) {
       </div>
       <div className="flex flex-col justify-center overflow-hidden">
         <p className="truncate text-sm">{item.title}</p>
-        <p className="truncate text-xs text-gray-300">{item.author}</p>
+        <p className="truncate text-xs text-gray-400">{item.author}</p>
       </div>
     </div>
   );

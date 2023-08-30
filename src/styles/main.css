@@ -14,4 +14,8 @@
   em {
     @apply font-serif;
   }
+
+  strong {
+    @apply text-gray-400 font-medium;
+  }
 }

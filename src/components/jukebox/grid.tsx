@@ -1,9 +1,7 @@
 import { Playlist, Song } from "@/lib/spotify";
 import Card from "./card";
 
-type GridProps = {
-  items: (Song | Playlist)[];
-};
+type GridProps = { items: (Song | Playlist)[] };
 
 const Grid: React.FC<GridProps> = function ({ items }) {
   return (

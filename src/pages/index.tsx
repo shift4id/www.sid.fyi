@@ -15,7 +15,7 @@ const links: Link[] = [
 ];
 
 const Home: NextPage = function () {
-  const age = new Date(new Date().getTime() - new Date("October 6, 2003").getTime()).getFullYear() - 1970;
+  const age = new Date(Date.now() - new Date("2003-10-06").getTime()).getFullYear() - 1970;
 
   const md = { title: "Home", description: "Hey I'm Sid!" };
 
@@ -23,18 +23,18 @@ const Home: NextPage = function () {
     <Container {...md}>
       <Heading description="code + design" title="Hey, I'm Sid!" />
       <p>
-        I&apos;m, a {age} year old software engineer from <em>Silicon Valley, California</em>. I currently study
+        I&apos;m, a {age} year old software engineer from <strong>Silicon Valley, California</strong>. I currently study
         Computer Science at San José State University.
       </p>
       <p>
-        I am very interested in <em>psychology</em> (behavioral + social), <em>philosophy</em> (metaphysics +
-        epistemology), and <em>design</em> (architecture + product design). I aim to create aesthetically pleasing and
-        functional products drawing from these fields. I am also interested in <em>art</em> (photography + music)
-        because of its ability to express complex emotions and ideas.
+        I am very interested in <strong>psychology</strong> (behavioral + social), <strong>philosophy</strong>{" "}
+        (metaphysics + epistemology), and <strong>design</strong> (architecture + product design). I aim to create
+        aesthetically pleasing and functional products drawing from these fields. I am also interested in{" "}
+        <strong>art</strong> (photography + music) because of its ability to express complex emotions and ideas.
       </p>
       <div>
         <p>In my free time, you can find me</p>
-        <ul className="mt-2 list-inside list-disc space-y-1.5">
+        <ul className="mt-4 list-inside list-disc space-y-2">
           {links.map(({ text, href }) => (
             <li key={href}>
               <PrettyLink href={href}>{text}</PrettyLink>

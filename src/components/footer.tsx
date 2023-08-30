@@ -17,15 +17,17 @@ const socials: Social[] = [
 
 const Footer: React.FC = function () {
   return (
-    <footer className="space-y-4 py-6 text-sm">
-      <div className="flex flex-wrap -my-1.5">
+    <footer className="space-y-4 py-6">
+      <div className="flex flex-wrap -my-1.5 text-xs">
         {socials.map((item) => (
-          <PrettyLink key={item.name} external className="mr-4 py-1 my-0.5" href={item.href}>
-            {item.name.toLowerCase()}
-          </PrettyLink>
+          <span key={item.name} className="mr-4 py-1 my-0.5">
+            <PrettyLink external href={item.href}>
+              {item.name.toLowerCase()}
+            </PrettyLink>
+          </span>
         ))}
       </div>
-      <p>&copy; {new Date().getFullYear()} Siddharth Adusumelli. All rights reserved.</p>
+      <p className="text-sm">&copy; {new Date().getFullYear()} Siddharth Adusumelli. All rights reserved.</p>
     </footer>
   );
 };

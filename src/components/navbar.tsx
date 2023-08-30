@@ -9,6 +9,11 @@ type NavItem = {
   Icon: IconType;
 };
 
+type NavLinkProps = {
+  active: boolean;
+  item: NavItem;
+};
+
 const links: NavItem[] = [
   { href: "/", name: "home", Icon: FiSmile },
   { href: "/jukebox", name: "jukebox", Icon: FiMusic },
@@ -16,22 +21,17 @@ const links: NavItem[] = [
   { href: "/library", name: "library", Icon: FiBook },
 ];
 
-type NavLinkProps = {
-  active: boolean;
-  item: NavItem;
-};
-
-const NavLink: React.FC<NavLinkProps> = function ({ active, item }) {
+const NavLink: React.FC<NavLinkProps> = function ({ active, item: { href, name, Icon } }) {
   return (
     <li>
       <Link
-        href={item.href}
+        href={href}
         className={`flex items-center space-x-2 transition duration-300 ${
-          active ? "text-pink-200" : "hover:text-gray-300"
+          active ? "text-pink-200" : "hover:text-gray-400"
         }`}
       >
-        <item.Icon size="1rem" />
-        <span className="sr-only sm:not-sr-only">{item.name}</span>
+        <Icon size="1rem" />
+        <span className="sr-only sm:not-sr-only">{name}</span>
       </Link>
     </li>
   );
