@@ -8,7 +8,7 @@ const Card: React.FC<CardProps> = function ({ item }) {
   return (
     <Link
       external
-      className="group flex space-x-4 rounded border border-gray-800 hover:border-pink-200 transition duration-300 p-4"
+      className="group flex space-x-4 rounded border border-gray-800 p-4 transition duration-300 hover:border-pink-200"
       href={item.url}
     >
       <div className="relative h-12 w-12 shrink-0 bg-black">

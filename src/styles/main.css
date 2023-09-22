@@ -3,19 +3,11 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply selection:bg-gray-800;
-  }
-
-  main {
-    @apply font-sans;
-  }
-
   em {
     @apply font-serif;
   }
 
   strong {
-    @apply text-gray-400 font-medium;
+    @apply font-medium text-gray-400;
   }
 }

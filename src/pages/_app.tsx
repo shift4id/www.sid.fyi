@@ -25,13 +25,15 @@ const serif = localFont({
   variable: "--font-serif",
 });
 
+const clns = (...args: string[]): string => args.filter(Boolean).join(" ");
+
 const App: React.FC<AppProps> = function ({ Component, pageProps, router }) {
   return (
     <LazyMotion features={domAnimation}>
       <Head>
         <title>Sid A</title>
       </Head>
-      <main className={`${sans.variable} ${serif.variable} flex min-h-screen w-full flex-col p-8`}>
+      <main className={clns(sans.variable, serif.variable, "flex min-h-screen w-full flex-col p-8 font-sans")}>
         <Navbar />
         <AnimatePresence mode="wait">
           <Component {...pageProps} key={router.asPath} />
