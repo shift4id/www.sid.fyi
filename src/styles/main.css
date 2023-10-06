@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply selection:bg-gray-400/20;
+  }
+
   em {
     @apply font-serif;
   }

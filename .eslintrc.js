@@ -3,16 +3,14 @@
  */
 
 module.exports = {
-  extends: ["eslint:recommended", "next/core-web-vitals", "prettier"],
-  overrides: [
-    {
-      files: ["*.ts", "*.tsx"],
-      extends: [
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
-      ],
-    },
+  extends: [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "prettier",
   ],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     project: "./tsconfig.json",
   },

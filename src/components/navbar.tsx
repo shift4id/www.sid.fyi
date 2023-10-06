@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { IconType } from "react-icons";
 import { FiBook, FiCamera, FiMusic, FiSmile } from "react-icons/fi";
 import Link, { LinkProps } from "@/components/link";
+import clns from "@/lib/clns";
 
 type NavItem = {
   name: string;
@@ -26,9 +27,10 @@ const NavLink: React.FC<NavLinkProps> = function ({ active, item: { href, name, 
     <li>
       <Link
         href={href}
-        className={`flex items-center space-x-2 transition duration-300 ${
-          active ? "text-pink-200" : "hover:text-gray-400"
-        }`}
+        className={clns(
+          "flex items-center space-x-2 rounded p-2 transition duration-300 sm:py-1",
+          active ? "bg-primary-200/10 text-primary-200" : "bg-gray-400/10 hover:text-gray-400",
+        )}
       >
         <Icon size="1rem" />
         <span className="sr-only sm:not-sr-only">{name}</span>

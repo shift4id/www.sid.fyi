@@ -5,7 +5,7 @@ type PrettyLinkProps = LinkProps;
 const PrettyLink: React.FC<PrettyLinkProps> = function ({ children, ...props }) {
   return (
     <Link
-      className="underline decoration-gray-400 underline-offset-4 transition duration-300 hover:text-pink-200"
+      className="underline decoration-gray-400 underline-offset-4 transition duration-300 hover:text-primary-200"
       {...props}
     >
       {children}

@@ -5,7 +5,7 @@ import localFont from "next/font/local";
 import Head from "next/head";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
-
+import clns from "@/lib/clns";
 import "@/styles/main.css";
 
 const sans = localFont({
@@ -24,8 +24,6 @@ const serif = localFont({
   display: "swap",
   variable: "--font-serif",
 });
-
-const clns = (...args: string[]): string => args.filter(Boolean).join(" ");
 
 const App: React.FC<AppProps> = function ({ Component, pageProps, router }) {
   return (
