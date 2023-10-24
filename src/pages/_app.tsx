@@ -10,8 +10,8 @@ import "@/styles/main.css";
 
 const sans = localFont({
   src: [
-    { path: "./fonts/SuisseIntl/Regular.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/SuisseIntl/Medium.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/SuisseIntl/Regular.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/SuisseIntl/Medium.woff2", weight: "500", style: "normal" },
   ],
   preload: true,
   display: "swap",
@@ -19,7 +19,7 @@ const sans = localFont({
 });
 
 const serif = localFont({
-  src: [{ path: "./fonts/GrandSlang/Italic.woff2", weight: "400", style: "italic" }],
+  src: [{ path: "../fonts/SuisseWorks/Italic.woff2", weight: "400", style: "italic" }],
   preload: true,
   display: "swap",
   variable: "--font-serif",

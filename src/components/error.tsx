@@ -6,14 +6,14 @@ import Container from "./container";
 type ErrorProps = { statusCode: number };
 
 const Error: NextPage<ErrorProps> = function ({ statusCode }) {
-  const md = { title: "404", description: "You seem lost." };
+  const md = {
+    title: statusCode ? `Error: ${statusCode}` : "Client Error",
+    description: "You seem lost, here's a link to get you back on track.",
+  };
 
   return (
     <Container {...md}>
-      <Heading
-        description="You seem lost, here's a link to get you back on track."
-        title={statusCode ? `Error: ${statusCode}` : "Client Error"}
-      />
+      <Heading {...md} />
       <div>
         <PrettyLink href="/">&larr; Return home</PrettyLink>
       </div>

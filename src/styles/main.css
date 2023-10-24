@@ -8,7 +8,7 @@
   }
 
   em {
-    @apply font-serif;
+    @apply font-serif tracking-tighter;
   }
 
   strong {

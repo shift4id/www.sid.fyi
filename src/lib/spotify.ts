@@ -1,4 +1,3 @@
-import fetch from "cross-fetch";
 import redis from "./redis";
 
 const clientId = process.env.SPOTIFY_CLIENT_ID;

@@ -17,11 +17,11 @@ const links: Link[] = [
 const Home: NextPage = function () {
   const age = new Date(Date.now() - new Date("2003-10-06").getTime()).getFullYear() - 1970;
 
-  const md = { title: "Home", description: "Hey I'm Sid!" };
+  const md = { title: "Home", description: "code + design" };
 
   return (
     <Container {...md}>
-      <Heading description="code + design" title="Hey, I'm Sid!" />
+      <Heading {...md} />
       <p>
         I&apos;m, a {age} year old software engineer from <strong>Silicon Valley, California</strong>. I currently study
         Computer Science at San José State University.
@@ -34,7 +34,7 @@ const Home: NextPage = function () {
       </p>
       <div>
         <p>In my free time, you can find me</p>
-        <ul className="mt-4 list-inside list-disc space-y-2">
+        <ul className="mt-4 list-inside list-disc space-y-1">
           {links.map(({ text, href }) => (
             <li key={href}>
               <PrettyLink href={href}>{text}</PrettyLink>
