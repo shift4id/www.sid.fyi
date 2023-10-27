@@ -1,16 +1,17 @@
 /**
- * @type {import("eslint").Linter.Config}
+ * @type import("eslint").Linter.Config
  */
-
 module.exports = {
-  extends: [
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "prettier",
+  extends: ["eslint:recommended", "next/core-web-vitals", "prettier"],
+  overrides: [
+    {
+      files: ["*.ts", "*.tsx"],
+      extends: [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      ],
+    },
   ],
-  parser: "@typescript-eslint/parser",
   parserOptions: {
     project: "./tsconfig.json",
   },
