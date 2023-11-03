@@ -21,9 +21,9 @@ const Home: NextPage = function () {
 
   return (
     <Container {...md}>
-      <Heading {...md} />
+      <Heading {...md} title="Hey, I'm Sid!" />
       <p>
-        I&apos;m, a {age} year old software engineer from <strong>Silicon Valley, California</strong>. I currently study
+        I&apos;m a {age} year old software engineer from <strong>Silicon Valley, California</strong>. I currently study
         Computer Science at San José State University.
       </p>
       <p>
