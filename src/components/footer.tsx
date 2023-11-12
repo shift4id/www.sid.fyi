@@ -15,16 +15,22 @@ const socials: Social[] = [
   { href: "https://twitter.com/shift4id", name: "Twitter" },
 ];
 
+const Social: React.FC<Social> = function ({ name, href }) {
+  return (
+    <span className="my-0.5 mr-4 py-1">
+      <PrettyLink external href={href}>
+        {name.toLowerCase()}
+      </PrettyLink>
+    </span>
+  );
+};
+
 const Footer: React.FC = function () {
   return (
     <footer className="space-y-4 py-6">
       <div className="-my-1.5 flex flex-wrap text-xs">
         {socials.map((item) => (
-          <span key={item.name} className="my-0.5 mr-4 py-1">
-            <PrettyLink external href={item.href}>
-              {item.name.toLowerCase()}
-            </PrettyLink>
-          </span>
+          <Social key={item.name} {...item} />
         ))}
       </div>
       <p className="text-sm">&copy; {new Date().getFullYear()} Siddharth Adusumelli. All rights reserved.</p>
