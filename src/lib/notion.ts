@@ -29,7 +29,7 @@ async function getBooks(): Promise<Book[]> {
     sorts: [{ property: "Author", direction: "ascending" }],
   });
 
-  const books = pages.results.map(getBookData);
+  const books = pages.results.filter((page): page is PageObjectResponse => page.object === "page").map(getBookData);
   await redis.set("books", books, { ex: 24 * 60 * 60 });
   return books;
 }

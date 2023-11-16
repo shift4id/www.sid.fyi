@@ -13,7 +13,7 @@ const Card: React.FC<CardProps> = function ({ item }) {
       href={item.url}
     >
       <div className="relative flex h-12 w-12 shrink-0 items-center justify-center bg-black text-2xl">
-        {item?.image ? <Image fill alt="" sizes="3rem" src={item.image} /> : <FiHeadphones />}
+        {item.image ? <Image fill alt="" sizes="3rem" src={item.image} /> : <FiHeadphones />}
       </div>
       <div className="flex flex-col justify-center overflow-hidden">
         <p className="truncate text-sm transition duration-300 group-hover:text-primary-200">{item.title}</p>
