@@ -174,7 +174,6 @@ Temporary Items
 # next.js
 /.next/
 /out/
-/analyze/
 
 # production
 /build

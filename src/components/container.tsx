@@ -13,7 +13,9 @@ const Container: React.FC<ContainerProps> = function ({ title, description, chil
   const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
-  useEffect(() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); });
+  useEffect(() => {
+    window.scroll({ top: 0, left: 0, behavior: "smooth" });
+  });
 
   return (
     <>
