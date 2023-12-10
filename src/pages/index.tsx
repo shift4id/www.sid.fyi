@@ -3,15 +3,21 @@ import Container from "@/components/container";
 import Heading from "@/components/heading";
 import PrettyLink from "@/components/pretty-link";
 
-type Link = {
-  text: string;
-  href: string;
-};
+type Hobby = { text: string; href: string };
 
-const links: Link[] = [
+const hobbies: Hobby[] = [
   { text: "listening to music", href: "/jukebox" },
   { text: "taking pictures", href: "/gallery" },
   { text: "reading books", href: "/library" },
+];
+
+type Interest = { title: string; description: string };
+
+const interests: Interest[] = [
+  { title: "psychology", description: "behavior and social" },
+  { title: "philosophy", description: "metaphysics and epistemology" },
+  { title: "design", description: "architecture and product design" },
+  { title: "art", description: "music and photography" },
 ];
 
 const Home: NextPage = function () {
@@ -26,16 +32,20 @@ const Home: NextPage = function () {
         I&apos;m a {age} year old software engineer from <strong>Silicon Valley, California</strong>. I currently study
         Computer Science at San José State University.
       </p>
-      <p>
-        I am very interested in <strong>psychology</strong> (behavioral + social), <strong>philosophy</strong>{" "}
-        (metaphysics + epistemology), and <strong>design</strong> (architecture + product design). I aim to create
-        aesthetically pleasing and functional products drawing from these fields. I am also interested in{" "}
-        <strong>art</strong> (photography + music) because of its ability to express complex emotions and ideas.
-      </p>
+      <div className="space-y-2">
+        <p>I am very interested in </p>
+        <ul className="mt-4 list-inside list-disc space-y-1.5">
+          {interests.map(({ title, description }) => (
+            <li key={title}>
+              <strong>{title}</strong> ({description})
+            </li>
+          ))}
+        </ul>
+      </div>
       <div>
         <p>In my free time, you can find me</p>
-        <ul className="mt-4 list-inside list-disc space-y-1">
-          {links.map(({ text, href }) => (
+        <ul className="mt-4 list-inside list-disc space-y-1.5">
+          {hobbies.map(({ text, href }) => (
             <li key={href}>
               <PrettyLink href={href}>{text}</PrettyLink>
             </li>

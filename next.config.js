@@ -6,7 +6,10 @@ module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    remotePatterns: [{ hostname: "*.(scdn.co|spotifycdn.com)" }],
-    domains: ["cdn.sid.fyi", "i.gr-assets.com"],
+    remotePatterns: [
+      { hostname: "*.(scdn.co|spotifycdn.com)" },
+      { hostname: "cdn.sid.fyi" },
+      { hostname: "i.gr-assets.com" },
+    ],
   },
 });
