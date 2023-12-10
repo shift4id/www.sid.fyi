@@ -1,4 +1,4 @@
-import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AnimatePresence, domAnimation, LazyMotion } from "framer-motion";
 import { AppProps } from "next/app";
 import localFont from "next/font/local";
@@ -37,7 +37,7 @@ const App: React.FC<AppProps> = function ({ Component, pageProps, router }) {
           <Component {...pageProps} key={router.asPath} />
         </AnimatePresence>
         <Footer />
-        <Analytics />
+        <SpeedInsights />
       </main>
     </LazyMotion>
   );

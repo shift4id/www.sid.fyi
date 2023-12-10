@@ -745,21 +745,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/analytics@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@vercel/analytics@npm:1.1.1"
-  dependencies:
-    server-only: "npm:^0.0.1"
-  checksum: 218f94620b6dd0349960caf170c7c86872d67b0ef90ac127cd6e6a8f018c9118fbf21a3adf9314ca93d72c1599b8b77ac0e4cb8390ac33aa5fec555d749b3308
-  languageName: node
-  linkType: hard
-
 "@vercel/kv@npm:^1.0.1":
   version: 1.0.1
   resolution: "@vercel/kv@npm:1.0.1"
   dependencies:
     "@upstash/redis": "npm:1.25.1"
   checksum: a699cad9c49062f54e11a8901503788f847b3cdc188fa55b262d3dc0d031a39027898d70243d9270bcf1a0d68e6c7bc5222717552f717e13a6f31d399b858cf1
+  languageName: node
+  linkType: hard
+
+"@vercel/speed-insights@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@vercel/speed-insights@npm:1.0.1"
+  checksum: 2c550f1eed12c56390022484db6dfb25d7231437cfc5ee1e93052a9099f99648e092a51c30a2877cacc26b2d4c276053d8b8a3dc0d24ac9b72e74481a867ee33
   languageName: node
   linkType: hard
 
@@ -3967,13 +3965,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"server-only@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "server-only@npm:0.0.1"
-  checksum: 4704f0ef85da0be981af6d4ed8e739d39bcfd265b9c246a684060acda5642d0fdc6daffc2308e71e2682c5f508090978802eae0a77623c9b90a49f9ae68048d6
-  languageName: node
-  linkType: hard
-
 "set-function-length@npm:^1.1.1":
   version: 1.1.1
   resolution: "set-function-length@npm:1.1.1"
@@ -4821,8 +4812,8 @@ __metadata:
     "@types/react": "npm:^18.2.43"
     "@typescript-eslint/eslint-plugin": "npm:^6.13.2"
     "@typescript-eslint/parser": "npm:^6.13.2"
-    "@vercel/analytics": "npm:^1.1.1"
     "@vercel/kv": "npm:^1.0.1"
+    "@vercel/speed-insights": "npm:^1.0.1"
     autoprefixer: "npm:^10.4.16"
     eslint: "npm:^8.55.0"
     eslint-config-next: "npm:^14.0.4"
