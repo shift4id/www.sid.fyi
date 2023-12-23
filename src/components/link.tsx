@@ -1,6 +1,6 @@
-import NextLink, { LinkProps as NextLinkProps } from "next/link";
+import NextLink from "next/link";
 
-interface LinkProps extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof NextLinkProps>, NextLinkProps {
+interface LinkProps extends React.ComponentProps<typeof NextLink> {
   external?: boolean;
 }
 

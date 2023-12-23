@@ -3,23 +3,21 @@ import { FiHeadphones } from "react-icons/fi";
 import Link from "@/components/link";
 import { Playlist, Song } from "@/lib/spotify";
 
-type CardProps = { item: Playlist | Song };
-
-const Card: React.FC<CardProps> = function ({ item }) {
+const Card: React.FC<Playlist | Song> = function ({ url, image, title, ...props }) {
   return (
     <Link
       external
       className="group flex space-x-4 rounded border border-gray-400/20 p-4 transition duration-300 hover:border-primary-200"
-      href={item.url}
+      href={url}
     >
       <div className="relative flex h-12 w-12 shrink-0 items-center justify-center bg-black text-2xl">
-        {item.image ? <Image fill alt="" sizes="3rem" src={item.image} /> : <FiHeadphones />}
+        {image ? <Image fill alt="" sizes="3rem" src={image} /> : <FiHeadphones />}
       </div>
       <div className="flex flex-col justify-center overflow-hidden">
-        <p className="truncate text-sm transition duration-300 group-hover:text-primary-200">{item.title}</p>
+        <p className="truncate text-sm transition duration-300 group-hover:text-primary-200">{title}</p>
         <p className="truncate text-xs text-gray-400">
-          {item.type === "song" && item.artist}
-          {item.type === "playlist" && `${item.count} songs`}
+          {props.type === "song" && props.artist}
+          {props.type === "playlist" && `${props.count} songs`}
         </p>
       </div>
     </Link>

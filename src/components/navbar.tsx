@@ -1,19 +1,13 @@
 import { useRouter } from "next/router";
-import { IconType } from "react-icons";
 import { FiBook, FiCamera, FiMusic, FiSmile } from "react-icons/fi";
 import Link, { LinkProps } from "@/components/link";
 import clns from "@/lib/clns";
 
-type NavItem = {
-  name: string;
-  href: LinkProps["href"];
-  Icon: IconType;
-};
+type NavItem = { name: string; href: LinkProps["href"]; Icon: React.ElementType };
 
-type NavLinkProps = {
+interface NavLinkProps extends NavItem {
   active: boolean;
-  item: NavItem;
-};
+}
 
 const links: NavItem[] = [
   { href: "/", name: "home", Icon: FiSmile },
@@ -22,7 +16,7 @@ const links: NavItem[] = [
   { href: "/library", name: "library", Icon: FiBook },
 ];
 
-const NavLink: React.FC<NavLinkProps> = function ({ active, item: { href, name, Icon } }) {
+const NavLink: React.FC<NavLinkProps> = function ({ active, href, name, Icon }) {
   return (
     <li>
       <Link
@@ -45,8 +39,8 @@ const Navbar: React.FC = function () {
   return (
     <header className="sticky top-0 z-10 -mx-6 bg-gray-900 p-6">
       <ul className="flex space-x-6">
-        {links.map((item) => (
-          <NavLink key={item.name} active={pathname === item.href} item={item} />
+        {links.map((link) => (
+          <NavLink key={link.name} active={pathname === link.href} {...link} />
         ))}
       </ul>
     </header>

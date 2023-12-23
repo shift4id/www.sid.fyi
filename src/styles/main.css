@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply selection:bg-gray-400/20;
+    @apply selection:bg-white/10;
   }
 
   em {

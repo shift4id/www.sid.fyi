@@ -6,18 +6,8 @@ type Photo = {
   id: number;
 };
 
-type CardProps = { item: Photo };
-
-const Card: React.FC<CardProps> = function ({ item }) {
-  return (
-    <Image
-      alt=""
-      height={640 * (item.h / item.w)}
-      sizes="640w"
-      src={`https://cdn.sid.fyi/photos/${item.id}.jpeg`}
-      width={640}
-    />
-  );
+const Card: React.FC<Photo> = function ({ w, h, id }) {
+  return <Image alt="" height={640 * (h / w)} sizes="640w" src={`https://cdn.sid.fyi/photos/${id}.jpeg`} width={640} />;
 };
 
 export type { Photo };

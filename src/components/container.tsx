@@ -9,9 +9,10 @@ type ContainerProps = {
   children: React.ReactNode;
 };
 
+const BASE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
+
 const Container: React.FC<ContainerProps> = function ({ title, description, children }) {
-  const router = useRouter();
-  const baseUrl = process.env.NEXT_PUBLIC_WEBSITE_URL;
+  const { asPath } = useRouter();
 
   useEffect(() => {
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
@@ -24,20 +25,20 @@ const Container: React.FC<ContainerProps> = function ({ title, description, chil
         <meta content="follow, index" name="robots" />
         <meta content={description} name="description" />
 
-        <link href={`${baseUrl}${router.asPath}`} rel="canonical" />
+        <link href={`${BASE_URL}${asPath}`} rel="canonical" />
 
         <meta content={title} property="og:title" />
         <meta content={description} property="og:description" />
         <meta content="website" property="og:type" />
         <meta content="Siddharth Adusumelli" property="og:site_name" />
-        <meta content={`${baseUrl}${router.asPath}`} property="og:url" />
-        <meta content={`${baseUrl}/images/open-graph.png`} property="og:image" />
+        <meta content={`${BASE_URL}${asPath}`} property="og:url" />
+        <meta content={`${BASE_URL}/images/open-graph.png`} property="og:image" />
 
         <meta content={title} name="twitter:title" />
         <meta content={description} name="twitter:description" />
         <meta content="summary_large_image" name="twitter:card" />
         <meta content="@shift4id" name="twitter:site" />
-        <meta content={`${baseUrl}/images/open-graph.png`} name="twitter:image" />
+        <meta content={`${BASE_URL}/images/open-graph.png`} name="twitter:image" />
       </Head>
       <m.section
         animate={{ opacity: 1 }}

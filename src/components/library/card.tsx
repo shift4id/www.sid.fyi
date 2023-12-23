@@ -1,17 +1,13 @@
 import Image from "next/image";
 import { Book } from "@/lib/notion";
 
-type CardProps = { item: Book };
-
-const Card: React.FC<CardProps> = function ({ item }) {
+const Card: React.FC<Book> = function ({ image, title, author }) {
   return (
     <div className="flex space-x-4">
-      <div className="relative h-24 w-16 shrink-0">
-        {item.image && <Image fill alt="" sizes="4rem" src={item.image} />}
-      </div>
+      <div className="relative h-24 w-16 shrink-0">{image && <Image fill alt="" sizes="4rem" src={image} />}</div>
       <div className="flex flex-col justify-center overflow-hidden">
-        <p className="truncate text-sm">{item.title}</p>
-        <p className="truncate text-xs text-gray-400">{item.author}</p>
+        <p className="truncate text-sm">{title}</p>
+        <p className="truncate text-xs text-gray-400">{author}</p>
       </div>
     </div>
   );

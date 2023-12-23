@@ -20,7 +20,7 @@ const Library: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = functi
       <Heading {...md} />
       <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
         {books.map((book) => (
-          <Card key={book.id} item={book} />
+          <Card key={book.id} {...book} />
         ))}
       </div>
     </Container>
