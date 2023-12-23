@@ -5,13 +5,11 @@ import Heading from "@/components/heading";
 
 const md: Metadata = { title: "Gallery", description: "Experience the world through my lens." };
 
-const Gallery: NextPage = function () {
-  return (
-    <Container {...md}>
-      <Heading {...md} />
-      <Photos />
-    </Container>
-  );
-};
+const Gallery: NextPage = () => (
+  <Container {...md}>
+    <Heading {...md} />
+    <Photos />
+  </Container>
+);
 
 export default Gallery;

@@ -10,7 +10,7 @@ const defaultSong: Song = {
   type: "song",
 };
 
-const NowPlaying: React.FC = function () {
+const NowPlaying: React.FC = () => {
   const { data: song } = useSWR<Song>("/api/spotify/now-playing", (url: string) => fetch(url).then((r) => r.json()));
 
   const item: Song = song?.isPlaying ? song : defaultSong;

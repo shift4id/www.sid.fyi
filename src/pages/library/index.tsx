@@ -5,20 +5,16 @@ import Heading from "@/components/heading";
 import Card from "@/components/library/card";
 import { getBooks } from "@/lib/notion";
 
-const getStaticProps = async function () {
-  return { props: { books: await getBooks() }, revalidate: 60 * 60 };
-};
+const getStaticProps = async () => ({ props: { books: await getBooks() }, revalidate: 60 * 60 });
 
 const md: Metadata = { title: "Library", description: "Explore some books that have influenced my thinking." };
 
-const Library: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = function ({ books }) {
-  return (
-    <Container {...md}>
-      <Heading {...md} />
-      <Grid Of={Card} items={books} />
-    </Container>
-  );
-};
+const Library: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ books }) => (
+  <Container {...md}>
+    <Heading {...md} />
+    <Grid Of={Card} items={books} />
+  </Container>
+);
 
 export { getStaticProps };
 export default Library;

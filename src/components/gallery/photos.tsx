@@ -22,14 +22,12 @@ const photos: Photo[] = [
   { w: 4752, h: 3168, id: 19 },
 ];
 
-const Photos: React.FC = function () {
-  return (
-    <div className="gap-4 space-y-4 md:columns-2">
-      {photos.map((item) => (
-        <Card key={item.id} {...item} />
-      ))}
-    </div>
-  );
-};
+const Photos: React.FC = () => (
+  <div className="gap-4 space-y-4 md:columns-2">
+    {photos.map((item) => (
+      <Card key={item.id} {...item} />
+    ))}
+  </div>
+);
 
 export default Photos;

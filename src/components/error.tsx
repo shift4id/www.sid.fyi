@@ -5,7 +5,7 @@ import Container, { Metadata } from "./container";
 
 type ErrorProps = { statusCode: number };
 
-const Error: NextPage<ErrorProps> = function ({ statusCode }) {
+const Error: NextPage<ErrorProps> = ({ statusCode }) => {
   const md: Metadata = {
     title: statusCode ? `Error: ${statusCode}` : "Client Error",
     description: "You seem lost, here's a link to get you back on track.",

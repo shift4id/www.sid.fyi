@@ -9,7 +9,7 @@ type ContainerProps = React.PropsWithChildren<Metadata>;
 
 const BASE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
-const Container: React.FC<ContainerProps> = function ({ title, description, children }) {
+const Container: React.FC<ContainerProps> = ({ title, description, children }) => {
   const { asPath } = useRouter();
 
   useEffect(() => {

@@ -11,16 +11,14 @@ type Book = {
   image: string;
 };
 
-const getBookData = function (page: PageObjectResponse): Book {
-  return {
-    id: page.id,
-    title: (page.properties.Title as { title: Array<TextRichTextItemResponse> }).title[0].text.content,
-    author: (page.properties.Author as { rich_text: Array<TextRichTextItemResponse> }).rich_text[0].text.content,
-    image: (page.properties.Image as { url: string }).url,
-  };
-};
+const getBookData = (page: PageObjectResponse): Book => ({
+  id: page.id,
+  title: (page.properties.Title as { title: Array<TextRichTextItemResponse> }).title[0].text.content,
+  author: (page.properties.Author as { rich_text: Array<TextRichTextItemResponse> }).rich_text[0].text.content,
+  image: (page.properties.Image as { url: string }).url,
+});
 
-async function getBooks(): Promise<Book[]> {
+const getBooks = async (): Promise<Book[]> => {
   const storedBooks = await redis.get<Book[]>("books");
   if (storedBooks) return storedBooks;
 
@@ -32,7 +30,7 @@ async function getBooks(): Promise<Book[]> {
   const books = pages.results.filter((page): page is PageObjectResponse => page.object === "page").map(getBookData);
   await redis.set("books", books, { ex: 24 * 60 * 60 });
   return books;
-}
+};
 
 export type { Book };
 export { getBooks };

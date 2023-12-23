@@ -47,7 +47,7 @@ type Playlist = {
 
 type CurrentSong = { isPlaying: false } | Song;
 
-const getAccessToken = async function (): Promise<string> {
+const getAccessToken = async (): Promise<string> => {
   const storedToken = await redis.get<string>("access_token");
   if (storedToken) return storedToken;
 
@@ -75,7 +75,7 @@ const getAccessToken = async function (): Promise<string> {
   return accessToken;
 };
 
-const getSongData = function (item: SpotifySong): Song {
+const getSongData = (item: SpotifySong): Song => {
   return {
     artist: item.artists.map(({ name }) => name).join(", "),
     image: item.album.images[0].url,
@@ -85,7 +85,7 @@ const getSongData = function (item: SpotifySong): Song {
   };
 };
 
-const getPlaylistData = function (item: SpotifyPlaylist): Playlist {
+const getPlaylistData = (item: SpotifyPlaylist): Playlist => {
   return {
     image: item.images[0].url,
     title: item.name,
@@ -96,7 +96,7 @@ const getPlaylistData = function (item: SpotifyPlaylist): Playlist {
   };
 };
 
-const getNowPlaying = async function (): Promise<CurrentSong> {
+const getNowPlaying = async (): Promise<CurrentSong> => {
   const storedSong = await redis.get<CurrentSong>("song");
   if (storedSong) return storedSong;
 
@@ -122,7 +122,7 @@ const getNowPlaying = async function (): Promise<CurrentSong> {
   return song;
 };
 
-const getPlaylists = async function (): Promise<Playlist[]> {
+const getPlaylists = async (): Promise<Playlist[]> => {
   const storedPlaylists = await redis.get<Playlist[]>("playlists");
   if (storedPlaylists) return storedPlaylists;
 
@@ -139,7 +139,7 @@ const getPlaylists = async function (): Promise<Playlist[]> {
   return playlists;
 };
 
-const getTopSongs = async function (): Promise<Song[]> {
+const getTopSongs = async (): Promise<Song[]> => {
   const storedTopSongs = await redis.get<Song[]>("top_songs");
   if (storedTopSongs) return storedTopSongs;
 

@@ -22,7 +22,7 @@ const interests: Interest[] = [
 
 const md: Metadata = { title: "Home", description: "code + design" };
 
-const Home: NextPage = function () {
+const Home: NextPage = () => {
   const age = new Date(Date.now() - new Date("2003-10-06").getTime()).getFullYear() - 1970;
 
   return (

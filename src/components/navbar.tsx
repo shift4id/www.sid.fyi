@@ -16,24 +16,22 @@ const links: NavItem[] = [
   { href: "/library", name: "library", Icon: FiBook },
 ];
 
-const NavLink: React.FC<NavLinkProps> = function ({ active, href, name, Icon }) {
-  return (
-    <li>
-      <Link
-        href={href}
-        className={clns(
-          "flex items-center space-x-2 rounded p-2 transition duration-300 sm:py-1",
-          active ? "bg-primary-200/10 text-primary-200" : "bg-gray-400/10 hover:text-gray-400",
-        )}
-      >
-        <Icon size="1rem" />
-        <span className="sr-only sm:not-sr-only">{name}</span>
-      </Link>
-    </li>
-  );
-};
+const NavLink: React.FC<NavLinkProps> = ({ active, href, name, Icon }) => (
+  <li>
+    <Link
+      href={href}
+      className={clns(
+        "flex items-center space-x-2 rounded p-2 transition duration-300 sm:py-1",
+        active ? "bg-primary-200/10 text-primary-200" : "bg-gray-400/10 hover:text-gray-400",
+      )}
+    >
+      <Icon size="1rem" />
+      <span className="sr-only sm:not-sr-only">{name}</span>
+    </Link>
+  </li>
+);
 
-const Navbar: React.FC = function () {
+const Navbar: React.FC = () => {
   const { pathname } = useRouter();
 
   return (

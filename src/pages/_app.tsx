@@ -25,22 +25,20 @@ const serif = localFont({
   variable: "--font-serif",
 });
 
-const App: React.FC<AppProps> = function ({ Component, pageProps, router }) {
-  return (
-    <LazyMotion features={domAnimation}>
-      <Head>
-        <title>Sid A</title>
-      </Head>
-      <main className={clns(sans.variable, serif.variable, "flex min-h-screen w-full flex-col p-8 font-sans")}>
-        <Navbar />
-        <AnimatePresence mode="wait">
-          <Component {...pageProps} key={router.asPath} />
-        </AnimatePresence>
-        <Footer />
-        <SpeedInsights />
-      </main>
-    </LazyMotion>
-  );
-};
+const App: React.FC<AppProps> = ({ Component, pageProps, router }) => (
+  <LazyMotion features={domAnimation}>
+    <Head>
+      <title>Sid A</title>
+    </Head>
+    <main className={clns(sans.variable, serif.variable, "flex min-h-screen w-full flex-col p-8 font-sans")}>
+      <Navbar />
+      <AnimatePresence mode="wait">
+        <Component {...pageProps} key={router.asPath} />
+      </AnimatePresence>
+      <Footer />
+      <SpeedInsights />
+    </main>
+  </LazyMotion>
+);
 
 export default App;
