@@ -9,12 +9,9 @@ const getStaticProps = async function () {
   return { props: { books: await getBooks() }, revalidate: 60 * 60 };
 };
 
-const Library: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = function ({ books }) {
-  const md: Metadata = {
-    title: "Library",
-    description: "Explore a selection of books that have influenced my thinking.",
-  };
+const md: Metadata = { title: "Library", description: "Explore some books that have influenced my thinking." };
 
+const Library: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = function ({ books }) {
   return (
     <Container {...md}>
       <Heading {...md} />

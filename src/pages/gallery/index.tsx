@@ -3,12 +3,9 @@ import Container, { Metadata } from "@/components/container";
 import Photos from "@/components/gallery/photos";
 import Heading from "@/components/heading";
 
-const Gallery: NextPage = function () {
-  const md: Metadata = {
-    title: "Gallery",
-    description: "Experience the world through my lens.",
-  };
+const md: Metadata = { title: "Gallery", description: "Experience the world through my lens." };
 
+const Gallery: NextPage = function () {
   return (
     <Container {...md}>
       <Heading {...md} />

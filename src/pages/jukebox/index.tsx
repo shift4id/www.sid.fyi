@@ -11,12 +11,9 @@ const getStaticProps = async function () {
   return { props: { playlists: await getPlaylists(), songs: await getTopSongs() }, revalidate: 60 * 60 };
 };
 
-const Jukebox: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = function ({ playlists, songs }) {
-  const md: Metadata = {
-    title: "Jukebox",
-    description: "Listen to my favorite songs and curated playlists.",
-  };
+const md: Metadata = { title: "Jukebox", description: "Listen to my favorite songs and curated playlists." };
 
+const Jukebox: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = function ({ playlists, songs }) {
   return (
     <Container {...md}>
       <Heading {...md} />
