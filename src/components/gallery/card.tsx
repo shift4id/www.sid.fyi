@@ -6,4 +6,5 @@ const Card: React.FC<Photo> = function ({ w, h, id }) {
   return <Image alt="" height={640 * (h / w)} sizes="640w" src={`https://cdn.sid.fyi/photos/${id}.jpeg`} width={640} />;
 };
 
+export type { Photo };
 export default Card;
