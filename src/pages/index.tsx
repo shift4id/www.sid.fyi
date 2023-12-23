@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import Container from "@/components/container";
+import Container, { Metadata } from "@/components/container";
 import Heading from "@/components/heading";
 import PrettyLink from "@/components/pretty-link";
 
@@ -23,7 +23,7 @@ const interests: Interest[] = [
 const Home: NextPage = function () {
   const age = new Date(Date.now() - new Date("2003-10-06").getTime()).getFullYear() - 1970;
 
-  const md = { title: "Home", description: "code + design" };
+  const md: Metadata = { title: "Home", description: "code + design" };
 
   return (
     <Container {...md}>

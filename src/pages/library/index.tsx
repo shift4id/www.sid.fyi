@@ -1,16 +1,16 @@
 import { InferGetStaticPropsType, NextPage } from "next";
-import Container from "@/components/container";
+import Container, { Metadata } from "@/components/container";
+import Grid from "@/components/grid";
 import Heading from "@/components/heading";
 import Card from "@/components/library/card";
 import { getBooks } from "@/lib/notion";
 
 const getStaticProps = async function () {
-  const books = await getBooks();
-  return { props: { books }, revalidate: 60 * 60 };
+  return { props: { books: await getBooks() }, revalidate: 60 * 60 };
 };
 
 const Library: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = function ({ books }) {
-  const md = {
+  const md: Metadata = {
     title: "Library",
     description: "Explore a selection of books that have influenced my thinking.",
   };
@@ -18,11 +18,7 @@ const Library: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = functi
   return (
     <Container {...md}>
       <Heading {...md} />
-      <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
-        {books.map((book) => (
-          <Card key={book.id} {...book} />
-        ))}
-      </div>
+      <Grid Of={Card} items={books} />
     </Container>
   );
 };

@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import Grid from "../grid";
 import Card from "@/components/jukebox/card";
 import { Song } from "@/lib/spotify";
 
@@ -14,11 +15,7 @@ const NowPlaying: React.FC = function () {
         type: "song",
       };
 
-  return (
-    <div className="md:w-1/2 md:pr-1">
-      <Card item={item} />
-    </div>
-  );
+  return <Grid Of={Card} items={[item]} />;
 };
 
 export default NowPlaying;

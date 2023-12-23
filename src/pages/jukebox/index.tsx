@@ -1,19 +1,18 @@
 import { InferGetStaticPropsType, NextPage } from "next";
-import Container from "@/components/container";
+import Container, { Metadata } from "@/components/container";
+import Grid from "@/components/grid";
 import Heading from "@/components/heading";
-import Grid from "@/components/jukebox/grid";
+import Card from "@/components/jukebox/card";
 import NowPlaying from "@/components/jukebox/now-playing";
 import Section from "@/components/jukebox/section";
 import { getPlaylists, getTopSongs } from "@/lib/spotify";
 
 const getStaticProps = async function () {
-  const playlists = await getPlaylists();
-  const topSongs = await getTopSongs();
-  return { props: { playlists, topSongs }, revalidate: 60 * 60 };
+  return { props: { playlists: await getPlaylists(), songs: await getTopSongs() }, revalidate: 60 * 60 };
 };
 
-const Jukebox: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = function ({ playlists, topSongs }) {
-  const md = {
+const Jukebox: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = function ({ playlists, songs }) {
+  const md: Metadata = {
     title: "Jukebox",
     description: "Listen to my favorite songs and curated playlists.",
   };
@@ -25,10 +24,10 @@ const Jukebox: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = functi
         <NowPlaying />
       </Section>
       <Section title="My Playlists">
-        <Grid items={playlists} />
+        <Grid Of={Card} items={playlists} />
       </Section>
       <Section title="My Top Tracks">
-        <Grid items={topSongs} />
+        <Grid Of={Card} items={songs} />
       </Section>
     </Container>
   );

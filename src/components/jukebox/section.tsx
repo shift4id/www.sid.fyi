@@ -1,7 +1,4 @@
-type SectionProps = {
-  title: string;
-  children: React.ReactNode;
-};
+type SectionProps = React.PropsWithChildren<{ title: string }>;
 
 const Section: React.FC<SectionProps> = function ({ title, children }) {
   return (

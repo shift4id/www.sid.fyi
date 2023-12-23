@@ -1,9 +1,6 @@
-type HeadingProps = {
-  title: string;
-  description: string;
-};
+import { Metadata } from "./container";
 
-const Heading: React.FC<HeadingProps> = function ({ title, description }) {
+const Heading: React.FC<Metadata> = function ({ title, description }) {
   return (
     <div className="space-y-2">
       <h1 className="text-3xl">

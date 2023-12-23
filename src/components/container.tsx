@@ -3,11 +3,9 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-type ContainerProps = {
-  title: string;
-  description: string;
-  children: React.ReactNode;
-};
+type Metadata = { title: string; description: string };
+
+type ContainerProps = React.PropsWithChildren<Metadata>;
 
 const BASE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
@@ -16,7 +14,7 @@ const Container: React.FC<ContainerProps> = function ({ title, description, chil
 
   useEffect(() => {
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
-  });
+  }, [asPath]);
 
   return (
     <>
@@ -53,4 +51,5 @@ const Container: React.FC<ContainerProps> = function ({ title, description, chil
   );
 };
 
+export type { Metadata };
 export default Container;
