@@ -45,7 +45,15 @@ const Container: React.FC<ContainerProps> = ({ title, description, children }) =
         initial={{ opacity: 0 }}
         transition={{ type: "tween", duration: 0.5, delay: -0.1, ease: "easeInOut" }}
       >
-        <div className="w-full space-y-8">{children}</div>
+        <div className="w-full space-y-8">
+          <div className="space-y-2">
+            <h1 className="text-3xl">
+              <em>{title}</em>
+            </h1>
+            <h2 className="text-gray-400">{description}</h2>
+          </div>
+          {children}
+        </div>
       </m.section>
     </>
   );

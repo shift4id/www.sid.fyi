@@ -1,7 +1,6 @@
 import { InferGetStaticPropsType, NextPage } from "next";
 import Container, { Metadata } from "@/components/container";
 import Grid from "@/components/grid";
-import Heading from "@/components/heading";
 import Card from "@/components/library/card";
 import { getBooks } from "@/lib/notion";
 
@@ -11,7 +10,6 @@ const md: Metadata = { title: "Library", description: "Explore some books that h
 
 const Library: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ books }) => (
   <Container {...md}>
-    <Heading {...md} />
     <Grid Of={Card} items={books} />
   </Container>
 );

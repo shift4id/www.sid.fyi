@@ -1,5 +1,4 @@
 import { NextPage } from "next";
-import Heading from "@/components/heading";
 import PrettyLink from "@/components/pretty-link";
 import Container, { Metadata } from "./container";
 
@@ -13,7 +12,6 @@ const Error: NextPage<ErrorProps> = ({ statusCode }) => {
 
   return (
     <Container {...md}>
-      <Heading {...md} />
       <div>
         <PrettyLink href="/">&larr; Return home</PrettyLink>
       </div>

@@ -1,7 +1,6 @@
 import { InferGetStaticPropsType, NextPage } from "next";
 import Container, { Metadata } from "@/components/container";
 import Grid from "@/components/grid";
-import Heading from "@/components/heading";
 import Card from "@/components/jukebox/card";
 import NowPlaying from "@/components/jukebox/now-playing";
 import Section from "@/components/jukebox/section";
@@ -16,7 +15,6 @@ const md: Metadata = { title: "Jukebox", description: "Listen to my favorite son
 
 const Jukebox: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ playlists, songs }) => (
   <Container {...md}>
-    <Heading {...md} />
     <Section title="Now Playing">
       <NowPlaying />
     </Section>

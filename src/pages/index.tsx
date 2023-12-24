@@ -1,6 +1,5 @@
 import { NextPage } from "next";
 import Container, { Metadata } from "@/components/container";
-import Heading from "@/components/heading";
 import PrettyLink from "@/components/pretty-link";
 
 type Hobby = { text: string; href: string };
@@ -20,14 +19,13 @@ const interests: Interest[] = [
   { title: "art", description: "music and photography" },
 ];
 
-const md: Metadata = { title: "Home", description: "code + design" };
+const md: Metadata = { title: "Hey I'm Sid", description: "code + design" };
 
 const Home: NextPage = () => {
   const age = new Date(Date.now() - new Date("2003-10-06").getTime()).getFullYear() - 1970;
 
   return (
     <Container {...md}>
-      <Heading {...md} title="Hey, I'm Sid!" />
       <p>
         I&apos;m a {age} year old software engineer from <strong>Silicon Valley, California</strong>. I currently study
         Computer Science at San José State University.
