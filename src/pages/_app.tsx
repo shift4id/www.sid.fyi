@@ -2,7 +2,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AnimatePresence, domAnimation, LazyMotion } from "framer-motion";
 import { AppProps } from "next/app";
 import localFont from "next/font/local";
-import Head from "next/head";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import clns from "@/lib/clns";
@@ -27,9 +26,6 @@ const serif = localFont({
 
 const App: React.FC<AppProps> = ({ Component, pageProps, router }) => (
   <LazyMotion features={domAnimation}>
-    <Head>
-      <title>Sid A</title>
-    </Head>
     <main className={clns(sans.variable, serif.variable, "flex min-h-screen w-full flex-col p-8 font-sans")}>
       <Navbar />
       <AnimatePresence mode="wait">

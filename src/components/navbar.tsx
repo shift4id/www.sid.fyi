@@ -10,7 +10,7 @@ interface NavLinkProps extends NavItem {
 }
 
 const links: NavItem[] = [
-  { href: "/", name: "home", Icon: FiSmile },
+  { href: "/", name: "about", Icon: FiSmile },
   { href: "/jukebox", name: "jukebox", Icon: FiMusic },
   { href: "/gallery", name: "gallery", Icon: FiCamera },
   { href: "/library", name: "library", Icon: FiBook },

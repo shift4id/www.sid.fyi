@@ -19,13 +19,20 @@ const interests: Interest[] = [
   { title: "art", description: "music and photography" },
 ];
 
-const md: Metadata = { title: "Hey I'm Sid", description: "code + design" };
+const md: Metadata = { title: "About", description: "Here's a little bit about me." };
 
-const Home: NextPage = () => {
+const About: NextPage = () => {
   const age = new Date(Date.now() - new Date("2003-10-06").getTime()).getFullYear() - 1970;
 
   return (
     <Container {...md}>
+      <p>
+        Hey I&apos;m&nbsp;
+        <strong>
+          <span className="text-primary-200">Sid</span>dharth Adusumelli
+        </strong>
+        !
+      </p>
       <p>
         I&apos;m a {age} year old software engineer from <strong>Silicon Valley, California</strong>. I currently study
         Computer Science at San José State University.
@@ -54,4 +61,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default About;

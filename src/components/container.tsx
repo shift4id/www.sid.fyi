@@ -17,9 +17,15 @@ const Container: React.FC<ContainerProps> = ({ title, description, children }) =
   }, [asPath]);
 
   return (
-    <>
+    <m.section
+      animate={{ opacity: 1 }}
+      className="flex w-full grow flex-col items-center justify-center py-10"
+      exit={{ opacity: 0 }}
+      initial={{ opacity: 0 }}
+      transition={{ type: "tween", duration: 0.5, delay: -0.1, ease: "easeInOut" }}
+    >
       <Head>
-        <title>{`${title} - Sid A`}</title>
+        <title>{`${title} | Sid A`}</title>
         <meta content="follow, index" name="robots" />
         <meta content={description} name="description" />
 
@@ -38,24 +44,16 @@ const Container: React.FC<ContainerProps> = ({ title, description, children }) =
         <meta content="@shift4id" name="twitter:site" />
         <meta content={`${BASE_URL}/images/open-graph.png`} name="twitter:image" />
       </Head>
-      <m.section
-        animate={{ opacity: 1 }}
-        className="flex w-full grow flex-col items-center justify-center py-10"
-        exit={{ opacity: 0 }}
-        initial={{ opacity: 0 }}
-        transition={{ type: "tween", duration: 0.5, delay: -0.1, ease: "easeInOut" }}
-      >
-        <div className="w-full space-y-8">
-          <div className="space-y-2">
-            <h1 className="text-3xl">
-              <em>{title}</em>
-            </h1>
-            <h2 className="text-gray-400">{description}</h2>
-          </div>
-          {children}
+      <div className="w-full space-y-8">
+        <div className="space-y-2">
+          <h1 className="text-3xl">
+            <em>{title}</em>
+          </h1>
+          <h2 className="text-gray-400">{description}</h2>
         </div>
-      </m.section>
-    </>
+        {children}
+      </div>
+    </m.section>
   );
 };
 
