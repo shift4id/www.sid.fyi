@@ -1,5 +1,5 @@
 const colors = require("tailwindcss/colors");
-const defaultConfig = require("tailwindcss/defaultConfig");
+const { theme } = require("tailwindcss/defaultConfig");
 
 /*
  * @type {import("tailwindcss").Config}
@@ -10,8 +10,8 @@ module.exports = {
   theme: {
     colors: { white: colors.white, black: colors.black, gray: colors.neutral, primary: colors.yellow },
     fontFamily: {
-      sans: ["var(--font-sans)", ...defaultConfig.theme.fontFamily.sans],
-      serif: ["var(--font-serif)", ...defaultConfig.theme.fontFamily.serif],
+      sans: ["var(--font-sans)", ...theme.fontFamily.sans],
+      serif: ["var(--font-serif)", ...theme.fontFamily.serif],
     },
   },
 };
