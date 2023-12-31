@@ -1,7 +1,7 @@
 import { InferGetStaticPropsType, NextPage } from "next";
 import Container, { Metadata } from "@/components/container";
 import Grid from "@/components/grid";
-import Card from "@/components/library/card";
+import Item from "@/components/library/item";
 import { getBooks } from "@/lib/notion";
 
 const getStaticProps = async () => ({ props: { books: await getBooks() }, revalidate: 60 * 60 });
@@ -13,7 +13,7 @@ const md: Metadata = {
 
 const Library: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ books }) => (
   <Container {...md}>
-    <Grid Of={Card} items={books} />
+    <Grid Of={Item} items={books} />
   </Container>
 );
 

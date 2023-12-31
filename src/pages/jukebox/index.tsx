@@ -1,7 +1,7 @@
 import { InferGetStaticPropsType, NextPage } from "next";
 import Container, { Metadata } from "@/components/container";
 import Grid from "@/components/grid";
-import Card from "@/components/jukebox/card";
+import Item from "@/components/jukebox/item";
 import NowPlaying from "@/components/jukebox/now-playing";
 import Section from "@/components/section";
 import { getPlaylists, getTopSongs } from "@/lib/spotify";
@@ -22,10 +22,10 @@ const Jukebox: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ pla
       <NowPlaying />
     </Section>
     <Section title="My Playlists">
-      <Grid Of={Card} items={playlists} />
+      <Grid Of={Item} items={playlists} />
     </Section>
     <Section title="My Top Tracks">
-      <Grid Of={Card} items={songs} />
+      <Grid Of={Item} items={songs} />
     </Section>
   </Container>
 );
