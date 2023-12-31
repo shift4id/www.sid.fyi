@@ -2,16 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    @apply selection:bg-white/10;
-  }
+.font-sans {
+  @apply tracking-tight;
+}
 
-  em {
-    @apply font-serif tracking-tighter;
-  }
-
-  strong {
-    @apply font-medium text-gray-400;
-  }
+.font-serif {
+  @apply tracking-normal;
 }

@@ -107,7 +107,9 @@ const getNowPlaying = async (): Promise<CurrentSong> => {
     item: SpotifySong;
   };
 
-  const response = await fetch(CURRENTLY_PLAYING_URL, { headers: { Authorization: `Bearer ${accessToken}` } });
+  const response = await fetch(CURRENTLY_PLAYING_URL, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
 
   if (response.status === 204 || response.status > 400) {
     const song = { isPlaying: false };

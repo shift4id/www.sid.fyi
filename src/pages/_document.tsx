@@ -1,7 +1,7 @@
 import { Head, Html, Main, NextScript } from "next/document";
 
 const Document: React.FC = () => (
-  <Html lang="en">
+  <Html className="antialiased" lang="en">
     <Head>
       <link href="/favicons/site.webmanifest" rel="manifest" />
 
@@ -15,7 +15,7 @@ const Document: React.FC = () => (
       <meta content="/favicons/browserconfig.xml" name="msapplication-config" />
       <meta content="#333" name="theme-color" />
     </Head>
-    <body className="mx-auto max-w-3xl scroll-smooth bg-gray-900 text-white">
+    <body className="mx-auto max-w-3xl scroll-smooth bg-white text-black selection:bg-yellow">
       <Main />
       <NextScript />
     </body>

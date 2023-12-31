@@ -6,7 +6,10 @@ import { getBooks } from "@/lib/notion";
 
 const getStaticProps = async () => ({ props: { books: await getBooks() }, revalidate: 60 * 60 });
 
-const md: Metadata = { title: "Library", description: "Explore some books that have influenced my thinking." };
+const md: Metadata = {
+  title: "Library",
+  description: "Explore various books that have influenced my thinking.",
+};
 
 const Library: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ books }) => (
   <Container {...md}>

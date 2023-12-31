@@ -5,9 +5,7 @@ module.exports = {
   extends: ["eslint:recommended", "next/core-web-vitals", "prettier"],
   overrides: [
     {
-      parserOptions: {
-        project: "./tsconfig.json",
-      },
+      parserOptions: { project: "./tsconfig.json" },
       files: ["*.ts", "*.tsx"],
       extends: ["plugin:@typescript-eslint/strict-type-checked"],
     },

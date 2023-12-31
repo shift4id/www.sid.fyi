@@ -1,5 +1,8 @@
 import { Client } from "@notionhq/client";
-import { PageObjectResponse, TextRichTextItemResponse } from "@notionhq/client/build/src/api-endpoints";
+import {
+  PageObjectResponse as Page,
+  TextRichTextItemResponse as RichText,
+} from "@notionhq/client/build/src/api-endpoints";
 import redis from "./redis";
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
@@ -11,10 +14,10 @@ type Book = {
   image: string;
 };
 
-const getBookData = (page: PageObjectResponse): Book => ({
+const getBookData = (page: Page): Book => ({
   id: page.id,
-  title: (page.properties.Title as { title: Array<TextRichTextItemResponse> }).title[0].text.content,
-  author: (page.properties.Author as { rich_text: Array<TextRichTextItemResponse> }).rich_text[0].text.content,
+  title: (page.properties.Title as { title: Array<RichText> }).title[0].text.content,
+  author: (page.properties.Author as { rich_text: Array<RichText> }).rich_text[0].text.content,
   image: (page.properties.Image as { url: string }).url,
 });
 
@@ -27,7 +30,7 @@ const getBooks = async (): Promise<Book[]> => {
     sorts: [{ property: "Author", direction: "ascending" }],
   });
 
-  const books = pages.results.filter((page): page is PageObjectResponse => page.object === "page").map(getBookData);
+  const books = pages.results.filter((page): page is Page => page.object === "page").map(getBookData);
   await redis.set("books", books, { ex: 24 * 60 * 60 });
   return books;
 };

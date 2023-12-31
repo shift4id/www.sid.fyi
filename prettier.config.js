@@ -3,6 +3,6 @@
  */
 module.exports = {
   arrowParens: "always",
-  printWidth: 120,
+  printWidth: 110,
   plugins: ["prettier-plugin-tailwindcss"],
 };
