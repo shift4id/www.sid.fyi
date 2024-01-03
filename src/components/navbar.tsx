@@ -13,6 +13,7 @@ const links: NavItem[] = [
   { href: "/jukebox", name: "jukebox" },
   { href: "/gallery", name: "gallery" },
   { href: "/library", name: "library" },
+  { href: "/chat", name: "chat" },
 ];
 
 const NavLink: React.FC<NavLinkProps> = ({ active, href, name }) => (
@@ -20,8 +21,8 @@ const NavLink: React.FC<NavLinkProps> = ({ active, href, name }) => (
     <Link
       href={href}
       className={clns(
-        "underline decoration-lightGray underline-offset-2 transition-['underline-offset']",
-        active ? "!decoration-pink underline-offset-4" : "hover:underline-offset-4",
+        "underline decoration-lightGray underline-offset-4 transition-['underline-offset']",
+        active ? "!decoration-pink underline-offset-8" : "hover:underline-offset-8",
       )}
     >
       {name}

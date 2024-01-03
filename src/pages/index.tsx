@@ -1,14 +1,14 @@
 import { NextPage } from "next";
-import Category from "@/components/bio/category";
-import Hobby from "@/components/bio/hobby";
-import Interest from "@/components/bio/interest";
+import Category from "@/components/about/category";
+import Hobby from "@/components/about/hobby";
+import Interest from "@/components/about/interest";
 import Container, { Metadata } from "@/components/container";
 
 const hobbies: Hobby[] = [
   { title: "listening to music", href: "/jukebox" },
   { title: "taking pictures", href: "/gallery" },
   { title: "reading books", href: "/library" },
-  { title: "having conversations", href: "/contact" },
+  { title: "having conversations", href: "/chat" },
 ];
 
 const interests: Interest[] = [
@@ -23,7 +23,7 @@ const header: Metadata = {
   description: "is a software engineer who enjoys crafting unique user experiences.",
 };
 
-const md: Metadata = { title: "Bio", description: `${header.title} ${header.description}` };
+const md: Metadata = { title: "About", description: `${header.title} ${header.description}` };
 
 const Bio: NextPage = () => (
   <Container {...header} md={md}>

@@ -14,7 +14,7 @@ const NowPlaying: React.FC = () => {
   const { data: song } = useSWR<Song>("/api/spotify/now-playing", (url: string) =>
     fetch(url).then((r) => r.json()),
   );
-  const item: Song = useMemo(() => (song?.isPlaying ? song : defaultSong), [song]);
+  const item = useMemo(() => (song?.isPlaying ? song : defaultSong), [song]);
 
   return <Grid Of={Item} items={[item]} />;
 };
