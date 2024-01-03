@@ -50,9 +50,7 @@ const Container: React.FC<ContainerProps> = ({ title, description, md, children 
       <div className="w-full space-y-8">
         <div>
           <h1 className="font-serif text-3xl !leading-normal md:text-4xl">{title}</h1>
-          <h2 className="max-w-lg text-2xl !leading-normal text-gray md:ml-auto md:text-right md:text-3xl">
-            {description}
-          </h2>
+          <h2 className="max-w-lg text-2xl !leading-normal text-gray md:text-3xl">{description}</h2>
         </div>
         <hr className="border-lightGray" />
         {children}
