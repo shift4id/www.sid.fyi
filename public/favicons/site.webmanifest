@@ -1,20 +1,19 @@
 {
-  "name": "Siddharth Adusumelli",
-  "short_name": "Sid A",
-  "start_url": "/",
-  "icons": [
-    {
-      "src": "/favicons/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/favicons/android-chrome-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "theme_color": "#333",
-  "background_color": "#000000",
-  "display": "standalone"
+    "name": "sid.fyi",
+    "short_name": "sid.fyi",
+    "icons": [
+        {
+            "src": "/favicons/android-chrome-192x192.png?v=2024",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicons/android-chrome-512x512.png?v=2024",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ff80ff",
+    "background_color": "#ff80ff",
+    "start_url": "https://sid.fyi"
 }
