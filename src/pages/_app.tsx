@@ -1,14 +1,14 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
 import { AppProps } from "next/app";
-import { Inter, Lora } from "next/font/google";
+import { Lora, Mulish } from "next/font/google";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import clns from "@/lib/clns";
 import "@/styles/main.css";
 
-const sans = Inter({ variable: "--font-sans", subsets: ["latin-ext"] });
-const serif = Lora({ variable: "--font-serif", subsets: ["latin-ext"] });
+const sans = Mulish({ weight: ["400"], variable: "--font-sans", subsets: ["latin-ext"] });
+const serif = Lora({ weight: ["400"], variable: "--font-serif", subsets: ["latin-ext"] });
 
 const App: React.FC<AppProps> = ({ Component, pageProps, router }) => (
   <LazyMotion features={domAnimation}>
