@@ -22,7 +22,7 @@ const NavLink: React.FC<NavLinkProps> = ({ active, href, name }) => (
       href={href}
       className={clns(
         "underline decoration-lightGray underline-offset-4 transition-['underline-offset']",
-        active ? "!decoration-pink underline-offset-8" : "hover:underline-offset-8",
+        active ? "!decoration-pink/50 underline-offset-8" : "hover:underline-offset-8",
       )}
     >
       {name}
