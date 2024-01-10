@@ -9,7 +9,7 @@ const config: Config = {
     colors: {
       black: "#000",
       gray: "#686868",
-      lightGray: "#D0D0D0",
+      lightGray: "#D8D8D8",
       white: "#FFF",
       pink: "#FF80FF",
       yellow: "#FF0",
