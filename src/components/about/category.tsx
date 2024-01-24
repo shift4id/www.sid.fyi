@@ -4,9 +4,9 @@ type CategoryProps<T> = { title: string; items: T[]; Component: React.FC<T> };
 
 const Category = <T extends { title: string }>({ title, items, Component }: CategoryProps<T>) => (
   <Section title={title}>
-    <ul className="mt-4 space-y-1">
+    <ul className="mt-4 flex flex-col items-end space-y-1">
       {items.map((item) => (
-        <li key={item.title} className="text-sm">
+        <li key={item.title} className="text-right text-sm">
           <Component key={item.title} {...item} />
         </li>
       ))}
