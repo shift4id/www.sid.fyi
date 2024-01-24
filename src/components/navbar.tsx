@@ -35,7 +35,9 @@ const Navbar: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-10 -mx-6 flex flex-col items-center justify-between space-y-2 bg-white p-6">
-      <p className="font-serif italic">Siddharth Adusumelli</p>
+      <p>
+        <em>Siddharth Adusumelli</em>
+      </p>
       <ul className="flex space-x-6 text-sm">
         {links.map((link) => (
           <NavLink key={link.name} active={pathname === link.href} {...link} />

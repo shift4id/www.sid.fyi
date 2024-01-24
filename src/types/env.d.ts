@@ -1,6 +1,7 @@
 declare namespace NodeJS {
   interface ProcessEnv {
     NEXT_PUBLIC_WEBSITE_URL: string;
+    NEXT_PUBLIC_CDN_URL: string;
 
     REDIS_REST_API_URL: string;
     REDIS_REST_API_TOKEN: string;

@@ -2,7 +2,7 @@ import socials from "@/constants/socials";
 import Link from "./link";
 
 const Footer: React.FC = () => (
-  <footer className="flex flex-col items-center space-y-4 pt-10 text-center">
+  <footer className="flex flex-col space-y-4 pt-10 text-center">
     <div className="-my-1.5 flex flex-wrap justify-center text-xs">
       {socials.map(({ name }) => (
         <span key={name} className="my-0.5 mr-4 py-1">

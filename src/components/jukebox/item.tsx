@@ -9,7 +9,6 @@ const Item: React.FC<Playlist | Song> = ({ url, image, title, ...props }) => (
     </div>
     <div className="flex flex-col justify-center space-y-1 overflow-hidden">
       <p className="truncate text-sm">{title}</p>
-      <hr className="w-8 border-lightGray transition group-hover:border-pink/50" />
       <p className="truncate text-xs text-gray">
         {props.type === "song" && props.artist}
         {props.type === "playlist" && `${props.count} songs`}

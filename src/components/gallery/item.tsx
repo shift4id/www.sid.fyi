@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const PHOTOS_URL = "https://cdn.sid.fyi/photos";
+const PHOTOS_URL = `${process.env.NEXT_PUBLIC_CDN_URL}/photos`;
 
 type Photo = { w: number; h: number; id: number };
 
