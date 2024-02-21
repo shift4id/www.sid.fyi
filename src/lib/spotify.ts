@@ -24,6 +24,7 @@ type SpotifyPlaylist = {
   images: { url: string }[];
   external_urls: { spotify: string };
   public: boolean;
+  owner: { id: string };
   tracks: { total: number };
 };
 
@@ -96,20 +97,22 @@ const getPlaylistData = (item: SpotifyPlaylist): Playlist => {
   };
 };
 
+const getHeaders = async () => {
+  const accessToken = await getAccessToken();
+  return { Authorization: `Bearer ${accessToken}` };
+};
+
 const getNowPlaying = async (): Promise<CurrentSong> => {
   const storedSong = await redis.get<CurrentSong>("song");
   if (storedSong) return storedSong;
-
-  const accessToken = await getAccessToken();
 
   type CurrentlyPlayingResponse = {
     is_playing: boolean;
     item: SpotifySong;
   };
 
-  const response = await fetch(CURRENTLY_PLAYING_URL, {
-    headers: { Authorization: `Bearer ${accessToken}` },
-  });
+  const headers = await getHeaders();
+  const response = await fetch(CURRENTLY_PLAYING_URL, { headers });
 
   if (response.status === 204 || response.status > 400) {
     const song = { isPlaying: false };
@@ -124,20 +127,25 @@ const getNowPlaying = async (): Promise<CurrentSong> => {
   return song;
 };
 
-const getPlaylists = async (): Promise<Playlist[]> => {
-  const storedPlaylists = await redis.get<Playlist[]>("playlists");
-  if (storedPlaylists) return storedPlaylists;
+const getPlaylists = async (showPrivate = false): Promise<Playlist[]> => {
+  const redisKey = showPrivate ? "playlists-all" : "playlists";
+  await redis.del(redisKey);
 
-  const accessToken = await getAccessToken();
+  const storedPlaylists = await redis.get<Playlist[]>(redisKey);
+  if (storedPlaylists) return storedPlaylists;
 
   type PlaylistsResponse = { items: SpotifyPlaylist[] };
 
-  const { items } = (await fetch(`${PLAYLISTS_URL}?${new URLSearchParams({ limit: "30" }).toString()}`, {
-    headers: { Authorization: `Bearer ${accessToken}` },
+  const headers = await getHeaders();
+  const { items } = (await fetch(`${PLAYLISTS_URL}?${new URLSearchParams({ limit: "50" }).toString()}`, {
+    headers,
   }).then((r) => r.json())) as PlaylistsResponse;
 
-  const playlists: Playlist[] = items.map(getPlaylistData).filter((playlist) => playlist.public);
-  await redis.set("playlists", playlists, { ex: 24 * 60 * 60 });
+  const playlists: Playlist[] = items
+    .filter((p) => p.owner.id === "sidfrostbear")
+    .map(getPlaylistData)
+    .filter((p) => showPrivate || p.public);
+  await redis.set(redisKey, playlists, { ex: 24 * 60 * 60 });
   return playlists;
 };
 
@@ -145,16 +153,15 @@ const getTopSongs = async (): Promise<Song[]> => {
   const storedTopSongs = await redis.get<Song[]>("top_songs");
   if (storedTopSongs) return storedTopSongs;
 
-  const accessToken = await getAccessToken();
-
   type TopTracksResponse = { items: SpotifySong[] };
 
+  const headers = await getHeaders();
   const { items } = (await fetch(
     `${TOP_TRACKS_URL}?${new URLSearchParams({
       time_range: "short_term",
       limit: "10",
     }).toString()}`,
-    { headers: { Authorization: `Bearer ${accessToken}` } },
+    { headers },
   ).then((r) => r.json())) as TopTracksResponse;
 
   const topSongs: Song[] = items.map(getSongData);
