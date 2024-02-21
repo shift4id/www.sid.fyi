@@ -5,7 +5,7 @@ const config: Config = {
   darkMode: "class",
   theme: {
     transitionDuration: { DEFAULT: "300ms" },
-    fontFamily: { serif: ["var(--font-serif)"] },
+    fontFamily: { sans: ["var(--font-sans)"], serif: ["var(--font-serif)"] },
     colors: {
       black: "#000",
       gray: "#686868",
