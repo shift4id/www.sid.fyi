@@ -11,7 +11,7 @@ const Item: React.FC<Playlist | Song> = ({ url, image, title, ...props }) => (
       <p className="truncate text-sm">{title}</p>
       <p className="truncate text-xs text-gray">
         {props.type === "song" && props.artist}
-        {props.type === "playlist" && `${props.count} songs`}
+        {props.type === "playlist" && `${String(props.count)} songs`}
       </p>
     </div>
   </Link>
