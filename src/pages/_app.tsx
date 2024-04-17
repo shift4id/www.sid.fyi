@@ -23,7 +23,7 @@ const serif = Lora({
 
 const App: React.FC<AppProps> = ({ Component, pageProps, router }) => (
   <LazyMotion features={domAnimation}>
-    <main className={clns(sans.variable, serif.variable, "font-sans flex min-h-screen w-full flex-col p-6")}>
+    <main className={clns(sans.variable, serif.variable, "flex min-h-screen w-full flex-col p-6 font-sans")}>
       <Navbar />
       <AnimatePresence mode="wait">
         <Component {...pageProps} key={router.asPath} />
