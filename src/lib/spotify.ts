@@ -112,11 +112,9 @@ const getNowPlaying = async (): Promise<Song> => {
 const getProfile = async (): Promise<Profile> => fetcher<SpotifyProfile>(BASE_URL).then(mapProfile);
 
 const TOP_URL = `${BASE_URL}/top`;
-const TOP_DATA_PARAMS = new URLSearchParams({ limit: "10", time_range: "short_term" });
-const getTopData = async <Response, Data>(key: string, map: (item: Response) => Data): Promise<Data[]> =>
-  fetcher<{ items: Response[] }>(`${TOP_URL}/${key}?${TOP_DATA_PARAMS.toString()}`).then((r) =>
-    r.items.map(map),
-  );
+const TOP_PARAMS = new URLSearchParams({ limit: "10", time_range: "short_term" });
+const getTopData = async <Response, Data>(type: string, map: (item: Response) => Data): Promise<Data[]> =>
+  fetcher<{ items: Response[] }>(`${TOP_URL}/${type}?${TOP_PARAMS.toString()}`).then((r) => r.items.map(map));
 
 const getTopArtists = () => getTopData<SpotifyArtist, Profile>("artists", mapArtist);
 
