@@ -1,3 +1,4 @@
+import { defaultSong } from "@/constants/spotify";
 import redis from "./redis";
 
 const clientId = process.env.SPOTIFY_CLIENT_ID;
@@ -94,8 +95,6 @@ const mapSong = (item: SpotifySong): Song => ({
   type: "song",
 });
 
-const defaultSong: Song = { name: "Not Playing", artist: "N/A", url: "https://spotify.com", type: "song" };
-
 const getNowPlaying = async (): Promise<Song> => {
   const storedSong = await redis.get<Song>("song");
   if (storedSong) return storedSong;
@@ -141,4 +140,4 @@ const getTopArtists = () => getTopData<SpotifyArtist, Profile>("artists", mapArt
 const getTopSongs = () => getTopData<SpotifySong, Song>("tracks", mapSong);
 
 export type { Profile, Song };
-export { defaultSong, getNowPlaying, getProfile, getTopArtists, getTopSongs };
+export { getNowPlaying, getProfile, getTopArtists, getTopSongs };

@@ -4,7 +4,8 @@ import Container, { Metadata } from "@/components/container";
 import Grid from "@/components/grid";
 import Item from "@/components/jukebox/item";
 import Section from "@/components/section";
-import { Song, defaultSong, getProfile, getTopArtists, getTopSongs } from "@/lib/spotify";
+import { defaultSong } from "@/constants/spotify";
+import { Song, getProfile, getTopArtists, getTopSongs } from "@/lib/spotify";
 
 const useNowPlaying = (): Song => {
   const { data: song } = useSWR<Song>("/api/spotify/now-playing", (url: string) =>
@@ -29,14 +30,13 @@ const Jukebox: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ art
 
   return (
     <Container {...md}>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <Section title="Profile">
-          <Item {...profile} />
-        </Section>
-        <Section title="Now Playing">
-          <Item {...nowPlaying} />
-        </Section>
-      </div>
+      <Grid
+        Of={Section}
+        items={[
+          { title: "Profile", children: <Item {...profile} /> },
+          { title: "Now Playing", children: <Item {...nowPlaying} /> },
+        ]}
+      />
       <Section title="My Top Artists">
         <Grid Of={Item} items={artists} />
       </Section>
