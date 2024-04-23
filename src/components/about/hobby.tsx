@@ -8,5 +8,4 @@ const Hobby: React.FC<Hobby> = ({ title, href }) => (
   </Link>
 );
 
-export type { Hobby };
 export default Hobby;

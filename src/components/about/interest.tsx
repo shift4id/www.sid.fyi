@@ -6,5 +6,4 @@ const Interest: React.FC<Interest> = ({ title, description }) => (
   </div>
 );
 
-export type { Interest };
 export default Interest;
