@@ -3,7 +3,6 @@ import {
   PageObjectResponse as Page,
   TextRichTextItemResponse as RichText,
 } from "@notionhq/client/build/src/api-endpoints";
-// import redis from "./redis";
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
@@ -22,16 +21,12 @@ const getBookData = (page: Page): Book => ({
 });
 
 const getBooks = async (): Promise<Book[]> => {
-  // const storedBooks = await redis.get<Book[]>("books");
-  // if (storedBooks) return storedBooks;
-
   const pages = await notion.databases.query({
     database_id: process.env.BOOK_DATABASE_ID,
     sorts: [{ property: "Author", direction: "ascending" }],
   });
 
   const books = pages.results.filter((page): page is Page => page.object === "page").map(getBookData);
-  // await redis.set("books", books, { ex: 24 * 60 * 60 });
   return books;
 };
 

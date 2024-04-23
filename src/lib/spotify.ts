@@ -109,31 +109,14 @@ const getNowPlaying = async (): Promise<Song> => {
   return song;
 };
 
-const getProfile = async (): Promise<Profile> => {
-  const storedProfile = await redis.get<Profile>("profile");
-  if (storedProfile) return storedProfile;
+const getProfile = async (): Promise<Profile> => fetcher<SpotifyProfile>(BASE_URL).then(mapProfile);
 
-  const profile = await fetcher<SpotifyProfile>(BASE_URL).then((r) => {
-    return mapProfile(r);
-  });
-
-  await redis.set("profile", profile, { ex: 24 * 60 * 60 });
-  return profile;
-};
-
-const getTopData = async <Response, Data>(key: string, map: (item: Response) => Data): Promise<Data[]> => {
-  const storedData = await redis.get<Data[]>(key);
-  if (storedData) return storedData;
-
-  const url = `${BASE_URL}/top/${key}`;
-  const params = new URLSearchParams({ limit: "10", time_range: "short_term" });
-  const data = await fetcher<{ items: Response[] }>(`${url}?${params.toString()}`).then((r) =>
+const TOP_URL = `${BASE_URL}/top`;
+const TOP_DATA_PARAMS = new URLSearchParams({ limit: "10", time_range: "short_term" });
+const getTopData = async <Response, Data>(key: string, map: (item: Response) => Data): Promise<Data[]> =>
+  fetcher<{ items: Response[] }>(`${TOP_URL}/${key}?${TOP_DATA_PARAMS.toString()}`).then((r) =>
     r.items.map(map),
   );
-
-  await redis.set(key, data, { ex: 24 * 60 * 60 });
-  return data;
-};
 
 const getTopArtists = () => getTopData<SpotifyArtist, Profile>("artists", mapArtist);
 
