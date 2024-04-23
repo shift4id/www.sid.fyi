@@ -20,15 +20,13 @@ const getBookData = (page: Page): Book => ({
   image: (page.properties.Image as { url: string }).url,
 });
 
-const getBooks = async (): Promise<Book[]> => {
-  const pages = await notion.databases.query({
-    database_id: process.env.BOOK_DATABASE_ID,
-    sorts: [{ property: "Author", direction: "ascending" }],
-  });
-
-  const books = pages.results.filter((page): page is Page => page.object === "page").map(getBookData);
-  return books;
-};
+const getBooks = async (): Promise<Book[]> =>
+  await notion.databases
+    .query({
+      database_id: process.env.BOOK_DATABASE_ID,
+      sorts: [{ property: "Author", direction: "ascending" }],
+    })
+    .then(({ results }) => results.filter((page): page is Page => page.object === "page").map(getBookData));
 
 export type { Book };
 export { getBooks };
