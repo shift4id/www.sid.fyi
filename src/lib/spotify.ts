@@ -11,10 +11,10 @@ const BASE_URL = "https://api.spotify.com/v1/me";
 
 const CURRENTLY_PLAYING_URL = `${BASE_URL}/player/currently-playing`;
 
-type SpotifyItem = {
+interface SpotifyItem {
   images: { url: string }[];
   external_urls: { spotify: string };
-};
+}
 
 interface SpotifyArtist extends SpotifyItem {
   name: string;
@@ -32,7 +32,11 @@ interface SpotifySong extends SpotifyItem {
   artists: { name: string }[];
 }
 
-type Item = { name: string; image?: string; url: string };
+interface Item {
+  name: string;
+  image?: string;
+  url: string;
+}
 
 interface Profile extends Item {
   followers: number;
@@ -48,7 +52,12 @@ interface Song extends Item {
 const getAccessToken = async (): Promise<string> => {
   const storedToken = await redis.get<string>("access_token");
   if (storedToken) return storedToken;
-  type TokenResponse = { access_token: string; refresh_token: string; expires_in: number };
+
+  interface TokenResponse {
+    access_token: string;
+    refresh_token: string;
+    expires_in: number;
+  }
 
   const params = new URLSearchParams({ grant_type: "refresh_token", refresh_token: refreshToken });
   const { access_token: accessToken, expires_in: expiresIn }: TokenResponse = (await fetch(
@@ -99,7 +108,10 @@ const getNowPlaying = async (): Promise<Song> => {
   const storedSong = await redis.get<Song>("song");
   if (storedSong) return storedSong;
 
-  type CurrentlyPlayingResponse = { is_playing: boolean; item?: SpotifySong };
+  interface CurrentlyPlayingResponse {
+    is_playing: boolean;
+    item?: SpotifySong;
+  }
 
   const song: Song = await fetcher<CurrentlyPlayingResponse>(CURRENTLY_PLAYING_URL)
     .then(({ is_playing, item }) => ({ isPlaying: is_playing, ...(item ? mapSong(item) : defaultSong) }))

@@ -1,7 +1,9 @@
 import { NextPage } from "next";
 import Container, { Metadata } from "./container";
 
-type ErrorProps = { statusCode: number };
+interface ErrorProps {
+  statusCode: number;
+}
 
 const Error: NextPage<ErrorProps> = ({ statusCode }) => {
   const md: Metadata = {

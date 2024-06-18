@@ -1,4 +1,7 @@
-type Interest = { title: string; description: string };
+interface Interest {
+  title: string;
+  description: string;
+}
 
 const Interest: React.FC<Interest> = ({ title, description }) => (
   <div className="py-1">

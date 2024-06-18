@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import clns from "@/lib/clns";
+import cn from "@/utils/cn";
 
 type LinkProps = Omit<React.ComponentProps<typeof NextLink>, "rel" | "target" | "scroll"> & {
   external?: boolean;
@@ -7,7 +7,7 @@ type LinkProps = Omit<React.ComponentProps<typeof NextLink>, "rel" | "target" | 
 
 const Link: React.FC<LinkProps> = ({ className, external, ...props }) => (
   <NextLink
-    className={clns(className, "outline-none")}
+    className={cn("outline-none", className)}
     rel="noopener noreferrer"
     scroll={false}
     target={external ? "_blank" : "_self"}

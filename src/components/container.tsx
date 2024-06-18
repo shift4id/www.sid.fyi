@@ -3,7 +3,10 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-type Metadata = { title: string; description: string };
+interface Metadata {
+  title: string;
+  description: string;
+}
 
 type ContainerProps = React.PropsWithChildren<Metadata & { md?: Metadata }>;
 

@@ -1,4 +1,7 @@
-type Social = { name: string; value: string };
+interface Social {
+  name: string;
+  value: string;
+}
 
 const socials: Social[] = [
   { name: "email", value: "hi@sid.fyi" },

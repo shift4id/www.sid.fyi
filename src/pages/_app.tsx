@@ -4,7 +4,7 @@ import { AppProps } from "next/app";
 import { Inter, Lora } from "next/font/google";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
-import clns from "@/lib/clns";
+import cn from "@/utils/cn";
 import "@/styles/main.css";
 
 const sans = Inter({
@@ -23,7 +23,7 @@ const serif = Lora({
 
 const App: React.FC<AppProps> = ({ Component, pageProps, router }) => (
   <LazyMotion features={domAnimation}>
-    <main className={clns(sans.variable, serif.variable, "flex min-h-screen w-full flex-col p-6 font-sans")}>
+    <main className={cn("flex min-h-screen w-full flex-col p-6 font-sans", sans.variable, serif.variable)}>
       <Navbar />
       <AnimatePresence mode="wait">
         <Component {...pageProps} key={router.asPath} />

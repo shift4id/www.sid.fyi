@@ -1,8 +1,11 @@
 import { useRouter } from "next/router";
 import Link from "@/components/link";
-import clns from "@/lib/clns";
+import cn from "@/utils/cn";
 
-type NavItem = { name: string; href: string };
+interface NavItem {
+  name: string;
+  href: string;
+}
 
 interface NavLinkProps extends NavItem {
   active: boolean;
@@ -20,7 +23,7 @@ const NavLink: React.FC<NavLinkProps> = ({ active, href, name }) => (
   <li>
     <Link
       href={href}
-      className={clns(
+      className={cn(
         "underline decoration-lightGray underline-offset-4 transition-['underline-offset']",
         active ? "!decoration-pink/50 underline-offset-8" : "hover:underline-offset-8",
       )}
