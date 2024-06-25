@@ -24,10 +24,8 @@
     "dev": "next dev -p 2000",
     "start": "next start -p 2000",
     "build": "next build",
-    "analyze": "ANALYZE=true next build",
     "postbuild": "next-sitemap",
     "lint": "next lint",
-    "type-check": "tsc --pretty --noEmit",
     "format": "prettier . --write"
   },
   "dependencies": {
