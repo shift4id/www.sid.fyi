@@ -12,7 +12,7 @@ const Category = <T extends { title: string }>({
   Component,
 }: CategoryProps<T>): React.ReactNode => (
   <Section title={title}>
-    <ul className="mt-4 flex flex-col items-end space-y-1">
+    <ul className="mt-4 flex flex-col items-end gap-1">
       {items.map((item) => (
         <li key={item.title} className="text-right text-sm">
           <Component key={item.title} {...item} />

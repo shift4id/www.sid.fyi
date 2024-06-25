@@ -1,5 +1,9 @@
-const withBundleAnalyzer = require("@next/bundle-analyzer")({ enabled: process.env.ANALYZE === "true" });
+// @ts-check
+import withBundleAnalyzer from "@next/bundle-analyzer";
 
+/**
+ * @type {Record<string, string>}
+ */
 const socials = {
   email: "mailto:hi@sid.fyi",
   facebook: "https://facebook.com/sid.adusumelli",
@@ -10,7 +14,10 @@ const socials = {
   twitter: "https://twitter.com/shift4id",
 };
 
-module.exports = withBundleAnalyzer({
+/**
+ * @type {import('next').NextConfig}
+ */
+const config = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
@@ -20,10 +27,12 @@ module.exports = withBundleAnalyzer({
       { hostname: "i.gr-assets.com" },
     ],
   },
-  redirects: () =>
+  redirects: async () =>
     Object.entries(socials).map(([key, destination]) => ({
       source: `/socials/${key}`,
       destination,
       permanent: false,
     })),
-});
+};
+
+export default withBundleAnalyzer({ enabled: process.env.ANALYZE === "true" })(config);

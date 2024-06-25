@@ -4,11 +4,11 @@ const config: Config = {
   content: ["./src/**/*.{ts,tsx}"],
   darkMode: "class",
   theme: {
-    transitionDuration: { DEFAULT: "300ms" },
+    transitionDuration: { DEFAULT: "500ms" },
     fontFamily: { sans: ["var(--font-sans)"], serif: ["var(--font-serif)"] },
     colors: {
       black: "#000",
-      gray: "#686868",
+      gray: "#707070",
       lightGray: "#D8D8D8",
       white: "#FFF",
       pink: "#FF80FF",

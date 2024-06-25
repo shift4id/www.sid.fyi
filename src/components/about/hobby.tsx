@@ -7,7 +7,8 @@ interface Hobby {
 
 const Hobby: React.FC<Hobby> = ({ title, href }) => (
   <Link className="group flex items-center py-1" href={href}>
-    <div className="-translate-x-2 transition group-hover:-translate-x-4">&larr;</div> {title}
+    {title}
+    <div className="ml-4 transition group-hover:-translate-x-2">&larr;</div>
   </Link>
 );
 

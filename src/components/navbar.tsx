@@ -25,7 +25,7 @@ const NavLink: React.FC<NavLinkProps> = ({ active, href, name }) => (
       href={href}
       className={cn(
         "underline decoration-lightGray underline-offset-4 transition-['underline-offset']",
-        active ? "!decoration-pink/50 underline-offset-8" : "hover:underline-offset-8",
+        active ? "!decoration-pink underline-offset-8" : "hover:underline-offset-8",
       )}
     >
       {name}
@@ -37,11 +37,11 @@ const Navbar: React.FC = () => {
   const { pathname } = useRouter();
 
   return (
-    <header className="sticky top-0 z-10 -mx-6 flex flex-col items-center justify-between space-y-2 bg-white p-6">
+    <header className="sticky top-0 z-10 -mx-6 flex flex-col items-center justify-between gap-2 bg-white p-6">
       <p>
         <em>Siddharth Adusumelli</em>
       </p>
-      <ul className="flex space-x-6 text-sm">
+      <ul className="flex gap-6 text-sm">
         {links.map((link) => (
           <NavLink key={link.name} active={pathname === link.href} {...link} />
         ))}
