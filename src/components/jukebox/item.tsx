@@ -3,7 +3,11 @@ import Link from "../link";
 import { Profile, Song } from "@/lib/spotify";
 
 const Item: React.FC<Profile | Song> = ({ url, image, name, ...props }) => (
-  <Link external className="flex gap-4" href={url}>
+  <Link
+    external
+    className="flex gap-4 ring-pink/20 transition hover:text-pink focus-visible:text-pink"
+    href={url}
+  >
     <div className="relative flex h-12 w-12 shrink-0 items-center justify-center bg-black text-2xl text-white">
       {image ? <Image fill alt="" sizes="3rem" src={image} /> : <span>🎧</span>}
     </div>

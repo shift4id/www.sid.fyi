@@ -6,7 +6,11 @@ const Footer: React.FC = () => (
     <div className="-my-1.5 flex flex-wrap justify-center text-xs">
       {socials.map(({ name }) => (
         <span key={name} className="my-0.5 mr-4 py-1">
-          <Link external className="text-gray transition hover:text-pink" href={`/socials/${name}`}>
+          <Link
+            external
+            className="text-gray transition hover:text-pink focus-visible:text-pink"
+            href={`/socials/${name}`}
+          >
             {name}
           </Link>
         </span>

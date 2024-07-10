@@ -4,7 +4,7 @@ const config: Config = {
   content: ["./src/**/*.{ts,tsx}"],
   darkMode: "class",
   theme: {
-    transitionDuration: { DEFAULT: "500ms" },
+    transitionDuration: { DEFAULT: "250ms" },
     fontFamily: { sans: ["var(--font-sans)"], serif: ["var(--font-serif)"] },
     colors: {
       black: "#000",
