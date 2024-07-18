@@ -4472,7 +4472,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-packagejson@npm:^2.4.12":
+"prettier-plugin-packagejson@npm:^2.4.12, prettier-plugin-packagejson@npm:^2.5.1":
   version: 2.5.1
   resolution: "prettier-plugin-packagejson@npm:2.5.1"
   dependencies:
@@ -5868,6 +5868,7 @@ __metadata:
     next: "npm:^14.2.5"
     postcss: "npm:^8.4.39"
     prettier: "npm:^3.3.3"
+    prettier-plugin-packagejson: "npm:^2.5.1"
     prettier-plugin-tailwindcss: "npm:^0.6.5"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
