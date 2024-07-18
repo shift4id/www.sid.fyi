@@ -1,5 +1,5 @@
 import { Client } from "@notionhq/client";
-import {
+import type {
   PageObjectResponse as Page,
   TextRichTextItemResponse as RichText,
 } from "@notionhq/client/build/src/api-endpoints";

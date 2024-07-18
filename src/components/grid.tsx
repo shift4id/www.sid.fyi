@@ -1,14 +1,17 @@
-interface GridProps<T> {
-  Of: React.ComponentType<T>;
-  items: T[];
+interface GridProps<TItem> {
+  Of: React.ComponentType<TItem>;
+  items: TItem[];
 }
 
-const Grid = <T,>({ Of, items }: GridProps<T>) => (
-  <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-    {items.map((item, i) => (
-      <Of key={i} {...item} />
-    ))}
-  </div>
-);
+function Grid<TItem>({ Of, items }: GridProps<TItem>): React.ReactNode {
+  return (
+    <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+      {items.map((item, i) => (
+        // eslint-disable-next-line react/no-array-index-key -- Unique Items
+        <Of key={i} {...item} />
+      ))}
+    </div>
+  );
+}
 
-export default Grid;
+export { Grid };

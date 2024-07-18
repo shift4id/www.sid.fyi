@@ -1,5 +1,4 @@
-import { defaultSong } from "@/constants/spotify";
-import redis from "./redis";
+import { redis } from "./redis";
 
 const clientId = process.env.SPOTIFY_CLIENT_ID;
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -44,7 +43,6 @@ interface Profile extends Item {
 }
 
 interface Song extends Item {
-  isPlaying?: boolean;
   artist: string;
   type: "song";
 }
@@ -75,10 +73,15 @@ const getAccessToken = async (): Promise<string> => {
   return accessToken;
 };
 
-const getHeaders = async () => ({ Authorization: `Bearer ${await getAccessToken()}` });
+const getHeaders = async (): Promise<HeadersInit> => ({ Authorization: `Bearer ${await getAccessToken()}` });
 
 const fetcher = async <T>(url: string): Promise<T> =>
-  fetch(url, { headers: await getHeaders() }).then((r) => r.json()) as T;
+  fetch(url, {
+    headers: await getHeaders(),
+    next: {
+      revalidate: 60 * 60,
+    },
+  }).then((r) => r.json()) as T;
 
 const mapArtist = (item: SpotifyArtist): Profile => ({
   name: item.name,
@@ -104,7 +107,7 @@ const mapSong = (item: SpotifySong): Song => ({
   type: "song",
 });
 
-const getNowPlaying = async (): Promise<Song> => {
+const getNowPlaying = async (): Promise<Song | undefined> => {
   const storedSong = await redis.get<Song>("song");
   if (storedSong) return storedSong;
 
@@ -113,11 +116,11 @@ const getNowPlaying = async (): Promise<Song> => {
     item?: SpotifySong;
   }
 
-  const song: Song = await fetcher<CurrentlyPlayingResponse>(CURRENTLY_PLAYING_URL)
-    .then(({ is_playing, item }) => ({ isPlaying: is_playing, ...(item ? mapSong(item) : defaultSong) }))
-    .catch(() => ({ is_playing: false, ...defaultSong }));
+  const song: Song | undefined = await fetcher<CurrentlyPlayingResponse>(CURRENTLY_PLAYING_URL)
+    .then(({ is_playing: isPlaying, item }) => (isPlaying && item ? mapSong(item) : undefined))
+    .catch(() => undefined);
 
-  await redis.set("song", song, { ex: 60 });
+  if (song) await redis.set("song", song, { ex: 60 });
   return song;
 };
 
@@ -129,9 +132,9 @@ const TOP_PARAMS = new URLSearchParams({ limit: "10", time_range: "short_term" }
 const getTopData = async <Response, Data>(type: string, map: (item: Response) => Data): Promise<Data[]> =>
   fetcher<{ items: Response[] }>(`${TOP_URL}/${type}?${TOP_PARAMS.toString()}`).then((r) => r.items.map(map));
 
-const getTopArtists = () => getTopData<SpotifyArtist, Profile>("artists", mapArtist);
+const getTopArtists = (): Promise<Profile[]> => getTopData("artists", mapArtist);
 
-const getTopSongs = () => getTopData<SpotifySong, Song>("tracks", mapSong);
+const getTopSongs = (): Promise<Song[]> => getTopData("tracks", mapSong);
 
 export type { Profile, Song };
 export { getNowPlaying, getProfile, getTopArtists, getTopSongs };
