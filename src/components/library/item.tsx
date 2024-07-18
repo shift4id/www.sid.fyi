@@ -8,8 +8,8 @@ const Item: React.FC<Book> = ({ image, title, author }) => (
     </div>
     <div className="flex flex-col justify-center gap-2 overflow-hidden">
       <p className="truncate text-sm">{title}</p>
-      <hr className="w-8 border-lightGray" />
-      <p className="truncate text-xs text-gray">{author}</p>
+      <hr className="border-subtle w-8" />
+      <p className="text-muted truncate text-xs">{author}</p>
     </div>
   </div>
 );

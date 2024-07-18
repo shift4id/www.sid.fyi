@@ -7,12 +7,15 @@ const config: Config = {
     transitionDuration: { DEFAULT: "250ms" },
     fontFamily: { sans: ["var(--font-sans)"], serif: ["var(--font-serif)"] },
     colors: {
-      black: "#000",
-      gray: "#707070",
-      lightGray: "#D8D8D8",
-      white: "#FFF",
-      pink: "#FF80FF",
-      yellow: "#FF0",
+      background: "hsl(var(--background))",
+      foreground: "hsl(var(--foreground))",
+
+      accent: "hsl(var(--accent))",
+
+      muted: "hsl(var(--muted))",
+      subtle: "hsl(var(--subtle))",
+
+      highlight: "hsl(var(--highlight))",
     },
   },
 };

@@ -23,7 +23,7 @@ const photos: Photo[] = [
 ];
 
 const Photos: React.FC = () => (
-  <div className="gap-8 md:columns-2">
+  <div className="gap-8 space-y-8 md:columns-2">
     {photos.map((photo) => (
       <Item key={photo.id} {...photo} />
     ))}

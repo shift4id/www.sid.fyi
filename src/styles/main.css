@@ -3,6 +3,42 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --hue-accent: 240;
+    --sat-accent: 100%;
+
+    --accent: var(--hue-accent) var(--sat-accent) 75%;
+
+    --hue-muted: 0;
+    --sat-muted: 0%;
+
+    --background: var(--hue-muted) var(--sat-muted) 93%;
+    --foreground: var(--hue-muted) var(--sat-muted) 0%;
+
+    --muted: var(--hue-muted) var(--sat-muted) 40%;
+    --subtle: var(--hue-muted) var(--sat-muted) 85%;
+
+    --highlight: var(--hue-muted) var(--sat-muted) 90%;
+  }
+
+  .dark {
+    --hue-accent: 300;
+    --sat-accent: 100%;
+
+    --accent: var(--hue-accent) var(--sat-accent) 75%;
+
+    --hue-muted: 0;
+    --sat-muted: 0%;
+
+    --background: var(--hue-muted) var(--sat-muted) 7%;
+    --foreground: var(--hue-muted) var(--sat-muted) 100%;
+
+    --muted: var(--hue-muted) var(--sat-muted) 55%;
+    --subtle: var(--hue-muted) var(--sat-muted) 15%;
+
+    --highlight: var(--hue-muted) var(--sat-muted) 10%;
+  }
+
   em {
     @apply font-serif;
   }

@@ -22,12 +22,14 @@ const links: NavItem[] = [
 const NavLink: React.FC<NavLinkProps> = ({ active, href, name }) => (
   <li>
     <Link
+      aria-disabled={active}
       href={href}
+      tabIndex={active ? -1 : undefined}
       className={cn(
-        "underline decoration-lightGray underline-offset-4 transition-['underline-offset']",
+        "select-none underline underline-offset-8 transition",
         active
-          ? "!decoration-pink underline-offset-8"
-          : "hover:underline-offset-8 focus-visible:underline-offset-8",
+          ? "decoration-accent"
+          : "decoration-subtle hover:decoration-accent focus-visible:decoration-accent decoration-dotted",
       )}
     >
       {name}
@@ -39,7 +41,7 @@ const Navbar: React.FC = () => {
   const { pathname } = useRouter();
 
   return (
-    <header className="sticky top-0 z-10 -mx-6 flex flex-col items-center justify-between gap-2 bg-white p-6">
+    <header className="bg-background sticky inset-x-0 top-0 z-10 flex flex-col items-center justify-between gap-2 p-6">
       <p>
         <em>Siddharth Adusumelli</em>
       </p>

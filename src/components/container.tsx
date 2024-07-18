@@ -52,12 +52,12 @@ const Container: React.FC<ContainerProps> = ({ title, description, md, children 
       </Head>
       <div className="w-full space-y-8">
         <h1 className="text-3xl !leading-normal md:text-4xl">
-          <em className="bg-pink/20">{title}</em>
+          <em className="bg-accent/20 dark:bg-accent/15">{title}</em>
         </h1>
-        <h2 className="ml-auto max-w-lg text-right text-2xl !leading-normal text-gray md:text-3xl">
+        <h2 className="text-muted ml-auto max-w-lg text-right text-2xl !leading-normal md:text-3xl">
           {description}
         </h2>
-        <hr className="border-lightGray" />
+        <hr className="border-subtle" />
         {children}
       </div>
     </m.section>

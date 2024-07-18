@@ -8,7 +8,7 @@ const Footer: React.FC = () => (
         <span key={name} className="my-0.5 mr-4 py-1">
           <Link
             external
-            className="text-gray transition hover:text-pink focus-visible:text-pink"
+            className="text-muted hover:text-accent focus-visible:text-accent transition"
             href={`/socials/${name}`}
           >
             {name}

@@ -1,20 +1,20 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
 import { AppProps } from "next/app";
-import { Inter, Lora } from "next/font/google";
+import { Inter as Sans, Lora as Serif } from "next/font/google";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import cn from "@/utils/cn";
 import "@/styles/main.css";
 
-const sans = Inter({
+const sans = Sans({
   weight: ["400"],
   style: ["normal"],
   variable: "--font-sans",
   subsets: ["latin-ext"],
 });
 
-const serif = Lora({
+const serif = Serif({
   weight: ["400"],
   style: ["normal", "italic"],
   variable: "--font-serif",

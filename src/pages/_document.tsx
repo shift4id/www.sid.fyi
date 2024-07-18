@@ -7,15 +7,15 @@ const Document: React.FC = () => (
       <link href="/favicons/favicon-32x32.png?v=2024" rel="icon" sizes="32x32" type="image/png" />
       <link href="/favicons/favicon-16x16.png?v=2024" rel="icon" sizes="16x16" type="image/png" />
       <link href="/favicons/site.webmanifest?v=2024" rel="manifest" />
-      <link color="#ff80ff" href="/favicons/safari-pinned-tab.svg?v=2024" rel="mask-icon" />
+      <link color="#ffe4ff" href="/favicons/safari-pinned-tab.svg?v=2024" rel="mask-icon" />
       <link href="/favicon.ico?v=2024" rel="shortcut icon" />
       <meta content="sid.fyi" name="apple-mobile-web-app-title" />
       <meta content="sid.fyi" name="application-name" />
-      <meta content="#ff80ff" name="msapplication-TileColor" />
+      <meta content="#ffe4ff" name="msapplication-TileColor" />
       <meta content="/favicons/browserconfig.xml?v=2024" name="msapplication-config" />
-      <meta content="#ff80ff" name="theme-color" />
+      <meta content="#ffe4ff" name="theme-color" />
     </Head>
-    <body className="mx-auto max-w-3xl scroll-smooth bg-white text-black selection:bg-yellow">
+    <body className="bg-background text-foreground selection:bg-highlight mx-auto max-w-3xl scroll-smooth">
       <Main />
       <NextScript />
     </body>
