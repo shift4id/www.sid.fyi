@@ -5,7 +5,7 @@ import type { Book } from "@/lib/notion";
 function Item(props: Book | Record<string, never>): React.ReactNode {
   const { author, image, title } = props;
 
-  const isLoading = !title;
+  const isLoading = !Object.keys(props).length;
 
   return (
     <div className="flex gap-4">

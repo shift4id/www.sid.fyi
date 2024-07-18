@@ -17,7 +17,7 @@ type ItemProps = Profile | Song | Record<string, never>;
 function Item(props: ItemProps): React.ReactNode {
   const { url, image, name, ...rest } = props;
 
-  const isLoading = !("type" in rest);
+  const isLoading = !Object.keys(props).length;
 
   return (
     <Container
