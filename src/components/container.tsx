@@ -5,7 +5,7 @@ type ContainerProps = React.PropsWithChildren<{
 
 function Container({ title, description, children }: ContainerProps): React.ReactNode {
   return (
-    <main className="w-full max-w-3xl grow py-20">
+    <main className="mx-auto w-full max-w-3xl grow py-20">
       <div className="w-full space-y-8">
         <h1 className="text-3xl !leading-normal md:text-4xl">
           <em className="bg-accent/20 dark:bg-accent/15">{title}</em>
