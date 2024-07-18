@@ -46,7 +46,7 @@ function Layout({ children }: React.PropsWithChildren): React.ReactNode {
     <html className="antialiased" lang="en">
       <body
         className={cn(
-          "flex min-h-screen w-full flex-col scroll-smooth bg-background p-6 font-sans text-foreground selection:bg-highlight",
+          "mx-auto flex min-h-screen w-full max-w-3xl flex-col scroll-smooth bg-background p-6 font-sans text-foreground selection:bg-highlight",
           sans.variable,
           serif.variable,
         )}

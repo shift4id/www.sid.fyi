@@ -10,7 +10,7 @@ const links: React.ComponentProps<typeof NavLink>[] = [
 
 function NavBar(): React.ReactNode {
   return (
-    <header className="sticky inset-x-0 top-0 z-10 flex flex-col items-center justify-between gap-2 bg-background p-6">
+    <header className="sticky inset-x-0 top-0 z-10 flex flex-col justify-between gap-2 bg-background py-6">
       <p>
         <em>Siddharth Adusumelli</em>
       </p>
