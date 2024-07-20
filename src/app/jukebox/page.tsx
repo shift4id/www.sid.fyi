@@ -9,7 +9,8 @@ const fallbackValue: Record<string, never> = {};
 const fallbackData = Array.from<typeof fallbackValue>({ length: 10 }).fill({});
 
 async function ProfileItem(): Promise<React.JSX.Element> {
-  const profile = await getProfile().catch((e) => {
+  const profile = await getProfile().catch((e: unknown) => {
+    // eslint-disable-next-line no-console -- Debugging
     console.error(e);
     return fallbackValue;
   });
@@ -18,7 +19,8 @@ async function ProfileItem(): Promise<React.JSX.Element> {
 }
 
 async function TopArtistsGrid(): Promise<React.JSX.Element> {
-  const artists = await getTopArtists().catch((e) => {
+  const artists = await getTopArtists().catch((e: unknown) => {
+    // eslint-disable-next-line no-console -- Debugging
     console.error(e);
     return fallbackData;
   });
