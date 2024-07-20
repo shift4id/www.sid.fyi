@@ -66,7 +66,6 @@ const getAccessToken = async (): Promise<string> => {
         Authorization: `Basic ${authorization}`,
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      cache: "no-store",
     },
   ).then((r) => r.json())) as TokenResponse;
 
