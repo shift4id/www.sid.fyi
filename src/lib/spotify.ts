@@ -69,6 +69,9 @@ const getAccessToken = async (): Promise<string> => {
     },
   ).then((r) => r.json())) as TokenResponse;
 
+  // eslint-disable-next-line no-console -- Debugging
+  console.log("ACCESS TOKEN", accessToken, expiresIn);
+
   await redis.set("access_token", accessToken, { ex: expiresIn });
   return accessToken;
 };
@@ -78,9 +81,7 @@ const getHeaders = async (): Promise<HeadersInit> => ({ Authorization: `Bearer $
 const fetcher = async <T>(url: string): Promise<T> =>
   fetch(url, {
     headers: await getHeaders(),
-    next: {
-      revalidate: 60 * 60,
-    },
+    next: { revalidate: 60 * 60 },
   }).then((r) => r.json()) as T;
 
 const mapArtist = (item: SpotifyArtist): Profile => ({
