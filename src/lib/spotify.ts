@@ -74,14 +74,6 @@ const getAccessToken = async (): Promise<string> => {
   return accessToken;
 };
 
-const getHeaders = async (): Promise<HeadersInit> => ({ Authorization: `Bearer ${await getAccessToken()}` });
-
-const fetcher = async <T>(url: string): Promise<T> =>
-  fetch(url, {
-    headers: await getHeaders(),
-    next: { revalidate: 60 * 60 },
-  }).then((r) => r.json()) as T;
-
 const mapArtist = (item: SpotifyArtist): Profile => ({
   name: item.name,
   image: item.images[0].url,
@@ -106,6 +98,11 @@ const mapSong = (item: SpotifySong): Song => ({
   type: "song",
 });
 
+const fetcher = async <T>(url: string): Promise<T> =>
+  fetch(url, {
+    headers: { Authorization: `Bearer ${await getAccessToken()}` },
+  }).then((r) => r.json()) as T;
+
 const getNowPlaying = async (): Promise<Song | undefined> => {
   const storedSong = await redis.get<Song>("song");
   if (storedSong) return storedSong;
@@ -129,12 +126,7 @@ const TOP_URL = `${BASE_URL}/top`;
 const TOP_PARAMS = new URLSearchParams({ limit: "10", time_range: "short_term" });
 
 const getTopData = async <Response, Data>(type: string, map: (item: Response) => Data): Promise<Data[]> =>
-  fetcher<{ items: Response[] }>(`${TOP_URL}/${type}?${TOP_PARAMS.toString()}`).then((r) => {
-    // eslint-disable-next-line no-console -- Debugging
-    console.log("TOP DATA RESPONSE", r);
-
-    return r.items.map(map);
-  });
+  fetcher<{ items: Response[] }>(`${TOP_URL}/${type}?${TOP_PARAMS.toString()}`).then((r) => r.items.map(map));
 
 const getTopArtists = (): Promise<Profile[]> => getTopData("artists", mapArtist);
 

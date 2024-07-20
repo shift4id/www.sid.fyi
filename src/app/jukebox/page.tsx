@@ -31,6 +31,8 @@ const metadata = {
   description: "Listen to my favorite songs, artists, and check out my profile.",
 } satisfies Metadata;
 
+const revalidate = 60 * 60;
+
 function Jukebox(): React.ReactNode {
   return (
     <Container {...metadata}>
@@ -62,5 +64,5 @@ function Jukebox(): React.ReactNode {
   );
 }
 
-export { metadata };
+export { metadata, revalidate };
 export default Jukebox;

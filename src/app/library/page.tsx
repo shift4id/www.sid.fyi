@@ -18,6 +18,8 @@ const metadata = {
   description: "Explore various books that have influenced my thinking.",
 } satisfies Metadata;
 
+const revalidate = 60 * 60;
+
 function Library(): React.ReactNode {
   return (
     <Container {...metadata}>
@@ -28,5 +30,5 @@ function Library(): React.ReactNode {
   );
 }
 
-export { metadata };
+export { metadata, revalidate };
 export default Library;
