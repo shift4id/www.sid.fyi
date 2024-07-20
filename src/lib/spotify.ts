@@ -66,11 +66,9 @@ const getAccessToken = async (): Promise<string> => {
         Authorization: `Basic ${authorization}`,
         "Content-Type": "application/x-www-form-urlencoded",
       },
+      cache: "no-store",
     },
   ).then((r) => r.json())) as TokenResponse;
-
-  // eslint-disable-next-line no-console -- Debugging
-  console.log("ACCESS TOKEN", accessToken, expiresIn);
 
   await redis.set("access_token", accessToken, { ex: expiresIn });
   return accessToken;
