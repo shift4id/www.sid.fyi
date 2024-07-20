@@ -8,7 +8,10 @@ const fallbackValue = {};
 const fallbackData = Array.from<typeof fallbackValue>({ length: 10 }).fill({});
 
 async function BooksGrid(): Promise<React.JSX.Element> {
-  const books = await getBooks();
+  const books = await getBooks().catch((e) => {
+    console.error(e);
+    return fallbackData;
+  });
 
   return <Grid Of={Item} items={books} />;
 }

@@ -5,23 +5,32 @@ import { getProfile, getTopArtists, getTopSongs } from "@/lib/spotify";
 import { Item } from "./components/item";
 import { NowPlaying } from "./components/now-playing";
 
-const fallbackValue = {};
+const fallbackValue: Record<string, never> = {};
 const fallbackData = Array.from<typeof fallbackValue>({ length: 10 }).fill({});
 
 async function ProfileItem(): Promise<React.JSX.Element> {
-  const profile = await getProfile();
+  const profile = await getProfile().catch((e) => {
+    console.error(e);
+    return fallbackValue;
+  });
 
   return <Item {...profile} />;
 }
 
 async function TopArtistsGrid(): Promise<React.JSX.Element> {
-  const artists = await getTopArtists();
+  const artists = await getTopArtists().catch((e) => {
+    console.error(e);
+    return fallbackData;
+  });
 
   return <Grid Of={Item} items={artists} />;
 }
 
 async function TopSongsGrid(): Promise<React.JSX.Element> {
-  const songs = await getTopSongs();
+  const songs = await getTopSongs().catch((e) => {
+    console.error(e);
+    return fallbackData;
+  });
 
   return <Grid Of={Item} items={songs} />;
 }
