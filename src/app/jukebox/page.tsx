@@ -6,34 +6,22 @@ import { Item } from "./components/item";
 import { NowPlaying } from "./components/now-playing";
 
 const fallbackValue: Record<string, never> = {};
-const fallbackData = Array.from<typeof fallbackValue>({ length: 10 }).fill({});
+const fallbackData = Array.from<typeof fallbackValue>({ length: 10 }).fill(fallbackValue);
 
 async function ProfileItem(): Promise<React.JSX.Element> {
-  const profile = await getProfile().catch((e: unknown) => {
-    // eslint-disable-next-line no-console -- Debugging
-    console.error(e);
-    return fallbackValue;
-  });
+  const profile = await getProfile().catch(() => fallbackValue);
 
   return <Item {...profile} />;
 }
 
 async function TopArtistsGrid(): Promise<React.JSX.Element> {
-  const artists = await getTopArtists().catch((e: unknown) => {
-    // eslint-disable-next-line no-console -- Debugging
-    console.error(e);
-    return fallbackData;
-  });
+  const artists = await getTopArtists().catch(() => fallbackData);
 
   return <Grid Of={Item} items={artists} />;
 }
 
 async function TopSongsGrid(): Promise<React.JSX.Element> {
-  const songs = await getTopSongs().catch((e: unknown) => {
-    // eslint-disable-next-line no-console -- Debugging
-    console.error(e);
-    return fallbackData;
-  });
+  const songs = await getTopSongs().catch(() => fallbackData);
 
   return <Grid Of={Item} items={songs} />;
 }

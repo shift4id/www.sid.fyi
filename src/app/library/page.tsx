@@ -5,14 +5,10 @@ import { getBooks } from "@/lib/notion";
 import { Item } from "./components";
 
 const fallbackValue = {};
-const fallbackData = Array.from<typeof fallbackValue>({ length: 10 }).fill({});
+const fallbackData = Array.from<typeof fallbackValue>({ length: 10 }).fill(fallbackValue);
 
 async function BooksGrid(): Promise<React.JSX.Element> {
-  const books = await getBooks().catch((e: unknown) => {
-    // eslint-disable-next-line no-console -- Debugging
-    console.error(e);
-    return fallbackData;
-  });
+  const books = await getBooks().catch(() => fallbackData);
 
   return <Grid Of={Item} items={books} />;
 }

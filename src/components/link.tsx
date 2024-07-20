@@ -1,20 +1,15 @@
 import NextLink from "next/link";
 import { cn } from "@/utils";
 
-type LinkProps = Omit<React.ComponentProps<typeof NextLink>, "rel" | "target" | "scroll"> & {
+type LinkProps = Omit<React.ComponentProps<"a">, "href" | "rel" | "target"> & {
+  href: string;
   external?: boolean;
 };
 
 function Link({ className, external, ...props }: LinkProps): React.ReactNode {
-  return (
-    <NextLink
-      className={cn("outline-none", className)}
-      rel="noopener noreferrer"
-      scroll={false}
-      target={external ? "_blank" : "_self"}
-      {...props}
-    />
-  );
+  const Tag = external ? "a" : NextLink;
+
+  return <Tag className={cn("outline-none", className)} rel="noopener noreferrer" {...props} />;
 }
 
 export { Link };
