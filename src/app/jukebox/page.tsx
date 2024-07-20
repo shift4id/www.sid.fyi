@@ -29,7 +29,8 @@ async function TopArtistsGrid(): Promise<React.JSX.Element> {
 }
 
 async function TopSongsGrid(): Promise<React.JSX.Element> {
-  const songs = await getTopSongs().catch((e) => {
+  const songs = await getTopSongs().catch((e: unknown) => {
+    // eslint-disable-next-line no-console -- Debugging
     console.error(e);
     return fallbackData;
   });
