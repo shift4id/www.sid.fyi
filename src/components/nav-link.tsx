@@ -2,8 +2,8 @@
 
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
-import { Link } from "./link";
 import { cn } from "@/utils";
+import { Link } from "./link";
 
 interface NavLinkProps {
   name: string;

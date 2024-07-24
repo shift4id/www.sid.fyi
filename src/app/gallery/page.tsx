@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components";
-import { Photos } from "./components/photos";
+import { Photos } from "./components";
 
 const metadata = {
   title: "Gallery",

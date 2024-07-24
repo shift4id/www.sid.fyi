@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Container, Grid } from "@/components";
 import { socials } from "@/constants/socials";
-import { Item } from "./components/item";
+import { Item } from "./components";
 
 const metadata = { title: "Chat", description: "Let's have a conversation." } satisfies Metadata;
 

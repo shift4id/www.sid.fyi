@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components";
-import { Category } from "./components/category";
-import { Hobby } from "./components/hobby";
-import { Interest } from "./components/interest";
+import { Category, Hobby, Interest } from "./components";
 
 const header: React.ComponentProps<typeof Container> = {
   title: "Siddharth Adusumelli",

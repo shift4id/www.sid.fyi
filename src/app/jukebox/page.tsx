@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import React, { Suspense } from "react";
 import { Container, Grid, Section } from "@/components";
 import { getProfile, getTopArtists, getTopSongs } from "@/lib/spotify";
-import { Item } from "./components/item";
-import { NowPlaying } from "./components/now-playing";
+import { Item, NowPlaying } from "./components";
 
 const fallbackValue: Record<string, never> = {};
 const fallbackData = Array.from<typeof fallbackValue>({ length: 10 }).fill(fallbackValue);
