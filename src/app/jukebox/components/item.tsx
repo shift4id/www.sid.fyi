@@ -8,8 +8,14 @@ type ContainerProps = React.PropsWithChildren<{
   className?: string;
 }>;
 
-function Container({ isLoading, ...props }: ContainerProps): React.ReactNode {
-  return isLoading ? <div {...props} /> : <Link external {...props} />;
+function Container({ isLoading, children, ...props }: ContainerProps): React.ReactNode {
+  return isLoading ? (
+    <div {...props}>{children}</div>
+  ) : (
+    <Link external {...props}>
+      {children}
+    </Link>
+  );
 }
 
 type ItemProps = Profile | Song | Record<string, never>;
