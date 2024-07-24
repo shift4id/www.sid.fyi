@@ -8,7 +8,7 @@ function manifest(): MetadataRoute.Manifest {
     categories: ["personal"],
     start_url: "/",
     background_color: "#e4ffff",
-    theme_color: "#808080",
+    theme_color: "#8080ff",
   };
 }
 
