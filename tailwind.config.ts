@@ -1,8 +1,8 @@
-import { Config } from "tailwindcss/types/config";
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: ["./src/**/*.{ts,tsx}"],
-  darkMode: "class",
+  darkMode: "media",
   theme: {
     transitionDuration: { DEFAULT: "250ms" },
     fontFamily: { sans: ["var(--font-sans)"], serif: ["var(--font-serif)"] },

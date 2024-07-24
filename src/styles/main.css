@@ -21,22 +21,24 @@
     --highlight: var(--hue-muted) var(--sat-muted) 90%;
   }
 
-  .dark {
-    --hue-accent: 300;
-    --sat-accent: 100%;
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --hue-accent: 300;
+      --sat-accent: 100%;
 
-    --accent: var(--hue-accent) var(--sat-accent) 75%;
+      --accent: var(--hue-accent) var(--sat-accent) 75%;
 
-    --hue-muted: 0;
-    --sat-muted: 0%;
+      --hue-muted: 0;
+      --sat-muted: 0%;
 
-    --background: var(--hue-muted) var(--sat-muted) 7%;
-    --foreground: var(--hue-muted) var(--sat-muted) 100%;
+      --background: var(--hue-muted) var(--sat-muted) 7%;
+      --foreground: var(--hue-muted) var(--sat-muted) 100%;
 
-    --muted: var(--hue-muted) var(--sat-muted) 55%;
-    --subtle: var(--hue-muted) var(--sat-muted) 15%;
+      --muted: var(--hue-muted) var(--sat-muted) 55%;
+      --subtle: var(--hue-muted) var(--sat-muted) 15%;
 
-    --highlight: var(--hue-muted) var(--sat-muted) 10%;
+      --highlight: var(--hue-muted) var(--sat-muted) 10%;
+    }
   }
 
   em {

@@ -1,6 +1,9 @@
-/**
- * @type {import('eslint').Linter.Config}
- */
+// @ts-check
+const { resolve } = require("path");
+
+const project = resolve(__dirname, "tsconfig.json");
+
+/** @type {import('eslint').Linter.LegacyConfig} */
 const config = {
   extends: [
     "@vercel/style-guide/eslint/browser",
@@ -8,9 +11,22 @@ const config = {
     "@vercel/style-guide/eslint/typescript",
     "@vercel/style-guide/eslint/react",
     "@vercel/style-guide/eslint/next",
-  ].map(require.resolve),
+  ].map((extend) => require.resolve(extend)),
   parserOptions: {
-    project: "./tsconfig.json",
+    project,
+  },
+  settings: {
+    "import/resolver": {
+      typescript: {
+        project,
+      },
+    },
+    "jsx-a11y": {
+      components: {
+        Image: "img",
+        Link: "a",
+      },
+    },
   },
   rules: {
     "react/jsx-sort-props": [
@@ -34,7 +50,7 @@ const config = {
   },
   overrides: [
     {
-      files: ["src/app/**/*.ts", "src/app/**/*.tsx"],
+      files: ["src/app/**/*.ts", "src/app/**/*.tsx", "next.config.mjs", "tailwind.config.ts"],
       rules: {
         "import/no-default-export": "off",
       },

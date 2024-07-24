@@ -11,7 +11,7 @@ const links: React.ComponentProps<typeof NavLink>[] = [
 function NavBar(): React.ReactNode {
   return (
     <header className="sticky inset-x-0 top-0 z-10 flex flex-col gap-2 bg-background py-6">
-      <p>
+      <p className="select-none">
         <em>Siddharth Adusumelli</em>
       </p>
       <ul className="flex gap-6 text-sm">
