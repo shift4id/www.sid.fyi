@@ -1,4 +1,5 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Inter as Sans, Lora as Serif } from "next/font/google";
 import { Footer, NavBar } from "@/components";
@@ -55,6 +56,7 @@ function Layout({ children }: React.PropsWithChildren): React.ReactNode {
         {children}
         <Footer />
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
