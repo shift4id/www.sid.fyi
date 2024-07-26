@@ -1,13 +1,15 @@
 import { Link } from "@/components";
-import type { Social } from "@/constants/socials";
+import type socials from "@/constants/socials.json";
 
-function Item({ name, value }: Social): React.ReactNode {
+type Social = (typeof socials)[number];
+
+function Item({ name, label, link }: Social): React.ReactNode {
   return (
-    <Link external className="group flex items-center gap-2 overflow-hidden" href={`/socials/${name}`}>
-      <p className="truncate text-sm">{name}</p>
+    <Link className="group flex items-center gap-2 overflow-hidden text-sm" href={link} target="_blank">
+      <p className="truncate">{name}</p>
       <hr className="min-w-8 grow border-subtle" />
-      <p className="truncate text-xs text-muted transition group-hover:text-accent group-focus-visible:text-accent">
-        {value}
+      <p className="truncate text-muted transition group-hover:text-accent group-focus-visible:text-accent">
+        {label}
       </p>
     </Link>
   );

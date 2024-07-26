@@ -11,7 +11,7 @@ const interests: React.ComponentProps<typeof Interest>[] = [
   { title: "psychology", description: "behavior and social" },
   { title: "philosophy", description: "metaphysics and epistemology" },
   { title: "design", description: "architecture and product design" },
-  { title: "art", description: "music and photography" },
+  { title: "media art", description: "photography and filmography" },
 ];
 
 const hobbies: React.ComponentProps<typeof Hobby>[] = [
@@ -29,7 +29,7 @@ const metadata = {
 function Bio(): React.ReactNode {
   return (
     <Container {...header}>
-      <div className="grid gap-8 sm:grid-cols-2">
+      <div className="flex flex-col justify-start gap-8 gap-x-12 sm:flex-row">
         <Category Component={Interest} items={interests} title="My Interests" />
         <Category Component={Hobby} items={hobbies} title="My Hobbies" />
       </div>

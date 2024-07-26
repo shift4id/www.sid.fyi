@@ -18,7 +18,7 @@
     --muted: var(--hue-muted) var(--sat-muted) 40%;
     --subtle: var(--hue-muted) var(--sat-muted) 85%;
 
-    --highlight: var(--hue-muted) var(--sat-muted) 90%;
+    --highlight: var(--hue-muted) var(--sat-muted) 85%;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -37,11 +37,7 @@
       --muted: var(--hue-muted) var(--sat-muted) 55%;
       --subtle: var(--hue-muted) var(--sat-muted) 15%;
 
-      --highlight: var(--hue-muted) var(--sat-muted) 10%;
+      --highlight: var(--hue-muted) var(--sat-muted) 15%;
     }
-  }
-
-  em {
-    @apply font-serif;
   }
 }

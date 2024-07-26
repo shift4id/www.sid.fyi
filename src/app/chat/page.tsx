@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Container, Grid } from "@/components";
-import { socials } from "@/constants/socials";
+import socials from "@/constants/socials.json";
 import { Item } from "./components";
 
 const metadata = { title: "Chat", description: "Let's have a conversation." } satisfies Metadata;

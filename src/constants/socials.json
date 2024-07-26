@@ -1,0 +1,37 @@
+[
+  {
+    "name": "email",
+    "label": "hi@sid.fyi",
+    "link": "mailto:hi@sid.fyi"
+  },
+  {
+    "name": "facebook",
+    "label": "Siddharth Adusumelli",
+    "link": "https://facebook.com/sid.adusumelli"
+  },
+  {
+    "name": "instagram",
+    "label": "@shift4id",
+    "link": "https://instagram.com/shift4id"
+  },
+  {
+    "name": "twitter",
+    "label": "@shift4id",
+    "link": "https://twitter.com/shift4id"
+  },
+  {
+    "name": "github",
+    "label": "@shift4id",
+    "link": "https://github.com/shift4id"
+  },
+  {
+    "name": "linkedin",
+    "label": "in/sid-a",
+    "link": "https://linkedin.com/in/sid-a"
+  },
+  {
+    "name": "spotify",
+    "label": "sidfrostbear",
+    "link": "https://open.spotify.com/user/sidfrostbear"
+  }
+]

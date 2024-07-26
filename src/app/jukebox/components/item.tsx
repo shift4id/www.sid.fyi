@@ -12,7 +12,7 @@ function Container({ isLoading, children, ...props }: ContainerProps): React.Rea
   return isLoading ? (
     <div {...props}>{children}</div>
   ) : (
-    <Link external {...props}>
+    <Link target="_blank" {...props}>
       {children}
     </Link>
   );

@@ -1,7 +1,7 @@
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Inter as Sans, Lora as Serif } from "next/font/google";
+import { Public_Sans as Sans } from "next/font/google";
 import { Footer, NavBar } from "@/components";
 import { cn } from "@/utils";
 import "@/styles/main.css";
@@ -10,13 +10,6 @@ const sans = Sans({
   weight: ["400"],
   style: ["normal"],
   variable: "--font-sans",
-  subsets: ["latin-ext"],
-});
-
-const serif = Serif({
-  weight: ["400"],
-  style: ["normal", "italic"],
-  variable: "--font-serif",
   subsets: ["latin-ext"],
 });
 
@@ -47,9 +40,8 @@ function Layout({ children }: React.PropsWithChildren): React.ReactNode {
     <html className="antialiased" lang="en">
       <body
         className={cn(
-          "mx-auto flex min-h-screen w-full max-w-3xl flex-col scroll-smooth bg-background p-6 font-sans text-foreground selection:bg-highlight",
+          "mx-auto w-full max-w-3xl scroll-smooth bg-background p-6 font-sans text-foreground selection:bg-highlight",
           sans.variable,
-          serif.variable,
         )}
       >
         <NavBar />

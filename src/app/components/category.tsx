@@ -13,9 +13,9 @@ function Category<T extends { title: string }>({
 }: CategoryProps<T>): React.ReactNode {
   return (
     <Section title={title}>
-      <ul className="mt-4 flex flex-col items-end gap-1">
+      <ul className="flex flex-col items-start gap-1">
         {items.map((item) => (
-          <li key={item.title} className="text-right text-sm">
+          <li key={item.title} className="text-sm">
             <Component key={item.title} {...item} />
           </li>
         ))}

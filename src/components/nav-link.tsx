@@ -17,14 +17,12 @@ function NavLink({ href, name }: NavLinkProps): React.ReactNode {
   return (
     <li>
       <Link
-        aria-disabled={active}
         href={href}
-        tabIndex={active ? -1 : undefined}
         className={cn(
           "select-none underline underline-offset-8 transition",
           active
             ? "decoration-accent"
-            : "decoration-subtle decoration-dotted hover:decoration-accent focus-visible:decoration-accent",
+            : "decoration-muted decoration-dotted hover:decoration-accent focus-visible:decoration-accent",
         )}
       >
         {name}
