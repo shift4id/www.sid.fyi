@@ -1,5 +1,5 @@
 // @ts-check
-const { resolve } = require("path");
+const { resolve } = require("node:path");
 
 const project = resolve(__dirname, "tsconfig.json");
 
