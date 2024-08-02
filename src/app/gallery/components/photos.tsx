@@ -24,7 +24,7 @@ const photos: React.ComponentProps<typeof Item>[] = [
 
 function Photos(): React.ReactNode {
   return (
-    <div className="gap-8 space-y-8 md:columns-2">
+    <div className="gap-8 space-y-8 sm:columns-2">
       {photos.map((photo) => (
         <Item key={photo.id} {...photo} />
       ))}

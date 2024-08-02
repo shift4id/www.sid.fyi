@@ -14,6 +14,9 @@ const config = {
   ].map((extend) => require.resolve(extend)),
   parserOptions: {
     project,
+    globals: {
+      React: true,
+    },
   },
   settings: {
     "import/resolver": {

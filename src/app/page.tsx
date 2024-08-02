@@ -22,7 +22,7 @@ const hobbies: React.ComponentProps<typeof Hobby>[] = [
 ];
 
 const metadata = {
-  title: "About",
+  title: "Sid A",
   description: [header.title, header.description].join(" "),
 } satisfies Metadata;
 
