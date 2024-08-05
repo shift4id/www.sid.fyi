@@ -15,7 +15,7 @@
     --background: var(--hue-muted) var(--sat-muted) 93%;
     --foreground: var(--hue-muted) var(--sat-muted) 0%;
 
-    --muted: var(--hue-muted) var(--sat-muted) 40%;
+    --muted: var(--hue-muted) var(--sat-muted) 35%;
     --subtle: var(--hue-muted) var(--sat-muted) 85%;
 
     --highlight: var(--hue-muted) var(--sat-muted) 85%;

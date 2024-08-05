@@ -1,16 +1,16 @@
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Public_Sans as Sans } from "next/font/google";
+import { Syne as Sans } from "next/font/google";
 import { Footer, NavBar } from "@/components";
 import { cn } from "@/utils";
 import "@/styles/main.css";
 
 const sans = Sans({
-  weight: ["400"],
-  style: ["normal"],
+  weight: "400",
+  style: "normal",
   variable: "--font-sans",
-  subsets: ["latin-ext"],
+  subsets: ["latin"],
 });
 
 const BASE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
