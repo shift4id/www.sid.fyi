@@ -10,6 +10,9 @@ const BASE_URL = "https://api.spotify.com/v1/me";
 
 const CURRENTLY_PLAYING_URL = `${BASE_URL}/player/currently-playing`;
 
+const TOP_URL = `${BASE_URL}/top`;
+const TOP_PARAMS = new URLSearchParams({ limit: "10", time_range: "short_term" });
+
 interface SpotifyItem {
   images: { url: string }[];
   external_urls: { spotify: string };
@@ -120,9 +123,6 @@ const getNowPlaying = async (): Promise<Song | undefined> => {
 };
 
 const getProfile = async (): Promise<Profile> => fetcher<SpotifyProfile>(BASE_URL).then(mapProfile);
-
-const TOP_URL = `${BASE_URL}/top`;
-const TOP_PARAMS = new URLSearchParams({ limit: "10", time_range: "short_term" });
 
 const getTopData = async <Response, Data>(type: string, map: (item: Response) => Data): Promise<Data[]> =>
   fetcher<{ items: Response[] }>(`${TOP_URL}/${type}?${TOP_PARAMS.toString()}`).then((r) => r.items.map(map));
