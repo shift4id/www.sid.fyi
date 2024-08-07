@@ -6,14 +6,14 @@ import { Footer, NavBar } from "@/components";
 import { cn } from "@/utils";
 import "@/styles/main.css";
 
+const BASE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
+
 const sans = Sans({
   weight: "400",
   style: "normal",
   variable: "--font-sans",
   subsets: ["latin"],
 });
-
-const BASE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 const name = "Siddharth Adusumelli";
 const title = "Sid A";

@@ -9,7 +9,7 @@ interface ItemProps {
 }
 
 function Item(props: ItemProps): React.ReactNode {
-  const { w, h, id } = props;
+  const { id, w, h } = props;
 
   return (
     <Image alt="" height={640 * (h / w)} sizes="640w" src={`${PHOTOS_URL}/${String(id)}.jpeg`} width={640} />

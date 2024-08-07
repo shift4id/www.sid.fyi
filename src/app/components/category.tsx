@@ -16,7 +16,7 @@ function Category<T extends { title: string }>({
       <ul className="flex flex-col items-start gap-1">
         {items.map((item) => (
           <li key={item.title} className="text-sm">
-            <Component key={item.title} {...item} />
+            <Component {...item} />
           </li>
         ))}
       </ul>

@@ -4,7 +4,7 @@ import { Category, Hobby, Interest } from "./components";
 
 const header: React.ComponentProps<typeof Container> = {
   title: "Siddharth Adusumelli",
-  description: "is a software engineer who enjoys crafting unique user experiences.",
+  description: "is a software engineer who enjoys crafting beautiful and accessible user experiences.",
 };
 
 const interests: React.ComponentProps<typeof Interest>[] = [

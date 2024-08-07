@@ -8,8 +8,7 @@ function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "/sitemap.xml",
-    host: BASE_URL,
+    sitemap: `${BASE_URL}/sitemap.xml`,
   };
 }
 
