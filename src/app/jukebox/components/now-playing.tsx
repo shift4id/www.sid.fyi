@@ -8,7 +8,7 @@ const defaultSong: Song = { name: "Not Playing", artist: "N/A", url: "https://sp
 
 const useNowPlaying = (): Song | Record<string, never> => {
   const { data: song, isLoading } = useSWR<Song | null>(
-    "/api/spotify/now-playing",
+    "/api/now-playing",
     (url: string) => fetch(url, { next: { revalidate: 60 } }).then((r) => r.json()),
     {
       refreshInterval: 60 * 1000,
