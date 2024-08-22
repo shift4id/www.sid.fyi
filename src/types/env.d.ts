@@ -10,6 +10,9 @@ declare namespace NodeJS {
     SPOTIFY_CLIENT_SECRET: string;
     SPOTIFY_REFRESH_TOKEN: string;
 
+    GITHUB_ACCESS_TOKEN: string;
+    GITHUB_USER_NAME: string;
+
     NOTION_API_KEY: string;
     BOOK_DATABASE_ID: string;
   }

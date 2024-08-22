@@ -16,7 +16,7 @@
     --foreground: var(--hue-muted) var(--sat-muted) 0%;
 
     --muted: var(--hue-muted) var(--sat-muted) 35%;
-    --subtle: var(--hue-muted) var(--sat-muted) 85%;
+    --subtle: var(--hue-muted) var(--sat-muted) 80%;
 
     --highlight: var(--hue-muted) var(--sat-muted) 85%;
   }
@@ -34,8 +34,8 @@
       --background: var(--hue-muted) var(--sat-muted) 7%;
       --foreground: var(--hue-muted) var(--sat-muted) 100%;
 
-      --muted: var(--hue-muted) var(--sat-muted) 55%;
-      --subtle: var(--hue-muted) var(--sat-muted) 15%;
+      --muted: var(--hue-muted) var(--sat-muted) 65%;
+      --subtle: var(--hue-muted) var(--sat-muted) 20%;
 
       --highlight: var(--hue-muted) var(--sat-muted) 15%;
     }
