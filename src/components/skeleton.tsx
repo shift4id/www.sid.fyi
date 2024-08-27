@@ -8,9 +8,12 @@ type SkeletonProps = React.PropsWithChildren<{
 function Skeleton({ loading, className, children }: SkeletonProps): React.ReactNode {
   if (loading)
     return (
-      <div aria-hidden className={cn("pointer-events-none block animate-pulse rounded bg-subtle", className)}>
+      <span
+        aria-hidden
+        className={cn("pointer-events-none block animate-pulse rounded bg-subtle", className)}
+      >
         &nbsp;
-      </div>
+      </span>
     );
 
   return children;
