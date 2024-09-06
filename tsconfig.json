@@ -4,8 +4,8 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "ES5",
+    "lib": ["ESNext", "DOM.Iterable", "DOM"],
     "allowJs": false,
     "skipLibCheck": true,
     "strict": true,
@@ -13,8 +13,8 @@
     "noEmit": true,
     "incremental": true,
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -24,14 +24,6 @@
       }
     ]
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.d.ts",
-    "next-env.d.ts",
-    "tailwind.config.ts",
-    "next.config.mjs",
-    ".next/types/**/*.ts"
-  ],
+  "include": ["src", "*.config.*", "next-env.d.ts", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
