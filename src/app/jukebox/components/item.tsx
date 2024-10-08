@@ -28,8 +28,8 @@ function Item(props: ItemProps): React.ReactNode {
       className="flex select-none gap-4 ring-accent/20 transition hover:text-accent focus-visible:text-accent"
       href={props.url}
     >
-      <Skeleton className="h-12 w-12 rounded-full" loading={isLoading}>
-        <div className="relative flex h-12 w-12 shrink-0 items-center justify-center text-2xl">
+      <Skeleton className="size-12 rounded-full" loading={isLoading}>
+        <div className="relative flex size-12 shrink-0 items-center justify-center text-2xl">
           {props.image ? (
             <>
               <Image
