@@ -1,10 +1,6 @@
 {
   "name": "www.sid.fyi",
-  "description": "A bit about sid.",
-  "keywords": [
-    "next.js",
-    "tailwindcss"
-  ],
+  "description": "The source code for www.sid.fyi",
   "homepage": "https://sid.fyi",
   "bugs": {
     "url": "https://github.com/shift4id/www.sid.fyi/issues",
@@ -44,7 +40,7 @@
     "@types/eslint": "^8.56.12",
     "@types/node": "^22.7.5",
     "@types/react": "^18.3.11",
-    "@types/react-dom": "^18.3.0",
+    "@types/react-dom": "^18.3.1",
     "@typescript-eslint/eslint-plugin": "^8.8.1",
     "@typescript-eslint/parser": "^8.8.1",
     "@vercel/style-guide": "^6.0.0",
