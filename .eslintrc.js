@@ -19,11 +19,6 @@ const config = {
     },
   },
   settings: {
-    "import/resolver": {
-      typescript: {
-        project,
-      },
-    },
     "jsx-a11y": {
       components: {
         Image: "img",

@@ -1,30 +1,32 @@
 "use client";
 
-import useSWR from "swr";
+import axios from "axios";
+import { Suspense, use, useMemo } from "react";
 import type { Song } from "@/lib/spotify";
 import { Item } from "./item";
 
-const defaultSong: Song = { name: "Silence", artist: "N/A", url: "https://spotify.com", type: "song" };
+export const defaultSong: Song = { name: "Silence", artist: "N/A", url: "https://spotify.com", type: "song" };
 
-const useNowPlaying = (): Song | Record<string, never> => {
-  const { data: song, isLoading } = useSWR<Song | null>(
-    "/api/now-playing",
-    (url: string) => fetch(url, { next: { revalidate: 60 } }).then((r) => r.json()),
-    {
-      refreshInterval: 60 * 1000,
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-      revalidateIfStale: false,
-    },
-  );
+export const fetchNowPlaying = async (): Promise<Song> => {
+  const song = await axios.get<Song | null>("/api/now-playing").then((r) => r.data);
 
-  return isLoading ? {} : (song ?? defaultSong);
+  return song ?? defaultSong;
 };
 
-function NowPlaying(): React.ReactNode {
-  const nowPlaying = useNowPlaying();
+function NowPlayingItem({ nowPlayingPromise }: { nowPlayingPromise: Promise<Song> }): React.ReactNode {
+  const nowPlaying = use(nowPlayingPromise);
 
   return <Item {...nowPlaying} />;
+}
+
+function NowPlaying(): React.ReactNode {
+  const nowPlayingPromise = useMemo(() => fetchNowPlaying(), []);
+
+  return (
+    <Suspense fallback={<Item />}>
+      <NowPlayingItem nowPlayingPromise={nowPlayingPromise} />
+    </Suspense>
+  );
 }
 
 export { NowPlaying };
