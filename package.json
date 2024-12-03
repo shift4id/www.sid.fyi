@@ -28,27 +28,27 @@
     "@vercel/analytics": "^1.4.1",
     "@vercel/kv": "^3.0.0",
     "@vercel/speed-insights": "^1.1.0",
-    "axios": "^1.7.7",
-    "next": "^14.2.18",
+    "axios": "^1.7.8",
+    "next": "^14.2.19",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@next/env": "^14.2.18",
-    "@next/eslint-plugin-next": "^14.2.18",
+    "@next/env": "^14.2.19",
+    "@next/eslint-plugin-next": "^14.2.19",
     "@types/eslint": "^8.56.12",
-    "@types/node": "^22.9.1",
+    "@types/node": "^22.10.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vercel/style-guide": "^6.0.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
     "postcss": "^8.4.49",
-    "prettier": "^3.3.3",
-    "prettier-plugin-packagejson": "^2.5.5",
+    "prettier": "^3.4.1",
+    "prettier-plugin-packagejson": "^2.5.6",
     "prettier-plugin-tailwindcss": "^0.6.9",
-    "tailwindcss": "^3.4.15",
-    "typescript": "~5.5.4"
+    "tailwindcss": "^3.4.16",
+    "typescript": "~5.7.2"
   },
-  "packageManager": "yarn@4.5.1"
+  "packageManager": "yarn@4.5.3"
 }
