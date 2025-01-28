@@ -20,9 +20,9 @@ function Item(props: ItemProps): React.ReactNode {
             {props.title}
           </Skeleton>
         </p>
-        <hr className="w-8 border-subtle" />
-        <p className="truncate text-xs text-muted">
-          <Skeleton className="w-28" loading={isLoading}>
+        <hr className="border-subtle w-8" />
+        <p className="text-muted truncate text-xs">
+          <Skeleton className="w-24" loading={isLoading}>
             {props.author}
           </Skeleton>
         </p>

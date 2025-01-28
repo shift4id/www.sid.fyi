@@ -8,7 +8,7 @@ function Footer(): React.ReactNode {
         {socials.map(({ name, link }) => (
           <Link
             key={name}
-            className="p-1 text-muted transition hover:text-accent focus-visible:text-accent"
+            className="text-muted hover:text-accent focus-visible:text-accent p-1 transition"
             href={link}
             target="_blank"
           >

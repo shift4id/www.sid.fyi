@@ -19,10 +19,10 @@ function NavLink({ href, name }: NavLinkProps): React.ReactNode {
       <Link
         href={href}
         className={cn(
-          "select-none underline underline-offset-8 transition",
+          "underline underline-offset-8 transition select-none",
           active
             ? "decoration-accent"
-            : "decoration-muted decoration-dotted hover:decoration-accent focus-visible:decoration-accent",
+            : "decoration-muted hover:decoration-accent focus-visible:decoration-accent decoration-dotted",
         )}
       >
         {name}

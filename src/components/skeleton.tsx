@@ -10,7 +10,7 @@ function Skeleton({ loading, className, children }: SkeletonProps): React.ReactN
     return (
       <span
         aria-hidden
-        className={cn("pointer-events-none block animate-pulse rounded bg-subtle", className)}
+        className={cn("bg-subtle pointer-events-none block animate-pulse rounded", className)}
       >
         &nbsp;
       </span>

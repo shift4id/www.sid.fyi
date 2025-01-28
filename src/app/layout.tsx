@@ -40,7 +40,7 @@ function Layout({ children }: React.PropsWithChildren): React.ReactNode {
     <html className="scroll-smooth antialiased" lang="en">
       <body
         className={cn(
-          "mx-auto w-full max-w-3xl bg-background p-6 font-sans text-foreground selection:bg-highlight sm:pt-20",
+          "bg-background text-foreground selection:bg-highlight mx-auto w-full max-w-3xl p-6 font-sans sm:pt-20",
           sans.variable,
         )}
       >
