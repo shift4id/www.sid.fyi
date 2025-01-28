@@ -39,8 +39,8 @@
     "@next/eslint-plugin-next": "^15.1.6",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/eslint": "^8.56.12",
-    "@types/node": "^22.10.7",
-    "@types/react": "^19.0.7",
+    "@types/node": "^22.12.0",
+    "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vercel/style-guide": "^6.0.0",
     "eslint": "^8.57.1",
@@ -48,7 +48,7 @@
     "postcss-load-config": "^6.0.1",
     "prettier": "^3.4.2",
     "prettier-plugin-packagejson": "^2.5.8",
-    "prettier-plugin-tailwindcss": "^0.6.10",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "typescript": "^5.7.3"
   },
   "packageManager": "yarn@4.6.0"
