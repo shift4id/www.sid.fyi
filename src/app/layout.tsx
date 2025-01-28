@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Syne as Sans } from "next/font/google";
 import { Footer, NavBar } from "@/components";
 import { cn } from "@/utils";
-import "@/styles/main.css";
+import "@/styles/globals.css";
 
 const BASE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 

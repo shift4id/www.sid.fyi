@@ -5,7 +5,6 @@
  */
 const config = {
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     remotePatterns: [
       { hostname: "*.(scdn.co|spotifycdn.com)" },

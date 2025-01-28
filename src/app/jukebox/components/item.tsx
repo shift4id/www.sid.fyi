@@ -25,7 +25,7 @@ function Item(props: ItemProps): React.ReactNode {
 
   return (
     <Container
-      className="flex select-none gap-4 ring-accent/20 transition hover:text-accent focus-visible:text-accent"
+      className="ring-accent/20 hover:text-accent focus-visible:text-accent flex gap-4 transition select-none"
       href={props.url}
     >
       <Skeleton className="size-12 rounded-full" loading={isLoading}>
@@ -40,7 +40,7 @@ function Item(props: ItemProps): React.ReactNode {
                 src={props.image}
               />
               {props.type === "song" ? (
-                <div className="absolute inset-4 z-10 rounded-full bg-background" />
+                <div className="bg-background absolute inset-4 z-10 rounded-full" />
               ) : null}
             </>
           ) : (
@@ -54,7 +54,7 @@ function Item(props: ItemProps): React.ReactNode {
             {props.name}
           </Skeleton>
         </p>
-        <p className="truncate text-xs text-muted">
+        <p className="text-muted truncate text-xs">
           <Skeleton className="w-20" loading={isLoading}>
             {"type" in props && (
               <>
