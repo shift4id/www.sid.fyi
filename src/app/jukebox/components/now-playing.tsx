@@ -4,10 +4,10 @@ import { Suspense, use, useMemo } from "react";
 import type { Song } from "@/lib/spotify";
 import { Item } from "./item";
 
-export const defaultSong: Song = { name: "Silence", artist: "N/A", url: "https://spotify.com", type: "song" };
+const defaultSong: Song = { name: "Silence", artist: "N/A", url: "https://spotify.com", type: "song" };
 
-export const fetchNowPlaying = async (): Promise<Song> => {
-  const song = await fetch(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/now-playing`)
+const fetchNowPlaying = async (): Promise<Song> => {
+  const song = await fetch("/api/now-playing")
     .then((r) => r.json() as Promise<Song | null>)
     .catch(() => null);
 
