@@ -1,5 +1,5 @@
-import { Link } from "@/components";
 import type socials from "@/constants/socials.json";
+import { Link } from "@/components";
 
 type Social = (typeof socials)[number];
 

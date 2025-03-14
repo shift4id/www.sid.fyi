@@ -1,5 +1,6 @@
+import { serverEnv } from "@/constants/env";
 import { createClient } from "@vercel/kv";
 
-const redis = createClient({ url: process.env.REDIS_REST_API_URL, token: process.env.REDIS_REST_API_TOKEN });
+const redis = createClient({ url: serverEnv.REDIS_REST_API_URL, token: serverEnv.REDIS_REST_API_TOKEN });
 
 export { redis };

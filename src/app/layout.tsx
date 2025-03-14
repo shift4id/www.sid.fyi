@@ -1,12 +1,13 @@
+import type { Metadata } from "next";
+import { Footer, NavBar } from "@/components";
+import { clientEnv } from "@/constants/env";
+import { cn } from "@/utils";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import type { Metadata } from "next";
 import { Syne as Sans } from "next/font/google";
-import { Footer, NavBar } from "@/components";
-import { cn } from "@/utils";
 import "@/styles/globals.css";
 
-const BASE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
+const { WEBSITE_URL } = clientEnv;
 
 const sans = Sans({
   weight: "400",
@@ -20,17 +21,17 @@ const title = "Sid A";
 const description = "A bit about Sid.";
 
 const metadata = {
-  metadataBase: new URL(BASE_URL),
+  metadataBase: new URL(WEBSITE_URL),
   title: { default: title, template: `%s | ${title}` },
   description,
   applicationName: "Sid A",
-  authors: [{ name, url: BASE_URL }],
+  authors: [{ name, url: WEBSITE_URL }],
   generator: "Next.js",
   referrer: "origin",
   creator: name,
   publisher: name,
-  alternates: { canonical: BASE_URL },
-  openGraph: { type: "website", url: BASE_URL, title, description },
+  alternates: { canonical: WEBSITE_URL },
+  openGraph: { type: "website", url: WEBSITE_URL, title, description },
   twitter: { card: "summary_large_image", site: "@shift4id", creator: "@shift4id", title, description },
   category: "personal",
 } satisfies Metadata;

@@ -1,10 +1,10 @@
-import Image from "next/image";
-import { Skeleton } from "@/components";
 import type { Book } from "@/lib/notion";
+import { Skeleton } from "@/components";
+import Image from "next/image";
 
 type ItemProps = Book | Record<string, never>;
 
-function Item(props: ItemProps): React.ReactNode {
+function Item({ ...props }: ItemProps): React.ReactNode {
   const isLoading = !("title" in props);
 
   return (

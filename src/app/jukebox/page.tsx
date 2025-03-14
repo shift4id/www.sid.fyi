@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import React, { Suspense } from "react";
 import { Container, Grid, Section } from "@/components";
 import { getProfile, getTopArtists, getTopSongs } from "@/lib/spotify";
+import React, { Suspense } from "react";
 import { Item } from "./components/item";
 import { NowPlaying } from "./components/now-playing";
 

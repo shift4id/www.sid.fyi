@@ -6,7 +6,7 @@ type SkeletonProps = React.PropsWithChildren<{
 }>;
 
 function Skeleton({ loading, className, children }: SkeletonProps): React.ReactNode {
-  if (loading)
+  if (loading) {
     return (
       <span
         aria-hidden
@@ -15,6 +15,7 @@ function Skeleton({ loading, className, children }: SkeletonProps): React.ReactN
         &nbsp;
       </span>
     );
+  }
 
   return children;
 }

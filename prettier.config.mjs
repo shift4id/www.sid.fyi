@@ -7,4 +7,4 @@ const config = {
   plugins: ["prettier-plugin-packagejson", "prettier-plugin-tailwindcss"],
 };
 
-module.exports = config;
+export default config;

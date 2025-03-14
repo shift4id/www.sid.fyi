@@ -1,8 +1,12 @@
+import { Buffer } from "node:buffer";
+import { serverEnv } from "@/constants/env";
 import { redis } from "./redis";
 
-const clientId = process.env.SPOTIFY_CLIENT_ID;
-const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
-const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
+const {
+  SPOTIFY_CLIENT_ID: clientId,
+  SPOTIFY_CLIENT_SECRET: clientSecret,
+  SPOTIFY_REFRESH_TOKEN: refreshToken,
+} = serverEnv;
 
 const authorization = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
 const TOKEN_URL = `https://accounts.spotify.com/api/token`;
@@ -50,7 +54,7 @@ interface Song extends Item {
   type: "song";
 }
 
-const getAccessToken = async (): Promise<string> => {
+async function getAccessToken(): Promise<string> {
   const storedToken = await redis.get<string>("access_token");
   if (storedToken) return storedToken;
 
@@ -74,38 +78,45 @@ const getAccessToken = async (): Promise<string> => {
 
   await redis.set("access_token", accessToken, { ex: expiresIn });
   return accessToken;
-};
+}
 
-const mapArtist = (item: SpotifyArtist): Profile => ({
-  name: item.name,
-  image: item.images[0].url,
-  followers: item.followers.total,
-  url: item.external_urls.spotify,
-  type: "profile",
-});
+function mapArtist(item: SpotifyArtist): Profile {
+  return {
+    name: item.name,
+    image: item.images[0].url,
+    followers: item.followers.total,
+    url: item.external_urls.spotify,
+    type: "profile",
+  };
+}
 
-const mapProfile = (item: SpotifyProfile): Profile => ({
-  name: item.display_name,
-  image: item.images[0].url,
-  followers: item.followers.total,
-  url: item.external_urls.spotify,
-  type: "profile",
-});
+function mapProfile(item: SpotifyProfile): Profile {
+  return {
+    name: item.display_name,
+    image: item.images[0].url,
+    followers: item.followers.total,
+    url: item.external_urls.spotify,
+    type: "profile",
+  };
+}
 
-const mapSong = (item: SpotifySong): Song => ({
-  name: item.name,
-  image: item.album.images[0].url,
-  artist: item.artists.map(({ name }) => name).join(", "),
-  url: item.external_urls.spotify,
-  type: "song",
-});
+function mapSong(item: SpotifySong): Song {
+  return {
+    name: item.name,
+    image: item.album.images[0].url,
+    artist: item.artists.map(({ name }) => name).join(", "),
+    url: item.external_urls.spotify,
+    type: "song",
+  };
+}
 
-const fetcher = async <T>(url: string): Promise<T> =>
-  fetch(url, {
+async function fetcher<T>(url: string): Promise<T> {
+  return fetch(url, {
     headers: { Authorization: `Bearer ${await getAccessToken()}` },
   }).then((r) => r.json()) as T;
+}
 
-const getNowPlaying = async (): Promise<Song | undefined> => {
+async function getNowPlaying(): Promise<Song | undefined> {
   const storedSong = await redis.get<Song>("song");
   if (storedSong) return storedSong;
 
@@ -120,12 +131,15 @@ const getNowPlaying = async (): Promise<Song | undefined> => {
 
   if (song) await redis.set("song", song, { ex: 60 });
   return song;
-};
+}
 
 const getProfile = async (): Promise<Profile> => fetcher<SpotifyProfile>(BASE_URL).then(mapProfile);
 
-const getTopData = async <Response, Data>(type: string, map: (item: Response) => Data): Promise<Data[]> =>
-  fetcher<{ items: Response[] }>(`${TOP_URL}/${type}?${TOP_PARAMS.toString()}`).then((r) => r.items.map(map));
+async function getTopData<Response, Data>(type: string, map: (item: Response) => Data): Promise<Data[]> {
+  return fetcher<{ items: Response[] }>(`${TOP_URL}/${type}?${TOP_PARAMS.toString()}`).then((r) =>
+    r.items.map(map),
+  );
+}
 
 const getTopArtists = (): Promise<Profile[]> => getTopData("artists", mapArtist);
 

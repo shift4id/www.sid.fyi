@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { Container, Grid } from "@/components";
 import { getBooks } from "@/lib/notion";
+import { Suspense } from "react";
 import { Item } from "./components";
 
 const fallbackValue = {};

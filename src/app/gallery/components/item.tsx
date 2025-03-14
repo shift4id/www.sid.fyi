@@ -1,6 +1,7 @@
+import { clientEnv } from "@/constants/env";
 import Image from "next/image";
 
-const PHOTOS_URL = `${process.env.NEXT_PUBLIC_CDN_URL}/photos`;
+const PHOTOS_URL = `${clientEnv.CDN_URL}/photos`;
 
 interface ItemProps {
   w: number;

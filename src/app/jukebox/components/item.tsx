@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { Link, Skeleton } from "@/components";
 import type { Profile, Song } from "@/lib/spotify";
+import { Link, Skeleton } from "@/components";
 import { cn } from "@/utils";
+import Image from "next/image";
 
 type ContainerProps = React.PropsWithChildren<{
   href: string;
@@ -20,7 +20,7 @@ function Container({ children, href, ...props }: ContainerProps): React.ReactNod
 
 type ItemProps = Profile | Song | Record<string, never>;
 
-function Item(props: ItemProps): React.ReactNode {
+function Item({ ...props }: ItemProps): React.ReactNode {
   const isLoading = !("type" in props);
 
   return (
