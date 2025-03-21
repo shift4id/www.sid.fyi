@@ -15,4 +15,7 @@ export default antfu(
   compat.config({
     extends: ["plugin:@next/next/recommended"],
   }),
+  {
+    ignores: ["package.json"],
+  },
 );
