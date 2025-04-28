@@ -6,8 +6,9 @@ interface InterestProps {
 function Interest({ title, description }: InterestProps): React.ReactNode {
   return (
     <div className="py-1">
-      {title} &mdash;
-      <span className="text-muted">{description}</span>
+      {title}
+      <span className="text-muted px-1">&mdash;</span>
+      {description}
     </div>
   );
 }
