@@ -1,5 +1,5 @@
-import { cn } from "@/utils";
 import NextLink from "next/link";
+import { cn } from "@/utils";
 
 type LinkProps = Omit<React.ComponentProps<typeof NextLink>, "rel">;
 

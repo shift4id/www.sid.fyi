@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Footer, NavBar } from "@/components";
-import { clientEnv } from "@/constants/env";
-import { cn } from "@/utils";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Syne as Sans } from "next/font/google";
+import { Footer, NavBar } from "@/components";
+import { clientEnv } from "@/constants/env";
+import { cn } from "@/utils";
 import "@/styles/globals.css";
 
 const { WEBSITE_URL } = clientEnv;

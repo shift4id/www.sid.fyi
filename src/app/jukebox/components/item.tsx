@@ -1,7 +1,7 @@
 import type { Profile, Song } from "@/lib/spotify";
+import Image from "next/image";
 import { Link, Skeleton } from "@/components";
 import { cn } from "@/utils";
-import Image from "next/image";
 
 type ContainerProps = React.PropsWithChildren<{
   href: string;

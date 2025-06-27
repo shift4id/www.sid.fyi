@@ -2,8 +2,8 @@ import type {
   PageObjectResponse as Page,
   TextRichTextItemResponse as RichText,
 } from "@notionhq/client/build/src/api-endpoints";
-import { serverEnv } from "@/constants/env";
 import { Client } from "@notionhq/client";
+import { serverEnv } from "@/constants/env";
 
 const notion = new Client({ auth: serverEnv.NOTION_API_KEY });
 

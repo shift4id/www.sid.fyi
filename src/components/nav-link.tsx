@@ -1,8 +1,8 @@
 "use client";
 
-import { cn } from "@/utils";
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
+import { cn } from "@/utils";
 import { Link } from "./link";
 
 interface NavLinkProps {
