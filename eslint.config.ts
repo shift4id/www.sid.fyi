@@ -12,9 +12,7 @@ export default antfu(
     stylistic: false,
     react: true,
   },
-  compat.config({
-    extends: ["plugin:@next/next/recommended"],
-  }),
+  compat.extends("plugin:@next/next/recommended"),
   {
     ignores: ["package.json"],
   },
