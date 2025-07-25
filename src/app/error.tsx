@@ -3,10 +3,11 @@
 import type { Metadata } from "next";
 import { Container } from "@/components";
 
-const metadata = { title: "Error", description: "Something went wrong..." } satisfies Metadata;
+const containerProps = { title: "Error", description: "Something went wrong..." };
+const metadata: Metadata = containerProps;
 
 function Error(): React.ReactNode {
-  return <Container {...metadata} />;
+  return <Container {...containerProps} />;
 }
 
 export { metadata };

@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import { Container } from "@/components";
 import { Photos } from "./components/photos";
 
-const metadata = {
+const containerProps = {
   title: "Gallery",
   description: "Experience the world through my lens.",
-} satisfies Metadata;
+};
+const metadata: Metadata = containerProps;
 
 function Gallery(): React.ReactNode {
   return (
-    <Container {...metadata}>
+    <Container {...containerProps}>
       <Photos />
     </Container>
   );

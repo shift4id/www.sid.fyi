@@ -13,16 +13,17 @@ async function BooksGrid(): Promise<React.JSX.Element> {
   return <Grid Of={Item} items={books} />;
 }
 
-const metadata = {
+const containerProps = {
   title: "Library",
   description: "Explore various books that have influenced my thinking.",
-} satisfies Metadata;
+};
+const metadata: Metadata = containerProps;
 
 const revalidate = 60 * 60;
 
 function Library(): React.ReactNode {
   return (
-    <Container {...metadata}>
+    <Container {...containerProps}>
       <Suspense fallback={<Grid Of={Item} items={fallbackData} />}>
         <BooksGrid />
       </Suspense>

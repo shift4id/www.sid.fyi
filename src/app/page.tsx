@@ -23,10 +23,11 @@ const hobbies: React.ComponentProps<typeof Hobby>[] = [
   { title: "having conversations", href: "/chat" },
 ];
 
-const metadata = {
+const containerProps = {
   title: "Sid A",
-  description: [header.title, header.description].join(" "),
-} satisfies Metadata;
+  description: `${header.title} ${header.description}`,
+};
+const metadata: Metadata = containerProps;
 
 function Bio(): React.ReactNode {
   return (

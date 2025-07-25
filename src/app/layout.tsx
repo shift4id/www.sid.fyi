@@ -20,7 +20,7 @@ const name = "Siddharth Adusumelli";
 const title = "Sid A";
 const description = "A bit about Sid.";
 
-const metadata = {
+const metadata: Metadata = {
   metadataBase: new URL(WEBSITE_URL),
   title: { default: title, template: `%s | ${title}` },
   description,
@@ -34,7 +34,7 @@ const metadata = {
   openGraph: { type: "website", url: WEBSITE_URL, title, description },
   twitter: { card: "summary_large_image", site: "@shift4id", creator: "@shift4id", title, description },
   category: "personal",
-} satisfies Metadata;
+};
 
 function Layout({ children }: React.PropsWithChildren): React.ReactNode {
   return (

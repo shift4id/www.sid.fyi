@@ -26,16 +26,17 @@ async function TopSongsGrid(): Promise<React.JSX.Element> {
   return <Grid Of={Item} items={songs} />;
 }
 
-const metadata = {
+const containerProps = {
   title: "Jukebox",
   description: "Listen to my favorite songs, artists, and check out my profile.",
-} satisfies Metadata;
+};
+const metadata: Metadata = containerProps;
 
 const revalidate = 60 * 60;
 
 function Jukebox(): React.ReactNode {
   return (
-    <Container {...metadata}>
+    <Container {...containerProps}>
       <Grid
         Of={Section}
         items={[
