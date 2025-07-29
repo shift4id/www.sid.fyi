@@ -13,7 +13,7 @@ const interests: React.ComponentProps<typeof Interest>[] = [
   { title: "psychology", description: "behavior and social" },
   { title: "philosophy", description: "metaphysics and epistemology" },
   { title: "design", description: "architecture and product design" },
-  { title: "media art", description: "photography and filmography" },
+  { title: "media art", description: "photography and cinematography" },
 ];
 
 const hobbies: React.ComponentProps<typeof Hobby>[] = [
