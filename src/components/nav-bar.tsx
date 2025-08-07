@@ -11,7 +11,6 @@ const links: React.ComponentProps<typeof NavLink>[] = [
 function NavBar(): React.ReactNode {
   return (
     <header className="bg-background sticky inset-x-0 top-0 z-10 flex flex-col gap-4 py-6">
-      <p className="text-muted text-xs uppercase select-none">Siddharth Adusumelli</p>
       <ul className="flex gap-6 text-sm">
         {links.map((link) => (
           <NavLink key={link.name} {...link} />

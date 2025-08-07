@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Syne as Sans } from "next/font/google";
+import { Syne as Font } from "next/font/google";
 import { Footer, NavBar } from "@/components";
 import { clientEnv } from "@/constants/env";
 import { cn } from "@/utils";
@@ -9,10 +9,10 @@ import "@/styles/globals.css";
 
 const { WEBSITE_URL } = clientEnv;
 
-const sans = Sans({
+const font = Font({
   weight: "400",
-  style: "normal",
-  variable: "--font-sans",
+  style: ["normal"],
+  variable: "--font-font",
   subsets: ["latin"],
 });
 
@@ -32,7 +32,13 @@ const metadata: Metadata = {
   publisher: name,
   alternates: { canonical: WEBSITE_URL },
   openGraph: { type: "website", url: WEBSITE_URL, title, description },
-  twitter: { card: "summary_large_image", site: "@shift4id", creator: "@shift4id", title, description },
+  twitter: {
+    card: "summary_large_image",
+    site: "@shift4id",
+    creator: "@shift4id",
+    title,
+    description,
+  },
   category: "personal",
 };
 
@@ -41,8 +47,8 @@ function Layout({ children }: React.PropsWithChildren): React.ReactNode {
     <html className="scroll-smooth antialiased" lang="en">
       <body
         className={cn(
-          "bg-background text-foreground selection:bg-highlight mx-auto w-full max-w-3xl p-6 font-sans sm:pt-20",
-          sans.variable,
+          "bg-background text-foreground selection:bg-highlight font-font mx-auto w-full max-w-3xl p-6 sm:pt-20",
+          font.variable,
         )}
       >
         <NavBar />

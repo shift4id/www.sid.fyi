@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-sans);
+  --font-font: var(--font-font);
 
   --color-accent: hsl(300, 100%, 75%);
 
