@@ -4,7 +4,12 @@ import type { Song } from "@/lib/spotify";
 import { Suspense, use, useMemo } from "react";
 import { Item } from "./item";
 
-const defaultSong: Song = { name: "Silence", artist: "N/A", url: "https://spotify.com", type: "song" };
+const defaultSong: Song = {
+  name: "Silence",
+  artist: "N/A",
+  url: "https://spotify.com",
+  type: "song",
+};
 
 async function fetchNowPlaying(): Promise<Song> {
   const song = await fetch("/api/now-playing")
