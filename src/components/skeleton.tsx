@@ -1,4 +1,4 @@
-import { cn } from "@/utils";
+import { cn } from "@/utils/cn";
 
 type SkeletonProps = React.PropsWithChildren<{
   className?: string;

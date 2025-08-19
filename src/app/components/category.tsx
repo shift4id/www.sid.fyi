@@ -1,4 +1,4 @@
-import { Section } from "@/components";
+import { Section } from "@/components/section";
 
 interface CategoryProps<T> {
   title: string;

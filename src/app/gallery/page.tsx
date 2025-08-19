@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Container } from "@/components";
+import { Container } from "@/components/container";
 import { Photos } from "./components/photos";
 
 const containerProps = {

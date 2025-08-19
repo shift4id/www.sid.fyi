@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Container, Grid } from "@/components";
+import { Container } from "@/components/container";
+import { Grid } from "@/components/grid";
 import socials from "@/constants/socials.json";
 import { Item } from "./components/item";
 

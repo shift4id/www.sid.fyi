@@ -1,6 +1,6 @@
 import type { Book } from "@/lib/notion";
 import Image from "next/image";
-import { Skeleton } from "@/components";
+import { Skeleton } from "@/components/skeleton";
 
 type ItemProps = Book | Record<string, never>;
 

@@ -1,7 +1,7 @@
 "use client";
 
 import type { Metadata } from "next";
-import { Container } from "@/components";
+import { Container } from "@/components/container";
 
 const containerProps = { title: "Error", description: "Something went wrong..." };
 const metadata: Metadata = containerProps;

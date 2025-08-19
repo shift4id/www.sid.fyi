@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Container, Grid } from "@/components";
+import { Container } from "@/components/container";
+import { Grid } from "@/components/grid";
 import { getBooks } from "@/lib/notion";
-import { Item } from "./components";
+import { Item } from "./components/item";
 
 const fallbackValue = {};
 const fallbackData = Array.from<typeof fallbackValue>({ length: 10 }).fill(fallbackValue);

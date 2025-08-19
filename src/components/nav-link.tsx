@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
-import { cn } from "@/utils";
+import { cn } from "@/utils/cn";
 import { Link } from "./link";
 
 interface NavLinkProps {

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Container } from "@/components";
+import { Container } from "@/components/container";
 import { Category } from "./components/category";
 import { Hobby } from "./components/hobby";
 import { Interest } from "./components/interest";
