@@ -1,6 +1,6 @@
 {
   "name": "www.sid.fyi",
-  "packageManager": "yarn@4.9.3",
+  "packageManager": "yarn@4.9.4",
   "description": "The source code for www.sid.fyi",
   "author": {
     "name": "Siddharth Adusumelli",
