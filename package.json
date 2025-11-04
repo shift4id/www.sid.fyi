@@ -26,29 +26,29 @@
     "type-check": "tsc --noEmit --pretty"
   },
   "dependencies": {
-    "@notionhq/client": "^5.1.0",
+    "@notionhq/client": "^5.3.0",
     "@vercel/analytics": "^1.5.0",
     "@vercel/kv": "^3.0.0",
     "@vercel/speed-insights": "^1.2.0",
-    "next": "^15.5.4",
+    "next": "^16.0.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "tailwindcss": "^4.1.14"
+    "tailwindcss": "^4.1.16"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.4.1",
-    "@eslint-react/eslint-plugin": "^1.53.1",
-    "@next/eslint-plugin-next": "^15.5.4",
-    "@tailwindcss/postcss": "^4.1.14",
-    "@types/node": "^24.6.2",
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
-    "eslint": "^9.36.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.23",
+    "@antfu/eslint-config": "^6.2.0",
+    "@eslint-react/eslint-plugin": "^2.3.1",
+    "@next/eslint-plugin-next": "^16.0.1",
+    "@tailwindcss/postcss": "^4.1.16",
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
-    "prettier-plugin-tailwindcss": "^0.6.14",
+    "prettier-plugin-tailwindcss": "^0.7.1",
     "typescript": "^5.9.3"
   }
 }
