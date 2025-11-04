@@ -6,7 +6,7 @@ interface CategoryProps<T> {
   Component: React.FC<T>;
 }
 
-function Category<T extends { title: string }>({
+export function Category<T extends { title: string }>({
   title,
   items,
   Component,
@@ -23,5 +23,3 @@ function Category<T extends { title: string }>({
     </Section>
   );
 }
-
-export { Category };

@@ -3,7 +3,7 @@ import { clientEnv } from "@/constants/env";
 
 const { WEBSITE_URL } = clientEnv;
 
-function robots(): MetadataRoute.Robots {
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
@@ -13,5 +13,3 @@ function robots(): MetadataRoute.Robots {
     host: WEBSITE_URL,
   };
 }
-
-export default robots;

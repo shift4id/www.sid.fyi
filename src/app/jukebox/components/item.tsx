@@ -21,7 +21,7 @@ function Container({ children, href, ...props }: ContainerProps): React.ReactNod
 
 type ItemProps = Profile | Song | Record<string, never>;
 
-function Item({ ...props }: ItemProps): React.ReactNode {
+export function Item({ ...props }: ItemProps): React.ReactNode {
   const isLoading = !("type" in props);
 
   return (
@@ -69,5 +69,3 @@ function Item({ ...props }: ItemProps): React.ReactNode {
     </Container>
   );
 }
-
-export { Item };

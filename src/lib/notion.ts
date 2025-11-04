@@ -7,7 +7,7 @@ import { serverEnv } from "@/constants/env";
 
 const notion = new Client({ auth: serverEnv.NOTION_API_KEY });
 
-interface Book {
+export interface Book {
   id: string;
   title: string;
   author: string;
@@ -23,7 +23,7 @@ function getBookData(page: Page): Book {
   };
 }
 
-async function getBooks(): Promise<Book[]> {
+export async function getBooks(): Promise<Book[]> {
   return await notion.dataSources
     .query({
       data_source_id: serverEnv.BOOK_DATA_SOURCE_ID,
@@ -31,6 +31,3 @@ async function getBooks(): Promise<Book[]> {
     })
     .then(({ results }) => results.filter((page): page is Page => page.object === "page").map(getBookData));
 }
-
-export type { Book };
-export { getBooks };

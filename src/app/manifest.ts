@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-function manifest(): MetadataRoute.Manifest {
+export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "sid.fyi",
     short_name: "sid.fyi",
@@ -11,5 +11,3 @@ function manifest(): MetadataRoute.Manifest {
     theme_color: "#8080ff",
   };
 }
-
-export default manifest;

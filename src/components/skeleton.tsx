@@ -5,7 +5,7 @@ type SkeletonProps = React.PropsWithChildren<{
   loading?: boolean;
 }>;
 
-function Skeleton({ loading, className, children }: SkeletonProps): React.ReactNode {
+export function Skeleton({ loading, className, children }: SkeletonProps): React.ReactNode {
   if (loading) {
     return (
       <span
@@ -19,5 +19,3 @@ function Skeleton({ loading, className, children }: SkeletonProps): React.ReactN
 
   return children;
 }
-
-export { Skeleton };

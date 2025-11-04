@@ -1,7 +1,9 @@
 import antfu from "@antfu/eslint-config";
 
-export default antfu({
+const config = antfu({
   nextjs: true,
   react: true,
   stylistic: false,
 });
+
+export default config;

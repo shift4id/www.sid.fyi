@@ -21,7 +21,7 @@ const name = "Siddharth Adusumelli";
 const title = "Sid A";
 const description = "A bit about Sid.";
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(WEBSITE_URL),
   title: { default: title, template: `%s | ${title}` },
   description,
@@ -43,7 +43,7 @@ const metadata: Metadata = {
   category: "personal",
 };
 
-function Layout({ children }: React.PropsWithChildren): React.ReactNode {
+export default function Layout({ children }: React.PropsWithChildren): React.ReactNode {
   return (
     <html className="scroll-smooth antialiased" lang="en">
       <body
@@ -61,6 +61,3 @@ function Layout({ children }: React.PropsWithChildren): React.ReactNode {
     </html>
   );
 }
-
-export { metadata };
-export default Layout;

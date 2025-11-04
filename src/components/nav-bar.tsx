@@ -8,7 +8,7 @@ const links: React.ComponentProps<typeof NavLink>[] = [
   { href: "/chat", name: "chat" },
 ];
 
-function NavBar(): React.ReactNode {
+export function NavBar(): React.ReactNode {
   return (
     <header className="bg-background sticky inset-x-0 top-0 z-10 flex flex-col gap-4 py-6">
       <ul className="flex gap-6 text-sm">
@@ -19,5 +19,3 @@ function NavBar(): React.ReactNode {
     </header>
   );
 }
-
-export { NavBar };

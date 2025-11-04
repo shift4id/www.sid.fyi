@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/skeleton";
 
 type ItemProps = Book | Record<string, never>;
 
-function Item({ ...props }: ItemProps): React.ReactNode {
+export function Item({ ...props }: ItemProps): React.ReactNode {
   const isLoading = !("title" in props);
 
   return (
@@ -30,5 +30,3 @@ function Item({ ...props }: ItemProps): React.ReactNode {
     </div>
   );
 }
-
-export { Item };

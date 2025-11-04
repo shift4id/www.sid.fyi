@@ -25,7 +25,7 @@ function NowPlayingItem({ nowPlayingPromise }: { nowPlayingPromise: Promise<Song
   return <Item {...nowPlaying} />;
 }
 
-function NowPlaying(): React.ReactNode {
+export function NowPlaying(): React.ReactNode {
   const nowPlayingPromise = useMemo(() => fetchNowPlaying(), []);
 
   return (
@@ -34,5 +34,3 @@ function NowPlaying(): React.ReactNode {
     </Suspense>
   );
 }
-
-export { NowPlaying };

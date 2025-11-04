@@ -3,7 +3,7 @@ import { Link } from "@/components/link";
 
 type Social = (typeof socials)[number];
 
-function Item({ name, label, link }: Social): React.ReactNode {
+export function Item({ name, label, link }: Social): React.ReactNode {
   return (
     <Link className="group flex items-center gap-2 text-sm" href={link} target="_blank">
       <p className="truncate">{name}</p>
@@ -14,5 +14,3 @@ function Item({ name, label, link }: Social): React.ReactNode {
     </Link>
   );
 }
-
-export { Item };

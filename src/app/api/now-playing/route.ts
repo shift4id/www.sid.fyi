@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getNowPlaying } from "@/lib/spotify";
 
-async function GET(): Promise<NextResponse> {
+export async function GET(): Promise<NextResponse> {
   try {
     const nowPlaying = await getNowPlaying();
 
@@ -10,5 +10,3 @@ async function GET(): Promise<NextResponse> {
     return NextResponse.json(err, { status: 500 });
   }
 }
-
-export { GET };

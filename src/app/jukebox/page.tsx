@@ -33,10 +33,10 @@ const containerProps = {
   description: "Listen to my favorite songs, artists, and check out my profile.",
 };
 
-const metadata: Metadata = containerProps;
+export const metadata: Metadata = containerProps;
 export const revalidate = 3600; // 1 Hour
 
-function Jukebox(): React.ReactNode {
+export default function Jukebox(): React.ReactNode {
   return (
     <Container {...containerProps}>
       <Grid
@@ -66,6 +66,3 @@ function Jukebox(): React.ReactNode {
     </Container>
   );
 }
-
-export { metadata };
-export default Jukebox;

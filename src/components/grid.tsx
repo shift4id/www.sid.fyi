@@ -3,7 +3,7 @@ interface GridProps<TItem> {
   items: TItem[];
 }
 
-function Grid<TItem>({ Of, items }: GridProps<TItem>): React.ReactNode {
+export function Grid<TItem>({ Of, items }: GridProps<TItem>): React.ReactNode {
   return (
     <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
       {items.map((item, i) => (
@@ -13,5 +13,3 @@ function Grid<TItem>({ Of, items }: GridProps<TItem>): React.ReactNode {
     </div>
   );
 }
-
-export { Grid };

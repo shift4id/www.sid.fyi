@@ -18,10 +18,11 @@ const containerProps = {
   title: "Library",
   description: "Explore various books that have influenced my thinking.",
 };
-const metadata: Metadata = containerProps;
+
+export const metadata: Metadata = containerProps;
 export const revalidate = 3600; // 1 Hour
 
-function Library(): React.ReactNode {
+export default function Library(): React.ReactNode {
   return (
     <Container {...containerProps}>
       <Suspense fallback={<Grid Of={Item} items={fallbackData} />}>
@@ -30,6 +31,3 @@ function Library(): React.ReactNode {
     </Container>
   );
 }
-
-export { metadata };
-export default Library;

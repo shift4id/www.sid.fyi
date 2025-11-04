@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { clientEnv } from "@/constants/env";
 
-function sitemap(): MetadataRoute.Sitemap {
+export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: clientEnv.WEBSITE_URL,
@@ -35,5 +35,3 @@ function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 }
-
-export default sitemap;

@@ -1,7 +1,7 @@
 import socials from "@/constants/socials.json";
 import { Link } from "./link";
 
-function Footer(): React.ReactNode {
+export function Footer(): React.ReactNode {
   return (
     <footer className="flex flex-col gap-4 pt-10">
       <div className="-mx-1 flex flex-wrap gap-x-2 gap-y-0.5 text-xs">
@@ -20,5 +20,3 @@ function Footer(): React.ReactNode {
     </footer>
   );
 }
-
-export { Footer };

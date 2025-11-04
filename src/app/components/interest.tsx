@@ -3,7 +3,7 @@ interface InterestProps {
   description: string;
 }
 
-function Interest({ title, description }: InterestProps): React.ReactNode {
+export function Interest({ title, description }: InterestProps): React.ReactNode {
   return (
     <div className="py-1">
       {title}
@@ -12,5 +12,3 @@ function Interest({ title, description }: InterestProps): React.ReactNode {
     </div>
   );
 }
-
-export { Interest };

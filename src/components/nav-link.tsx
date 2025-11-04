@@ -10,7 +10,7 @@ interface NavLinkProps {
   href: string;
 }
 
-function NavLink({ href, name }: NavLinkProps): React.ReactNode {
+export function NavLink({ href, name }: NavLinkProps): React.ReactNode {
   const pathname = usePathname();
   const active = useMemo(() => pathname === href, [pathname, href]);
 
@@ -30,5 +30,3 @@ function NavLink({ href, name }: NavLinkProps): React.ReactNode {
     </li>
   );
 }
-
-export { NavLink };

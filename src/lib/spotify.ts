@@ -44,12 +44,12 @@ interface Item {
   url: string;
 }
 
-interface Profile extends Item {
+export interface Profile extends Item {
   followers: number;
   type: "profile";
 }
 
-interface Song extends Item {
+export interface Song extends Item {
   artist: string;
   type: "song";
 }
@@ -116,7 +116,7 @@ async function fetcher<T>(url: string): Promise<T> {
   }).then((r) => r.json()) as T;
 }
 
-async function getNowPlaying(): Promise<Song | undefined> {
+export async function getNowPlaying(): Promise<Song | undefined> {
   const storedSong = await redis.get<Song>("song");
   if (storedSong) return storedSong;
 
@@ -133,7 +133,7 @@ async function getNowPlaying(): Promise<Song | undefined> {
   return song;
 }
 
-const getProfile = async (): Promise<Profile> => fetcher<SpotifyProfile>(BASE_URL).then(mapProfile);
+export const getProfile = async (): Promise<Profile> => fetcher<SpotifyProfile>(BASE_URL).then(mapProfile);
 
 async function getTopData<Response, Data>(type: string, map: (item: Response) => Data): Promise<Data[]> {
   return fetcher<{ items: Response[] }>(`${TOP_URL}/${type}?${TOP_PARAMS.toString()}`).then((r) =>
@@ -141,9 +141,6 @@ async function getTopData<Response, Data>(type: string, map: (item: Response) =>
   );
 }
 
-const getTopArtists = (): Promise<Profile[]> => getTopData("artists", mapArtist);
+export const getTopArtists = (): Promise<Profile[]> => getTopData("artists", mapArtist);
 
-const getTopSongs = (): Promise<Song[]> => getTopData("tracks", mapSong);
-
-export type { Profile, Song };
-export { getNowPlaying, getProfile, getTopArtists, getTopSongs };
+export const getTopSongs = (): Promise<Song[]> => getTopData("tracks", mapSong);

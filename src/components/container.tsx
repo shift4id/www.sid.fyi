@@ -3,7 +3,7 @@ type ContainerProps = React.PropsWithChildren<{
   description: string;
 }>;
 
-function Container({ title, description, children }: ContainerProps): React.ReactNode {
+export function Container({ title, description, children }: ContainerProps): React.ReactNode {
   return (
     <main className="flex w-full grow flex-col gap-16 py-20">
       <div className="flex flex-col gap-2 leading-normal">
@@ -14,5 +14,3 @@ function Container({ title, description, children }: ContainerProps): React.Reac
     </main>
   );
 }
-
-export { Container };

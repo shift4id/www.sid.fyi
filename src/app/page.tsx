@@ -27,9 +27,10 @@ const containerProps = {
   title: "Sid A",
   description: `${header.title} ${header.description}`,
 };
-const metadata: Metadata = containerProps;
 
-function Bio(): React.ReactNode {
+export const metadata: Metadata = containerProps;
+
+export default function Bio(): React.ReactNode {
   return (
     <Container {...header}>
       <div className="flex flex-col justify-start gap-8 gap-x-12 sm:flex-row">
@@ -39,6 +40,3 @@ function Bio(): React.ReactNode {
     </Container>
   );
 }
-
-export { metadata };
-export default Bio;

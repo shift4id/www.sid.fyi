@@ -1,3 +1,2 @@
-const cn = (...args: (string | boolean | undefined | null)[]): string => args.filter(Boolean).join(" ");
-
-export { cn };
+export const cn = (...args: (string | boolean | undefined | null)[]): string =>
+  args.filter(Boolean).join(" ");

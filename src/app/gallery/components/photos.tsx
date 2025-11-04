@@ -22,7 +22,7 @@ const photos: React.ComponentProps<typeof Item>[] = [
   { w: 4752, h: 3168, id: 19 },
 ];
 
-function Photos(): React.ReactNode {
+export function Photos(): React.ReactNode {
   return (
     <div className="gap-8 space-y-8 sm:columns-2">
       {photos.map((photo) => (
@@ -31,5 +31,3 @@ function Photos(): React.ReactNode {
     </div>
   );
 }
-
-export { Photos };
