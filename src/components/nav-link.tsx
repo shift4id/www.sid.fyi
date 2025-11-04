@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
 import { cn } from "@/utils/cn";
 import { Link } from "./link";
 
@@ -12,7 +11,7 @@ interface NavLinkProps {
 
 export function NavLink({ href, name }: NavLinkProps): React.ReactNode {
   const pathname = usePathname();
-  const active = useMemo(() => pathname === href, [pathname, href]);
+  const active = pathname === href;
 
   return (
     <li>

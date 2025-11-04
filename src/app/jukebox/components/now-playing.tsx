@@ -1,7 +1,7 @@
 "use client";
 
 import type { Song } from "@/lib/spotify";
-import { Suspense, use, useMemo } from "react";
+import { Suspense, use } from "react";
 import { Item } from "./item";
 
 const defaultSong: Song = {
@@ -26,7 +26,7 @@ function NowPlayingItem({ nowPlayingPromise }: { nowPlayingPromise: Promise<Song
 }
 
 export function NowPlaying(): React.ReactNode {
-  const nowPlayingPromise = useMemo(() => fetchNowPlaying(), []);
+  const nowPlayingPromise = fetchNowPlaying();
 
   return (
     <Suspense fallback={<Item />}>
