@@ -1,10 +1,7 @@
-// @ts-check
+import type { NextConfig } from "next";
 
-/**
- * @type {import('next').NextConfig}
- */
 const config = {
-  reactStrictMode: true,
+  reactCompiler: true,
   images: {
     remotePatterns: [
       { hostname: "*.(scdn.co|spotifycdn.com)" },
@@ -12,6 +9,6 @@ const config = {
       { hostname: "i.gr-assets.com" },
     ],
   },
-};
+} satisfies NextConfig;
 
 export default config;

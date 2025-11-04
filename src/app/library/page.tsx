@@ -19,8 +19,7 @@ const containerProps = {
   description: "Explore various books that have influenced my thinking.",
 };
 const metadata: Metadata = containerProps;
-
-const revalidate = 60 * 60;
+export const revalidate = 3600; // 1 Hour
 
 function Library(): React.ReactNode {
   return (
@@ -32,5 +31,5 @@ function Library(): React.ReactNode {
   );
 }
 
-export { metadata, revalidate };
+export { metadata };
 export default Library;

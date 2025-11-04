@@ -24,9 +24,9 @@ function getBookData(page: Page): Book {
 }
 
 async function getBooks(): Promise<Book[]> {
-  return await notion.databases
+  return await notion.dataSources
     .query({
-      database_id: serverEnv.BOOK_DATABASE_ID,
+      data_source_id: serverEnv.BOOK_DATA_SOURCE_ID,
       sorts: [{ property: "Author", direction: "ascending" }],
     })
     .then(({ results }) => results.filter((page): page is Page => page.object === "page").map(getBookData));

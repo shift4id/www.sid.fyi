@@ -32,9 +32,9 @@ const containerProps = {
   title: "Jukebox",
   description: "Listen to my favorite songs, artists, and check out my profile.",
 };
-const metadata: Metadata = containerProps;
 
-const revalidate = 60 * 60;
+const metadata: Metadata = containerProps;
+export const revalidate = 3600; // 1 Hour
 
 function Jukebox(): React.ReactNode {
   return (
@@ -67,5 +67,5 @@ function Jukebox(): React.ReactNode {
   );
 }
 
-export { metadata, revalidate };
+export { metadata };
 export default Jukebox;

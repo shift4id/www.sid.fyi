@@ -19,7 +19,7 @@
   },
   "scripts": {
     "build": "next build",
-    "dev": "next dev -p 2000 --turbopack",
+    "dev": "next dev -p 2000",
     "format": "prettier . --write",
     "lint": "eslint . --fix",
     "start": "next start -p 2000",
@@ -43,6 +43,7 @@
     "@types/node": "^24.10.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
+    "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",

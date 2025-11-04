@@ -2,13 +2,13 @@
   "compilerOptions": {
     "incremental": true,
     "target": "ES5",
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "lib": ["ESNext", "DOM.Iterable", "DOM"],
-    "baseUrl": "src",
+    "baseUrl": "",
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]
     },
     "resolveJsonModule": true,
     "allowJs": false,
@@ -24,6 +24,6 @@
       }
     ]
   },
-  "include": ["src", "*.config.*", "next-env.d.ts", ".next/types/**/*.ts"],
+  "include": ["src", "*.config.*", "next-env.d.ts", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

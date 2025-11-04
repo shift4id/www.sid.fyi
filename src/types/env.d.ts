@@ -14,6 +14,6 @@ declare namespace NodeJS {
     GITHUB_USER_NAME: string;
 
     NOTION_API_KEY: string;
-    BOOK_DATABASE_ID: string;
+    BOOK_DATA_SOURCE_ID: string;
   }
 }
