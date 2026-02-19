@@ -12,17 +12,17 @@
     },
     "resolveJsonModule": true,
     "allowJs": false,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "skipLibCheck": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "skipLibCheck": true
   },
   "include": ["src", "*.config.*", "next-env.d.ts", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
   "exclude": ["node_modules"]
