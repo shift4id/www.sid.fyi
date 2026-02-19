@@ -6,9 +6,6 @@ export const clientEnv = {
 };
 
 export const serverEnv = {
-  REDIS_REST_API_TOKEN: process.env.REDIS_REST_API_TOKEN,
-  REDIS_REST_API_URL: process.env.REDIS_REST_API_URL,
-
   NOTION_API_KEY: process.env.NOTION_API_KEY,
   BOOK_DATA_SOURCE_ID: process.env.BOOK_DATA_SOURCE_ID,
 

@@ -1499,7 +1499,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@upstash/redis@npm:^1.34.0":
+"@upstash/redis@npm:^1.36.2":
   version: 1.36.2
   resolution: "@upstash/redis@npm:1.36.2"
   dependencies:
@@ -1535,15 +1535,6 @@ __metadata:
     vue-router:
       optional: true
   checksum: 10c0/df39ec419299b43350ad80a06fe835502f22f71c32d21d58855ac39ef352d3478b8922e44375dbc5b0c02ceae04a9d23b32579eb517a602656f6460c90f5802a
-  languageName: node
-  linkType: hard
-
-"@vercel/kv@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@vercel/kv@npm:3.0.0"
-  dependencies:
-    "@upstash/redis": "npm:^1.34.0"
-  checksum: 10c0/55c0e197967c21161ba7bbee02be821975d8e900f2ca3946c9bfaefa1cb5ce94f9ce04aef07aca027c8c39a5ab2e9a2b54edc5c6b617c994d2a8fddfd9d55dc8
   languageName: node
   linkType: hard
 
@@ -4919,8 +4910,8 @@ __metadata:
     "@types/node": "npm:^25.2.3"
     "@types/react": "npm:^19.2.14"
     "@types/react-dom": "npm:^19.2.3"
+    "@upstash/redis": "npm:^1.36.2"
     "@vercel/analytics": "npm:^1.6.1"
-    "@vercel/kv": "npm:^3.0.0"
     "@vercel/speed-insights": "npm:^1.3.1"
     babel-plugin-react-compiler: "npm:^1.0.0"
     eslint: "npm:^9.39.2"
