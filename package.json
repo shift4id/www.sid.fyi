@@ -19,8 +19,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev -p 2000",
-    "format": "prettier . --write",
-    "lint": "eslint . --fix",
+    "lint": "biome check --fix",
     "start": "next start -p 2000",
     "type-check": "tsc --noEmit --pretty"
   },
@@ -35,22 +34,15 @@
     "tailwindcss": "^4.2.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^7.4.3",
-    "@eslint-react/eslint-plugin": "^2.13.0",
-    "@next/eslint-plugin-next": "^16.1.6",
+    "@biomejs/biome": "2.4.4",
     "@tailwindcss/postcss": "^4.2.0",
-    "@types/node": "^25.2.3",
+    "@types/node": "^25.3.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "babel-plugin-react-compiler": "^1.0.0",
-    "eslint": "^9.39.2",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.5.0",
     "postcss": "^8.5.6",
     "postcss-load-config": "^6.0.1",
     "prettier": "^3.8.1",
-    "prettier-plugin-packagejson": "^3.0.0",
-    "prettier-plugin-tailwindcss": "^0.7.2",
     "typescript": "^5.9.3"
   },
   "packageManager": "yarn@4.10.3"

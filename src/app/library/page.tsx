@@ -5,8 +5,9 @@ import { Grid } from "@/components/grid";
 import { getBooks } from "@/lib/notion";
 import { Item } from "./components/item";
 
-const fallbackValue = {};
-const fallbackData = Array.from<typeof fallbackValue>({ length: 10 }).fill(fallbackValue);
+const fallbackData = Array.from({ length: 10 }).map((_, i) => ({
+  id: i.toString(),
+}));
 
 async function BooksGrid(): Promise<React.JSX.Element> {
   const books = await getBooks().catch(() => fallbackData);

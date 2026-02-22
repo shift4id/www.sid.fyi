@@ -15,9 +15,13 @@ const BASE_URL = "https://api.spotify.com/v1/me";
 const CURRENTLY_PLAYING_URL = `${BASE_URL}/player/currently-playing`;
 
 const TOP_URL = `${BASE_URL}/top`;
-const TOP_PARAMS = new URLSearchParams({ limit: "10", time_range: "short_term" });
+const TOP_PARAMS = new URLSearchParams({
+  limit: "10",
+  time_range: "short_term",
+});
 
 interface SpotifyItem {
+  id: string;
   images: { url: string }[];
   external_urls: { spotify: string };
 }
@@ -39,6 +43,7 @@ interface SpotifySong extends SpotifyItem {
 }
 
 interface Item {
+  id: string;
   name: string;
   image?: string;
   url: string;
@@ -64,7 +69,10 @@ async function getAccessToken(): Promise<string> {
     expires_in: number;
   }
 
-  const params = new URLSearchParams({ grant_type: "refresh_token", refresh_token: refreshToken });
+  const params = new URLSearchParams({
+    grant_type: "refresh_token",
+    refresh_token: refreshToken,
+  });
   const { access_token: accessToken, expires_in: expiresIn }: TokenResponse = (await fetch(
     `${TOKEN_URL}?${params.toString()}`,
     {
@@ -82,6 +90,7 @@ async function getAccessToken(): Promise<string> {
 
 function mapArtist(item: SpotifyArtist): Profile {
   return {
+    id: item.id,
     name: item.name,
     image: item.images[0].url,
     followers: item.followers.total,
@@ -92,6 +101,7 @@ function mapArtist(item: SpotifyArtist): Profile {
 
 function mapProfile(item: SpotifyProfile): Profile {
   return {
+    id: item.id,
     name: item.display_name,
     image: item.images[0].url,
     followers: item.followers.total,
@@ -102,6 +112,7 @@ function mapProfile(item: SpotifyProfile): Profile {
 
 function mapSong(item: SpotifySong): Song {
   return {
+    id: item.id,
     name: item.name,
     image: item.album.images[0].url,
     artist: item.artists.map(({ name }) => name).join(", "),
@@ -133,9 +144,13 @@ export async function getNowPlaying(): Promise<Song | undefined> {
   return song;
 }
 
-export const getProfile = async (): Promise<Profile> => fetcher<SpotifyProfile>(BASE_URL).then(mapProfile);
+export const getProfile = async (): Promise<Profile> =>
+  fetcher<SpotifyProfile>(BASE_URL).then(mapProfile);
 
-async function getTopData<Response, Data>(type: string, map: (item: Response) => Data): Promise<Data[]> {
+async function getTopData<Response, Data>(
+  type: string,
+  map: (item: Response) => Data,
+): Promise<Data[]> {
   return fetcher<{ items: Response[] }>(`${TOP_URL}/${type}?${TOP_PARAMS.toString()}`).then((r) =>
     r.items.map(map),
   );

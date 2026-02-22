@@ -7,23 +7,25 @@ import { getProfile, getTopArtists, getTopSongs } from "@/lib/spotify";
 import { Item } from "./components/item";
 import { NowPlaying } from "./components/now-playing";
 
-const fallbackValue: Record<string, never> = {};
-const fallbackData = Array.from<typeof fallbackValue>({ length: 10 }).fill(fallbackValue);
+const fallbackProfile: Record<string, unknown> = {};
+const fallbackList = Array.from({ length: 10 }).map((_, i) => ({
+  id: `item-${i + 1}`,
+}));
 
 async function ProfileItem(): Promise<React.JSX.Element> {
-  const profile = await getProfile().catch(() => fallbackValue);
+  const profile = await getProfile().catch(() => fallbackProfile);
 
   return <Item {...profile} />;
 }
 
 async function TopArtistsGrid(): Promise<React.JSX.Element> {
-  const artists = await getTopArtists().catch(() => fallbackData);
+  const artists = await getTopArtists().catch(() => fallbackList);
 
   return <Grid Of={Item} items={artists} />;
 }
 
 async function TopSongsGrid(): Promise<React.JSX.Element> {
-  const songs = await getTopSongs().catch(() => fallbackData);
+  const songs = await getTopSongs().catch(() => fallbackList);
 
   return <Grid Of={Item} items={songs} />;
 }
@@ -43,6 +45,7 @@ export default function Jukebox(): React.ReactNode {
         Of={Section}
         items={[
           {
+            id: "profile",
             title: "Profile",
             children: (
               <Suspense fallback={<Item />}>
@@ -50,16 +53,16 @@ export default function Jukebox(): React.ReactNode {
               </Suspense>
             ),
           },
-          { title: "Now Playing", children: <NowPlaying /> },
+          { id: "now-playing", title: "Now Playing", children: <NowPlaying /> },
         ]}
       />
       <Section title="My Top Artists">
-        <Suspense fallback={<Grid Of={Item} items={fallbackData} />}>
+        <Suspense fallback={<Grid Of={Item} items={fallbackList} />}>
           <TopArtistsGrid />
         </Suspense>
       </Section>
       <Section title="My Top Tracks">
-        <Suspense fallback={<Grid Of={Item} items={fallbackData} />}>
+        <Suspense fallback={<Grid Of={Item} items={fallbackList} />}>
           <TopSongsGrid />
         </Suspense>
       </Section>

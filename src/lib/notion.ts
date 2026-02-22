@@ -1,8 +1,8 @@
+import { Client } from "@notionhq/client";
 import type {
   PageObjectResponse as Page,
   TextRichTextItemResponse as RichText,
 } from "@notionhq/client/build/src/api-endpoints";
-import { Client } from "@notionhq/client";
 import { serverEnv } from "@/constants/env";
 
 const notion = new Client({ auth: serverEnv.NOTION_API_KEY });
@@ -29,5 +29,7 @@ export async function getBooks(): Promise<Book[]> {
       data_source_id: serverEnv.BOOK_DATA_SOURCE_ID,
       sorts: [{ property: "Author", direction: "ascending" }],
     })
-    .then(({ results }) => results.filter((page): page is Page => page.object === "page").map(getBookData));
+    .then(({ results }) =>
+      results.filter((page): page is Page => page.object === "page").map(getBookData),
+    );
 }

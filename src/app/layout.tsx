@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata } from "next";
 import { Syne as Font } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { NavBar } from "@/components/nav-bar";

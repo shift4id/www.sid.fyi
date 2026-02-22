@@ -1,7 +1,7 @@
-import type { Profile, Song } from "@/lib/spotify";
 import Image from "next/image";
 import { Link } from "@/components/link";
 import { Skeleton } from "@/components/skeleton";
+import type { Profile, Song } from "@/lib/spotify";
 import { cn } from "@/utils/cn";
 
 type ContainerProps = React.PropsWithChildren<{
@@ -36,7 +36,10 @@ export function Item({ ...props }: ItemProps): React.ReactNode {
               <Image
                 fill
                 alt=""
-                className={cn("rounded-full", props.type === "song" && "animate-[spin_5s_linear_infinite]")}
+                className={cn(
+                  "rounded-full",
+                  props.type === "song" && "animate-[spin_5s_linear_infinite]",
+                )}
                 sizes="3rem"
                 src={props.image}
               />

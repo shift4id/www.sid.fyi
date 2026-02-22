@@ -1,35 +1,42 @@
 [
   {
+    "id": "email",
     "name": "email",
     "label": "hi@sid.fyi",
     "link": "mailto:hi@sid.fyi"
   },
   {
+    "id": "facebook",
     "name": "facebook",
     "label": "Siddharth Adusumelli",
     "link": "https://facebook.com/sid.adusumelli"
   },
   {
+    "id": "instagram",
     "name": "instagram",
     "label": "@shift4id",
     "link": "https://instagram.com/shift4id"
   },
   {
+    "id": "twitter",
     "name": "twitter",
     "label": "@shift4id",
     "link": "https://twitter.com/shift4id"
   },
   {
+    "id": "github",
     "name": "github",
     "label": "@shift4id",
     "link": "https://github.com/shift4id"
   },
   {
+    "id": "linkedin",
     "name": "linkedin",
     "label": "in/sid-a",
     "link": "https://linkedin.com/in/sid-a"
   },
   {
+    "id": "spotify",
     "name": "spotify",
     "label": "sidfrostbear",
     "link": "https://open.spotify.com/user/sidfrostbear"

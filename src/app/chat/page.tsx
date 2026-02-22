@@ -4,7 +4,10 @@ import { Grid } from "@/components/grid";
 import socials from "@/constants/socials.json";
 import { Item } from "./components/item";
 
-const containerProps = { title: "Chat", description: "Let's have a conversation." };
+const containerProps = {
+  title: "Chat",
+  description: "Let's have a conversation.",
+};
 
 export const metadata: Metadata = containerProps;
 

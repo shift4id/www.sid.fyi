@@ -1,7 +1,7 @@
-import type socials from "@/constants/socials.json";
 import { Link } from "@/components/link";
+import type socials from "@/constants/socials.json";
 
-type Social = (typeof socials)[number];
+type Social = Omit<(typeof socials)[number], "id">;
 
 export function Item({ name, label, link }: Social): React.ReactNode {
   return (

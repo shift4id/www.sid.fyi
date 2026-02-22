@@ -24,6 +24,12 @@
     "isolatedModules": true,
     "skipLibCheck": true
   },
-  "include": ["src", "*.config.*", "next-env.d.ts", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
+  "include": [
+    "src",
+    "*.config.*",
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

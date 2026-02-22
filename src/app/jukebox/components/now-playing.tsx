@@ -1,10 +1,11 @@
 "use client";
 
-import type { Song } from "@/lib/spotify";
 import { Suspense, use } from "react";
+import type { Song } from "@/lib/spotify";
 import { Item } from "./item";
 
 const defaultSong: Song = {
+  id: "0",
   name: "Silence",
   artist: "N/A",
   url: "https://spotify.com",
@@ -19,7 +20,11 @@ async function fetchNowPlaying(): Promise<Song> {
   return song ?? defaultSong;
 }
 
-function NowPlayingItem({ nowPlayingPromise }: { nowPlayingPromise: Promise<Song> }): React.ReactNode {
+function NowPlayingItem({
+  nowPlayingPromise,
+}: {
+  nowPlayingPromise: Promise<Song>;
+}): React.ReactNode {
   const nowPlaying = use(nowPlayingPromise);
 
   return <Item {...nowPlaying} />;
