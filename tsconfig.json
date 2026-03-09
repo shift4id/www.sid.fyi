@@ -1,16 +1,14 @@
 {
   "compilerOptions": {
     "incremental": true,
-    "target": "ES5",
     "jsx": "react-jsx",
     "lib": ["ESNext", "DOM.Iterable", "DOM"],
-    "baseUrl": "",
+    "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
       "@/*": ["./src/*"]
     },
-    "resolveJsonModule": true,
     "allowJs": false,
     "plugins": [
       {
@@ -20,9 +18,9 @@
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   },
   "include": [
     "src",
