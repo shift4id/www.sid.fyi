@@ -8,6 +8,7 @@ const config = {
       { hostname: "cdn.sid.fyi" },
       { hostname: "i.gr-assets.com" },
     ],
+    unoptimized: true,
   },
 } satisfies NextConfig;
 
