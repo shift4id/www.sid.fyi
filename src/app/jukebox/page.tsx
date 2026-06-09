@@ -32,7 +32,7 @@ async function TopSongsGrid(): Promise<React.JSX.Element> {
 
 const containerProps = {
   title: "Jukebox",
-  description: "Listen to my favorite songs, artists, and check out my profile.",
+  description: "Listen to my favorite songs and artists.",
 };
 
 export const metadata: Metadata = containerProps;
