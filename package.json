@@ -28,21 +28,21 @@
     "@upstash/redis": "^1.38.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "next": "^16.2.7",
+    "next": "^16.2.9",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.16",
-    "@tailwindcss/postcss": "^4.3.0",
-    "@types/node": "^25.9.1",
-    "@types/react": "^19.2.16",
+    "@biomejs/biome": "2.5.0",
+    "@tailwindcss/postcss": "^4.3.1",
+    "@types/node": "^25.9.4",
+    "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "babel-plugin-react-compiler": "^1.0.0",
     "postcss": "^8.5.15",
     "postcss-load-config": "^6.0.1",
     "typescript": "^6.0.3"
   },
-  "packageManager": "yarn@4.14.0"
+  "packageManager": "yarn@4.17.0"
 }
