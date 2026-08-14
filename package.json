@@ -24,25 +24,25 @@
     "type-check": "tsc --noEmit --pretty"
   },
   "dependencies": {
-    "@notionhq/client": "^5.22.0",
-    "@upstash/redis": "^1.38.0",
+    "@notionhq/client": "^5.25.2",
+    "@upstash/redis": "^1.38.2",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "next": "^16.2.9",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "tailwindcss": "^4.3.1"
+    "next": "^16.3.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.0",
-    "@tailwindcss/postcss": "^4.3.1",
-    "@types/node": "^25.9.4",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
+    "@biomejs/biome": "^2.5.8",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
     "babel-plugin-react-compiler": "^1.0.0",
-    "postcss": "^8.5.15",
+    "postcss": "^8.5.26",
     "postcss-load-config": "^6.0.1",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   },
-  "packageManager": "yarn@4.17.0"
+  "packageManager": "yarn@4.17.1"
 }
