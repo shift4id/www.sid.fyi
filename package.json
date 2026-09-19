@@ -6,41 +6,44 @@
     "url": "https://github.com/shift4id/www.sid.fyi/issues",
     "email": "hi@sid.fyi"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/shift4id/www.sid.fyi.git"
-  },
   "license": "MIT",
   "author": {
     "name": "Siddharth Adusumelli",
     "email": "hi@sid.fyi",
     "url": "https://sid.fyi"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shift4id/www.sid.fyi.git"
+  },
   "scripts": {
     "build": "next build",
     "dev": "next dev -p 2000",
-    "lint": "biome check --fix",
+    "format": "oxfmt",
+    "lint": "oxlint --fix",
     "start": "next start -p 2000",
     "type-check": "tsc --noEmit --pretty"
   },
   "dependencies": {
-    "@notionhq/client": "^5.25.2",
-    "@upstash/redis": "^1.38.2",
+    "@notionhq/client": "^5.26.0",
+    "@upstash/redis": "^1.38.4",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "next": "^16.3.0",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
+    "next": "^16.3.5",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.8",
     "@tailwindcss/postcss": "^4.3.3",
-    "@types/node": "^26.2.0",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
+    "@types/node": "^26.6.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "babel-plugin-react-compiler": "^1.0.0",
-    "postcss": "^8.5.26",
+    "oxfmt": "^0.68.0",
+    "oxlint": "^1.83.0",
+    "oxlint-tsgolint": "^7.0.2002",
+    "postcss": "^8.5.28",
     "postcss-load-config": "^6.0.1",
     "typescript": "^7.0.2"
   },
