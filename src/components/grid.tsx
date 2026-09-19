@@ -1,3 +1,5 @@
+import { cn } from "@/utils/cn";
+
 interface Item {
   id: string;
 }
@@ -5,13 +7,17 @@ interface Item {
 interface GridProps<TItem extends Item> {
   Of: React.ComponentType<Omit<TItem, "id">>;
   items: TItem[];
+  className?: string;
 }
 
-export function Grid<TItem extends Item>({ Of, items }: GridProps<TItem>): React.ReactNode {
+export function Grid<TItem extends Item>({
+  Of,
+  items,
+  className = "grid-cols-1 gap-8 sm:grid-cols-2",
+}: GridProps<TItem>): React.ReactNode {
   return (
-    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+    <div className={cn("grid", className)}>
       {items.map((item) => (
-        // eslint-disable-next-line react/no-array-index-key -- Unique Items
         <Of key={item.id} {...item} />
       ))}
     </div>

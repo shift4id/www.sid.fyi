@@ -31,11 +31,6 @@ interface SpotifyArtist extends SpotifyItem {
   followers: { total: number };
 }
 
-interface SpotifyProfile extends SpotifyItem {
-  display_name: string;
-  followers: { total: number };
-}
-
 interface SpotifySong extends SpotifyItem {
   name: string;
   album: { images: { url: string }[] };
@@ -99,17 +94,6 @@ function mapArtist(item: SpotifyArtist): Profile {
   };
 }
 
-function mapProfile(item: SpotifyProfile): Profile {
-  return {
-    id: item.id,
-    name: item.display_name,
-    image: item.images[0].url,
-    followers: item.followers.total,
-    url: item.external_urls.spotify,
-    type: "profile",
-  };
-}
-
 function mapSong(item: SpotifySong): Song {
   return {
     id: item.id,
@@ -143,9 +127,6 @@ export async function getNowPlaying(): Promise<Song | undefined> {
   if (song) await redis.set("song", song, { ex: 60 });
   return song;
 }
-
-export const getProfile = async (): Promise<Profile> =>
-  fetcher<SpotifyProfile>(BASE_URL).then(mapProfile);
 
 async function getTopData<Response, Data>(
   type: string,

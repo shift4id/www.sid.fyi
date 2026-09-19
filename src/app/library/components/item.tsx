@@ -4,7 +4,7 @@ import type { Book } from "@/lib/notion";
 
 type ItemProps = Book | Record<string, never>;
 
-export function Item({ ...props }: ItemProps): React.ReactNode {
+export function Item(props: ItemProps): React.ReactNode {
   const isLoading = !("title" in props);
 
   return (

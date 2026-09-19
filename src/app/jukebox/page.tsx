@@ -3,19 +3,27 @@ import { Suspense } from "react";
 import { Container } from "@/components/container";
 import { Grid } from "@/components/grid";
 import { Section } from "@/components/section";
-import { getProfile, getTopArtists, getTopSongs } from "@/lib/spotify";
+import { getNowPlaying, getTopArtists, getTopSongs, type Song } from "@/lib/spotify";
 import { Item } from "./components/item";
-import { NowPlaying } from "./components/now-playing";
+import { Turntable } from "./components/turntable";
+import { Vinyl } from "./components/vinyl";
 
-const fallbackProfile: Record<string, unknown> = {};
 const fallbackList = Array.from({ length: 10 }).map((_, i) => ({
   id: `item-${i + 1}`,
 }));
 
-async function ProfileItem(): Promise<React.JSX.Element> {
-  const profile = await getProfile().catch(() => fallbackProfile);
+const idleSong: Song = {
+  id: "0",
+  name: "Silence",
+  artist: "N/A",
+  url: "https://spotify.com",
+  type: "song",
+};
 
-  return <Item {...profile} />;
+async function NowPlaying(): Promise<React.JSX.Element> {
+  const song = await getNowPlaying().catch(() => idleSong);
+
+  return <Turntable {...(song ?? idleSong)} />;
 }
 
 async function TopArtistsGrid(): Promise<React.JSX.Element> {
@@ -27,7 +35,7 @@ async function TopArtistsGrid(): Promise<React.JSX.Element> {
 async function TopSongsGrid(): Promise<React.JSX.Element> {
   const songs = await getTopSongs().catch(() => fallbackList);
 
-  return <Grid Of={Item} items={songs} />;
+  return <Grid className="grid-cols-2 gap-8 sm:grid-cols-5 sm:gap-4" Of={Vinyl} items={songs} />;
 }
 
 const containerProps = {
@@ -41,29 +49,23 @@ export const revalidate = 3600; // 1 Hour
 export default function Jukebox(): React.ReactNode {
   return (
     <Container {...containerProps}>
-      <Grid
-        Of={Section}
-        items={[
-          {
-            id: "profile",
-            title: "Profile",
-            children: (
-              <Suspense fallback={<Item />}>
-                <ProfileItem />
-              </Suspense>
-            ),
-          },
-          { id: "now-playing", title: "Now Playing", children: <NowPlaying /> },
-        ]}
-      />
-      <Section title="My Top Artists">
-        <Suspense fallback={<Grid Of={Item} items={fallbackList} />}>
-          <TopArtistsGrid />
+      <Section title="Now Playing">
+        <Suspense fallback={<Turntable />}>
+          <NowPlaying />
         </Suspense>
       </Section>
       <Section title="My Top Tracks">
-        <Suspense fallback={<Grid Of={Item} items={fallbackList} />}>
+        <Suspense
+          fallback={
+            <Grid className="grid-cols-2 gap-4 sm:grid-cols-5" Of={Vinyl} items={fallbackList} />
+          }
+        >
           <TopSongsGrid />
+        </Suspense>
+      </Section>
+      <Section title="My Top Artists">
+        <Suspense fallback={<Grid Of={Item} items={fallbackList} />}>
+          <TopArtistsGrid />
         </Suspense>
       </Section>
     </Container>
