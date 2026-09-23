@@ -12,6 +12,7 @@ export interface Book {
   title: string;
   author: string;
   image: string;
+  type: "book";
 }
 
 function getBookData(page: Page): Book {
@@ -20,6 +21,7 @@ function getBookData(page: Page): Book {
     title: (page.properties.Title as { title: RichText[] }).title[0].text.content,
     author: (page.properties.Author as { rich_text: RichText[] }).rich_text[0].text.content,
     image: (page.properties.Image as { url: string }).url,
+    type: "book",
   };
 }
 

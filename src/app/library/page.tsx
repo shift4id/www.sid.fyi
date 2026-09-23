@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Container } from "@/components/container";
-import { Grid } from "@/components/grid";
 import { getBooks } from "@/lib/notion";
-import { Item } from "./components/item";
+import { Stack } from "./components/stack";
 
-const fallbackData = Array.from({ length: 10 }).map((_, i) => ({
-  id: i.toString(),
-}));
+async function Books(): Promise<React.JSX.Element> {
+  const books = await getBooks().catch(() => undefined);
 
-async function BooksGrid(): Promise<React.JSX.Element> {
-  const books = await getBooks().catch(() => fallbackData);
-
-  return <Grid Of={Item} items={books} />;
+  return <Stack books={books} />;
 }
 
 const containerProps = {
@@ -26,8 +21,8 @@ export const revalidate = 3600; // 1 Hour
 export default function Library(): React.ReactNode {
   return (
     <Container {...containerProps}>
-      <Suspense fallback={<Grid Of={Item} items={fallbackData} />}>
-        <BooksGrid />
+      <Suspense fallback={<Stack />}>
+        <Books />
       </Suspense>
     </Container>
   );
