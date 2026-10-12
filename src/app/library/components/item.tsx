@@ -16,6 +16,7 @@ export function Item({ book, open = false, onToggle }: ItemProps): React.ReactNo
     <button
       aria-label={book ? `${book.title} by ${book.author}` : undefined}
       aria-pressed={open}
+      data-item
       className={cn(
         "group relative w-full cursor-pointer outline-none select-none",
         open && "z-10",
@@ -24,9 +25,7 @@ export function Item({ book, open = false, onToggle }: ItemProps): React.ReactNo
       onClick={onToggle}
       type="button"
     >
-      <div
-        className={cn("relative transition-[height] duration-700", open ? "h-[100cqw]" : "h-12")}
-      >
+      <div className={cn("relative", open ? "h-[100cqw]" : "h-12")}>
         <div
           className={cn(
             "absolute inset-x-0 top-0 h-12 transition-transform duration-700 perspective-distant",
@@ -64,8 +63,8 @@ export function Item({ book, open = false, onToggle }: ItemProps): React.ReactNo
       <div
         aria-hidden
         className={cn(
-          "grid transition-[grid-template-rows] duration-500",
-          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+          "grid transition-opacity",
+          open ? "grid-rows-[1fr] opacity-100 delay-500 duration-300" : "grid-rows-[0fr] opacity-0",
         )}
       >
         <div className="flex flex-col gap-1 overflow-hidden pt-4 text-center">
