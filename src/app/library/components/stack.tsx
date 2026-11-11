@@ -21,8 +21,6 @@ export function Stack({ books }: StackProps): React.ReactNode {
   const rootRef = useRef<HTMLDivElement>(null);
   const tops = useRef<Map<Element, number>>(null);
 
-  // Snapshot item positions so the layout change can be animated with transforms (FLIP)
-  // instead of transitioning height, which re-lays out the whole stack every frame.
   const measure = (): Map<Element, number> =>
     new Map(
       [...(rootRef.current?.querySelectorAll("[data-item]") ?? [])].map((el) => [

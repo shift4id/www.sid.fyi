@@ -2,14 +2,12 @@ import type { Metadata } from "next";
 import { Container } from "@/components/container";
 import { Grid } from "@/components/grid";
 import socials from "@/constants/socials.json";
+import { pageMetadata, pages } from "@/utils/metadata";
 import { Item } from "./components/item";
 
-const containerProps = {
-  title: "Chat",
-  description: "Let's have a conversation.",
-};
+const containerProps = pages.chat;
 
-export const metadata: Metadata = containerProps;
+export const metadata: Metadata = pageMetadata({ ...containerProps, path: "/chat" });
 
 export default function Chat(): React.ReactNode {
   return (

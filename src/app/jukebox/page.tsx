@@ -3,28 +3,15 @@ import { Suspense } from "react";
 import { Container } from "@/components/container";
 import { Grid } from "@/components/grid";
 import { Section } from "@/components/section";
-import { getNowPlaying, getTopArtists, getTopSongs, type Song } from "@/lib/spotify";
+import { getTopArtists, getTopSongs } from "@/lib/spotify";
+import { pageMetadata, pages } from "@/utils/metadata";
 import { Item } from "./components/item";
-import { Turntable } from "./components/turntable";
+import { NowPlaying } from "./components/now-playing";
 import { Vinyl } from "./components/vinyl";
 
 const fallbackList = Array.from({ length: 10 }).map((_, i) => ({
   id: `item-${i + 1}`,
 }));
-
-const idleSong: Song = {
-  id: "0",
-  name: "Silence",
-  artist: "N/A",
-  url: "https://spotify.com",
-  type: "song",
-};
-
-async function NowPlaying(): Promise<React.JSX.Element> {
-  const song = await getNowPlaying().catch(() => idleSong);
-
-  return <Turntable {...(song ?? idleSong)} />;
-}
 
 async function TopArtistsGrid(): Promise<React.JSX.Element> {
   const artists = await getTopArtists().catch(() => fallbackList);
@@ -38,21 +25,16 @@ async function TopSongsGrid(): Promise<React.JSX.Element> {
   return <Grid className="grid-cols-2 gap-8 sm:grid-cols-5 sm:gap-4" Of={Vinyl} items={songs} />;
 }
 
-const containerProps = {
-  title: "Jukebox",
-  description: "Listen to my favorite songs and artists.",
-};
+const containerProps = pages.jukebox;
 
-export const metadata: Metadata = containerProps;
-export const revalidate = 3600; // 1 Hour
+export const metadata: Metadata = pageMetadata({ ...containerProps, path: "/jukebox" });
+export const revalidate = 60 * 60; // 60 Seconds * 60 Minutes
 
 export default function Jukebox(): React.ReactNode {
   return (
     <Container {...containerProps}>
       <Section title="Now Playing">
-        <Suspense fallback={<Turntable />}>
-          <NowPlaying />
-        </Suspense>
+        <NowPlaying />
       </Section>
       <Section title="My Top Tracks">
         <Suspense

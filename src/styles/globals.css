@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
-@theme {
-  --font-font: var(--font-font);
+@theme inline {
+  --font-sans: var(--font-syne);
+}
 
+@theme {
   --color-accent: hsl(300, 100%, 75%);
 
   --color-background: hsl(0, 0%, 7%);

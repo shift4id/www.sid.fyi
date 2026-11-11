@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/container";
+import { fullName, pageMetadata, siteDescription, siteName, tagline } from "@/utils/metadata";
 import { Category } from "./components/category";
 import { Hobby } from "./components/hobby";
 import { Interest } from "./components/interest";
 
 const header: React.ComponentProps<typeof Container> = {
-  title: "Siddharth Adusumelli",
-  description:
-    "is a software engineer who enjoys crafting beautiful and accessible user experiences.",
+  title: fullName,
+  description: tagline,
 };
 
 const interests: React.ComponentProps<typeof Interest>[] = [
@@ -24,12 +24,11 @@ const hobbies: React.ComponentProps<typeof Hobby>[] = [
   { title: "having conversations", href: "/chat" },
 ];
 
-const containerProps = {
-  title: "Sid A",
-  description: `${header.title} ${header.description}`,
-};
-
-export const metadata: Metadata = containerProps;
+export const metadata: Metadata = pageMetadata({
+  title: siteName,
+  description: siteDescription,
+  path: "/",
+});
 
 export default function Bio(): React.ReactNode {
   return (

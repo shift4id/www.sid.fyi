@@ -16,9 +16,7 @@ export function Footer(): React.ReactNode {
           </Link>
         ))}
       </div>
-      <p className="text-sm">
-        &copy; {new Date().getFullYear()} Siddharth Adusumelli. All rights reserved.
-      </p>
+      <p className="text-sm">&copy; Siddharth Adusumelli. All rights reserved.</p>
     </footer>
   );
 }

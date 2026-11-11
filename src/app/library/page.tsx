@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Container } from "@/components/container";
 import { getBooks } from "@/lib/notion";
+import { pageMetadata, pages } from "@/utils/metadata";
 import { Stack } from "./components/stack";
 
 async function Books(): Promise<React.JSX.Element> {
@@ -10,12 +11,9 @@ async function Books(): Promise<React.JSX.Element> {
   return <Stack books={books} />;
 }
 
-const containerProps = {
-  title: "Library",
-  description: "Explore various books that have influenced my thinking.",
-};
+const containerProps = pages.library;
 
-export const metadata: Metadata = containerProps;
+export const metadata: Metadata = pageMetadata({ ...containerProps, path: "/library" });
 export const revalidate = 3600; // 1 Hour
 
 export default function Library(): React.ReactNode {
