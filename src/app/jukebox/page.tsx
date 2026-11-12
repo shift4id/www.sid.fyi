@@ -28,7 +28,7 @@ async function TopSongsGrid(): Promise<React.JSX.Element> {
 const containerProps = pages.jukebox;
 
 export const metadata: Metadata = pageMetadata({ ...containerProps, path: "/jukebox" });
-export const revalidate = 60 * 60; // 60 Seconds * 60 Minutes
+export const revalidate = 3600; // 1 Hour
 
 export default function Jukebox(): React.ReactNode {
   return (
