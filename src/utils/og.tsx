@@ -5,7 +5,7 @@ const monogram = "SA";
 
 async function loadFont(text: string): Promise<ArrayBuffer | undefined> {
   try {
-    const params = new URLSearchParams({ family: "Syne:wght@400", text });
+    const params = new URLSearchParams({ family: "Cormorant Garamond:wght@400", text });
     const css = await fetch(`https://fonts.googleapis.com/css2?${params.toString()}`).then((r) =>
       r.text(),
     );
@@ -44,7 +44,7 @@ export async function renderMonogram({
         height: "100%",
         background: colors.background,
         color: colors.foreground,
-        fontFamily: font ? "Syne" : undefined,
+        fontFamily: font ? "Cormorant" : undefined,
         fontSize,
         lineHeight: 1,
       }}
@@ -59,7 +59,7 @@ export async function renderMonogram({
     {
       width,
       height,
-      fonts: font ? [{ name: "Syne", data: font, weight: 400, style: "normal" }] : undefined,
+      fonts: font ? [{ name: "Cormorant", data: font, weight: 400, style: "normal" }] : undefined,
     },
   );
 }

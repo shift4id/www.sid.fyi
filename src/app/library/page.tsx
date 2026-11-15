@@ -1,27 +1,27 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Container } from "@/components/container";
+import { ChapterOpener } from "@/components/chapter-opener";
+import { Page } from "@/components/page";
 import { getBooks } from "@/lib/notion";
 import { pageMetadata, pages } from "@/utils/metadata";
-import { Stack } from "./components/stack";
+import { Shelf } from "./components/shelf";
 
 async function Books(): Promise<React.JSX.Element> {
   const books = await getBooks().catch(() => undefined);
 
-  return <Stack books={books} />;
+  return <Shelf books={books} />;
 }
 
-const containerProps = pages.library;
-
-export const metadata: Metadata = pageMetadata({ ...containerProps, path: "/library" });
+export const metadata: Metadata = pageMetadata({ ...pages.library, path: "/library" });
 export const revalidate = 3600; // 1 Hour
 
 export default function Library(): React.ReactNode {
   return (
-    <Container {...containerProps}>
-      <Suspense fallback={<Stack />}>
+    <Page>
+      <ChapterOpener href="/library" />
+      <Suspense fallback={<Shelf />}>
         <Books />
       </Suspense>
-    </Container>
+    </Page>
   );
 }

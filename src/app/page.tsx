@@ -1,42 +1,58 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/container";
-import { fullName, pageMetadata, siteDescription, siteName, tagline } from "@/utils/metadata";
-import { Category } from "./components/category";
-import { Hobby } from "./components/hobby";
-import { Interest } from "./components/interest";
+import { Page } from "@/components/page";
+import { Section } from "@/components/section";
+import { fullName, pageMetadata, siteDescription, tagline } from "@/utils/metadata";
+import { BusinessCard } from "./components/business-card";
+import { Contents, type Glosses } from "./components/contents";
 
-const header: React.ComponentProps<typeof Container> = {
-  title: fullName,
-  description: tagline,
+const interests = [
+  { title: "Psychology", description: "behavior and social" },
+  { title: "Philosophy", description: "metaphysics and epistemology" },
+  { title: "Design", description: "architecture and product design" },
+  { title: "Visual arts", description: "photography and cinematography" },
+];
+
+const glosses: Glosses = {
+  "/": "a bit about me",
+  "/jukebox": "what i'm listening to",
+  "/gallery": "places i've been and things id've seen",
+  "/library": "books that have influenced my thinking",
 };
 
-const interests: React.ComponentProps<typeof Interest>[] = [
-  { title: "psychology", description: "behavior and social" },
-  { title: "philosophy", description: "metaphysics and epistemology" },
-  { title: "design", description: "architecture and product design" },
-  { title: "media art", description: "photography and cinematography" },
-];
-
-const hobbies: React.ComponentProps<typeof Hobby>[] = [
-  { title: "listening to music", href: "/jukebox" },
-  { title: "taking pictures", href: "/gallery" },
-  { title: "reading books", href: "/library" },
-  { title: "having conversations", href: "/chat" },
-];
-
 export const metadata: Metadata = pageMetadata({
-  title: siteName,
+  title: fullName,
   description: siteDescription,
   path: "/",
 });
 
-export default function Bio(): React.ReactNode {
+export default function Home(): React.ReactNode {
   return (
-    <Container {...header}>
-      <div className="flex flex-col justify-start gap-8 gap-x-12 sm:flex-row">
-        <Category Component={Interest} items={interests} title="My Interests" />
-        <Category Component={Hobby} items={hobbies} title="My Hobbies" />
-      </div>
-    </Container>
+    <Page>
+      <header className="flex flex-col gap-3">
+        <h1 className="font-display text-5xl sm:text-6xl">{fullName}</h1>
+        <p className="text-muted font-display max-w-xl text-2xl leading-snug italic sm:text-3xl">
+          {tagline}
+        </p>
+      </header>
+
+      <Section title="Contents">
+        <Contents glosses={glosses} />
+      </Section>
+
+      <Section title="Interests">
+        <dl className="grid gap-x-10 gap-y-5 sm:grid-cols-2">
+          {interests.map(({ title, description }) => (
+            <div key={title}>
+              <dt className="text-xl tracking-wide [font-variant:small-caps]">{title}</dt>
+              <dd className="text-muted italic">{description}</dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
+
+      <Section id="contact" title="Contact">
+        <BusinessCard />
+      </Section>
+    </Page>
   );
 }

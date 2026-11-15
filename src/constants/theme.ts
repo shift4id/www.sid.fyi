@@ -1,6 +1,7 @@
 export const colors = {
-  accent: "hsl(300, 100%, 75%)",
-  background: "hsl(0, 0%, 7%)",
-  foreground: "hsl(0, 0%, 100%)",
-  muted: "hsl(0, 0%, 65%)",
+  accent: "#6060c0",
+  background: "#f8f8f8",
+  backgroundDark: "#101010",
+  foreground: "#101010",
+  muted: "#606060",
 } as const;

@@ -5,26 +5,35 @@ import { cn } from "@/utils/cn";
 import { Link } from "./link";
 
 interface NavLinkProps {
-  name: string;
   href: string;
+  name: string;
+  numeral: string;
 }
 
-export function NavLink({ href, name }: NavLinkProps): React.ReactNode {
-  const pathname = usePathname();
-  const active = pathname === href;
+export function NavLink({ href, name, numeral }: NavLinkProps): React.ReactNode {
+  const active = usePathname() === href;
 
   return (
     <li>
       <Link
+        aria-current={active ? "page" : undefined}
         href={href}
         className={cn(
-          "underline underline-offset-8 transition select-none",
+          "group flex items-baseline gap-1.5 transition select-none",
           active
-            ? "decoration-accent"
-            : "decoration-muted hover:decoration-accent focus-visible:decoration-accent decoration-dotted",
+            ? "text-foreground"
+            : "text-muted hover:text-foreground focus-visible:text-foreground",
         )}
       >
-        {name}
+        <span
+          className={cn(
+            "text-muted group-hover:text-accent text-xs transition",
+            active && "text-accent",
+          )}
+        >
+          {numeral}
+        </span>
+        <span>{name}</span>
       </Link>
     </li>
   );

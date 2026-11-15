@@ -1,6 +1,11 @@
-import { Item } from "./item";
+export interface Photo {
+  id: number;
+  w: number;
+  h: number;
+}
 
-const photos: React.ComponentProps<typeof Item>[] = [
+/** Served from `${CDN_URL}/photos/{id}.jpeg`. */
+export const photos: Photo[] = [
   { w: 3168, h: 4752, id: 1 },
   { w: 3168, h: 4752, id: 2 },
   { w: 4293, h: 2862, id: 3 },
@@ -21,13 +26,3 @@ const photos: React.ComponentProps<typeof Item>[] = [
   { w: 4752, h: 3168, id: 18 },
   { w: 4752, h: 3168, id: 19 },
 ];
-
-export function Photos(): React.ReactNode {
-  return (
-    <div className="gap-8 space-y-8 sm:columns-2">
-      {photos.map((photo) => (
-        <Item key={photo.id} {...photo} />
-      ))}
-    </div>
-  );
-}

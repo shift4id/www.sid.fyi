@@ -9,11 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${clientEnv.WEBSITE_URL}/chat`,
-      changeFrequency: "never",
-      priority: 0.8,
-    },
-    {
       url: `${clientEnv.WEBSITE_URL}/gallery`,
       changeFrequency: "daily",
       priority: 0.8,

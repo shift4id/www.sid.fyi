@@ -10,6 +10,8 @@ const config = {
     ],
     unoptimized: true,
   },
+  // the old Chat page now lives in the Contact section at the end of the homepage
+  redirects: async () => [{ source: "/chat", destination: "/#contact", permanent: true }],
 } satisfies NextConfig;
 
 export default config;

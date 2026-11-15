@@ -1,7 +1,7 @@
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
-import { Syne as Font } from "next/font/google";
+import { Cormorant_Garamond, EB_Garamond, IBM_Plex_Mono } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { NavBar } from "@/components/nav-bar";
 import { clientEnv } from "@/constants/env";
@@ -10,21 +10,30 @@ import { cn } from "@/utils/cn";
 import {
   fullName as name,
   siteDescription as description,
-  siteName as title,
+  fullName as title,
 } from "@/utils/metadata";
 import "@/styles/globals.css";
 
 const { WEBSITE_URL } = clientEnv;
 
-const font = Font({
-  weight: "400",
-  style: ["normal"],
-  variable: "--font-syne",
+const display = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
 });
+const body = EB_Garamond({
+  variable: "--font-eb-garamond",
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+});
+const mono = IBM_Plex_Mono({ variable: "--font-plex-mono", weight: "400", subsets: ["latin"] });
 
 export const viewport: Viewport = {
-  themeColor: colors.background,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: colors.background },
+    { media: "(prefers-color-scheme: dark)", color: colors.backgroundDark },
+  ],
 };
 
 export const metadata: Metadata = {
@@ -50,8 +59,12 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: React.PropsWithChildren): React.ReactNode {
   return (
-    <html className={cn("scroll-smooth antialiased", font.variable)} lang="en">
-      <body className="bg-background text-foreground selection:bg-highlight mx-auto w-full max-w-3xl p-6 sm:pt-20">
+    <html
+      data-scroll-behavior="smooth"
+      className={cn("scroll-smooth antialiased", display.variable, body.variable, mono.variable)}
+      lang="en"
+    >
+      <body className="bg-background text-foreground selection:bg-accent selection:text-background mx-auto flex min-h-dvh w-full max-w-2xl flex-col px-4 font-sans text-lg sm:px-6">
         <NavBar />
         {children}
         <Footer />

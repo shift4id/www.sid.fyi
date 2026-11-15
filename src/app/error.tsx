@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
-import { Container } from "@/components/container";
 import { Link } from "@/components/link";
-import { siteName } from "@/utils/metadata";
+import { Page } from "@/components/page";
+import { fullName } from "@/utils/metadata";
 
 interface ErrorPageProps {
   error: Error & { digest?: string };
@@ -27,8 +27,12 @@ export default function ErrorPage({ error, reset }: ErrorPageProps): React.React
   }, [error]);
 
   return (
-    <Container description="Something went wrong..." title="Error">
-      <title>{`Error | ${siteName}`}</title>
+    <Page>
+      <title>{`Error | ${fullName}`}</title>
+      <header className="flex flex-col items-start gap-3">
+        <h1 className="font-display text-5xl italic">Error</h1>
+        <p className="text-muted text-xl italic">Something went wrong...</p>
+      </header>
       <div className="flex flex-col gap-4">
         <p className="text-muted text-sm">
           This page hit a snag while loading. Trying again usually fixes it.
@@ -49,6 +53,6 @@ export default function ErrorPage({ error, reset }: ErrorPageProps): React.React
           </p>
         ) : null}
       </div>
-    </Container>
+    </Page>
   );
 }

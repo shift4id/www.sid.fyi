@@ -1,20 +1,52 @@
 @import "tailwindcss";
 
+/* ---------- palette: day, with night from the system setting ---------- */
+:root {
+  --bg: #f8f8f8;
+  --fg: #101010;
+  --muted: #606060;
+  --rule: #e0e0e0;
+  --surface: #f0f0f0;
+  --accent: #6060c0;
+  --grain: rgb(0 0 0 / 0.025);
+  color-scheme: light;
+}
+
+/* night follows the system setting */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101010;
+    --fg: #f0f0f0;
+    --muted: #909090;
+    --rule: #303030;
+    --surface: #202020;
+    --accent: #ff80ff;
+    --grain: rgb(255 255 255 / 0.02);
+    color-scheme: dark;
+  }
+}
+
 @theme inline {
-  --font-sans: var(--font-syne);
+  --font-sans: var(--font-eb-garamond);
+  --font-display: var(--font-cormorant);
+  --font-mono: var(--font-plex-mono);
+
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
 }
 
 @theme {
-  --color-accent: hsl(300, 100%, 75%);
-
-  --color-background: hsl(0, 0%, 7%);
-  --color-foreground: hsl(0, 0%, 100%);
-
-  --color-light: hsl(0, 0%, 95%);
-  --color-muted: hsl(0, 0%, 65%);
-  --color-subtle: hsl(0, 0%, 20%);
-
-  --color-highlight: hsl(0, 0%, 15%);
-
   --default-transition-duration: 250ms;
+}
+
+@layer base {
+  body {
+    /* faint paper grain */
+    background-image: radial-gradient(var(--grain) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
 }
