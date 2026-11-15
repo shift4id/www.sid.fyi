@@ -10,16 +10,16 @@ interface NavLinkProps {
   numeral: string;
 }
 
+/** The current chapter shows a pink numeral and a bright name; others brighten their name on hover. */
 export function NavLink({ href, name, numeral }: NavLinkProps): React.ReactNode {
   const active = usePathname() === href;
 
   return (
     <li>
-      {/* the current chapter: pink numeral, bright name; hovering another only brightens its name */}
       <Link
         aria-current={active ? "page" : undefined}
         href={href}
-        className="group flex items-baseline gap-1.5 outline-none select-none"
+        className="group flex items-baseline gap-1.5 select-none"
       >
         <span className={cn("text-xs", active ? "text-accent" : "text-muted")}>{numeral}</span>
         <span

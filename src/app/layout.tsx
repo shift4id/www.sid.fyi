@@ -7,11 +7,7 @@ import { NavBar } from "@/components/nav-bar";
 import { clientEnv } from "@/constants/env";
 import { colors } from "@/constants/theme";
 import { cn } from "@/utils/cn";
-import {
-  fullName as name,
-  siteDescription as description,
-  fullName as title,
-} from "@/utils/metadata";
+import { siteDescription as description, fullName as name } from "@/utils/metadata";
 import "@/styles/globals.css";
 
 const { WEBSITE_URL } = clientEnv;
@@ -38,7 +34,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(WEBSITE_URL),
-  title: { default: title, template: `%s | ${title}` },
+  title: { default: name, template: `%s | ${name}` },
   description,
   applicationName: "Sid A",
   authors: [{ name, url: WEBSITE_URL }],
@@ -46,12 +42,12 @@ export const metadata: Metadata = {
   referrer: "origin",
   creator: name,
   publisher: name,
-  openGraph: { type: "website", url: WEBSITE_URL, siteName: title, title, description },
+  openGraph: { type: "website", url: WEBSITE_URL, siteName: name, title: name, description },
   twitter: {
     card: "summary_large_image",
     site: "@shift4id",
     creator: "@shift4id",
-    title,
+    title: name,
     description,
   },
   category: "personal",

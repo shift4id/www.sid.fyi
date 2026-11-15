@@ -15,7 +15,7 @@ export function Contents({ glosses }: ContentsProps): React.ReactNode {
         <li key={href}>
           <Link
             aria-current={href === "/" ? "page" : undefined}
-            className="group grid grid-cols-[2.75rem_auto_1fr] items-baseline gap-x-3 py-3 outline-none"
+            className="group grid grid-cols-[2.75rem_auto_1fr] items-baseline gap-x-3 py-3"
             href={href}
           >
             <span className="text-muted group-hover:text-accent group-focus-visible:text-accent text-base transition">

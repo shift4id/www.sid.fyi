@@ -10,6 +10,7 @@ import { Sleeve } from "./components/sleeve";
 import { Turntable } from "./components/turntable";
 
 const SIDE_LENGTH = 5;
+const compact = new Intl.NumberFormat("en", { notation: "compact" });
 
 function Sides({ songs }: { songs: (Song | undefined)[] }): React.ReactNode {
   const sides = [songs.slice(0, SIDE_LENGTH), songs.slice(SIDE_LENGTH, SIDE_LENGTH * 2)];
@@ -47,18 +48,14 @@ async function TopSongs(): Promise<React.ReactNode> {
   return <Sides songs={songs} />;
 }
 
-async function Personnel(): Promise<React.ReactNode> {
+async function TopArtists(): Promise<React.ReactNode> {
   const artists = await getTopArtists().catch(() => []);
 
   return (
     <ul className="gap-x-10 sm:columns-2">
       {artists.map(({ id, name, url, followers }) => (
         <li key={id} className="break-inside-avoid">
-          <Link
-            className="group flex items-baseline gap-2 py-1.5 outline-none"
-            href={url}
-            target="_blank"
-          >
+          <Link className="group flex items-baseline gap-2 py-1.5" href={url} target="_blank">
             <span className="group-hover:text-accent group-focus-visible:text-accent truncate tracking-wide transition [font-variant:small-caps]">
               {name}
             </span>
@@ -76,8 +73,6 @@ async function Personnel(): Promise<React.ReactNode> {
   );
 }
 
-const compact = new Intl.NumberFormat("en", { notation: "compact" });
-
 export const metadata: Metadata = pageMetadata({ ...pages.jukebox, path: "/jukebox" });
 export const revalidate = 3600; // 1 Hour
 
@@ -93,7 +88,7 @@ export default function Jukebox(): React.ReactNode {
       </Section>
       <Section title="Most Played Artists">
         <Suspense fallback={<p className="text-muted text-sm">Loading…</p>}>
-          <Personnel />
+          <TopArtists />
         </Suspense>
       </Section>
     </Page>

@@ -6,8 +6,10 @@ import styles from "./contact-sheet.module.css";
 const PHOTOS_URL = `${clientEnv.CDN_URL}/photos`;
 const FRAMES_PER_STRIP = 3;
 
-/** An unexposed frame at the end of the roll, sized like a standard 3:2 negative. */
-const BLANK_RATIO = 3 / 2;
+/** Width-to-height ratio of a frame; unexposed frames are a standard 3:2 negative. */
+function ratioOf(photo: Photo | null): number {
+  return photo ? photo.w / photo.h : 3 / 2;
+}
 
 interface ContactSheetProps {
   photos: Photo[];
@@ -32,13 +34,9 @@ export function ContactSheet({ photos }: ContactSheetProps): React.ReactNode {
         <div key={strip[0]?.id ?? `strip-${String(s)}`} className={styles.strip}>
           <div className={styles.frames}>
             {strip.map((photo, f) => {
-              const ratio = photo ? photo.w / photo.h : BLANK_RATIO;
+              const style = { "--ratio": ratioOf(photo) } as React.CSSProperties;
               return photo ? (
-                <figure
-                  key={photo.id}
-                  className={styles.frame}
-                  style={{ "--ratio": ratio } as React.CSSProperties}
-                >
+                <figure key={photo.id} className={styles.frame} style={style}>
                   <Image
                     fill
                     alt=""
@@ -52,7 +50,7 @@ export function ContactSheet({ photos }: ContactSheetProps): React.ReactNode {
                   key={`blank-${String(f)}`}
                   aria-hidden
                   className={`${styles.frame} ${styles.blank}`}
-                  style={{ "--ratio": ratio } as React.CSSProperties}
+                  style={style}
                 />
               );
             })}
@@ -64,9 +62,7 @@ export function ContactSheet({ photos }: ContactSheetProps): React.ReactNode {
               return (
                 <span
                   key={`edge-${String(n)}`}
-                  style={
-                    { "--ratio": photo ? photo.w / photo.h : BLANK_RATIO } as React.CSSProperties
-                  }
+                  style={{ "--ratio": ratioOf(photo) } as React.CSSProperties}
                 >
                   {n} <span className={styles.arrow}>▸</span> {n}A
                 </span>

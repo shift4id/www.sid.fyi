@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* ---------- palette: day, with night from the system setting ---------- */
+/* ---------- palette ---------- */
 :root {
   --bg: #f8f8f8;
   --fg: #101010;
@@ -12,7 +12,7 @@
   color-scheme: light;
 }
 
-/* night follows the system setting */
+/* dark palette, chosen by the system setting */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #101010;

@@ -15,7 +15,7 @@ const interests = [
 const glosses: Glosses = {
   "/": "a bit about me",
   "/jukebox": "what i'm listening to",
-  "/gallery": "places i've been and things id've seen",
+  "/gallery": "places i've been and things i've seen",
   "/library": "books that have influenced my thinking",
 };
 

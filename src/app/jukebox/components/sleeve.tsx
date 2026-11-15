@@ -41,14 +41,14 @@ export function Sleeve({ song, position }: SleeveProps): React.ReactNode {
       <span className="flex min-w-0 flex-col">
         <span className="text-muted font-mono text-xs">{position}</span>
         <span className="group-hover:text-accent group-focus-visible:text-accent font-display truncate text-xl leading-tight transition">
-          {song ? song.name : " "}
+          {song?.name ?? " "}
         </span>
         <span className="text-muted truncate text-base italic">{song?.artist ?? " "}</span>
       </span>
     </>
   );
 
-  const className = "group flex items-center gap-4 outline-none";
+  const className = "group flex items-center gap-4";
 
   return song ? (
     <Link className={className} href={song.url} target="_blank">

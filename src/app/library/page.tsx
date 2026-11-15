@@ -6,7 +6,7 @@ import { getBooks } from "@/lib/notion";
 import { pageMetadata, pages } from "@/utils/metadata";
 import { Shelf } from "./components/shelf";
 
-async function Books(): Promise<React.JSX.Element> {
+async function Books(): Promise<React.ReactNode> {
   const books = await getBooks().catch(() => undefined);
 
   return <Shelf books={books} />;
