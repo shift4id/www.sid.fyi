@@ -15,25 +15,23 @@ export function NavLink({ href, name, numeral }: NavLinkProps): React.ReactNode 
 
   return (
     <li>
+      {/* the current chapter is in the accent color; hovering another only brightens its name */}
       <Link
         aria-current={active ? "page" : undefined}
         href={href}
         className={cn(
-          "group flex items-baseline gap-1.5 transition select-none",
-          active
-            ? "text-foreground"
-            : "text-muted hover:text-foreground focus-visible:text-foreground",
+          "group flex items-baseline gap-1.5 outline-none select-none",
+          active ? "text-accent" : "text-muted",
         )}
       >
+        <span className="text-xs">{numeral}</span>
         <span
           className={cn(
-            "text-muted group-hover:text-accent text-xs transition",
-            active && "text-accent",
+            !active && "group-hover:text-foreground group-focus-visible:text-foreground transition",
           )}
         >
-          {numeral}
+          {name}
         </span>
-        <span>{name}</span>
       </Link>
     </li>
   );
