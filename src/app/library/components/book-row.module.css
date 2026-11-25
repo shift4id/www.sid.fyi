@@ -1,7 +1,6 @@
 /*
- * Cloth-bound books drawn in 3D. Each rests turned so its spine shows; hovering, focusing or
- * tapping one turns it to face you. The cover sits in front, the spine on the left edge and
- * the page block on the right, each folded out of the book's depth.
+ * Cloth-bound books drawn in 3D, resting turned so the spine shows. The cover sits in front,
+ * the spine on the left edge and the page block on the right, each folded out of the depth.
  */
 .row {
   gap: 32px;
@@ -16,8 +15,6 @@
   width: var(--w);
   height: var(--h);
   perspective: 1200px;
-  cursor: pointer;
-  outline: none;
 }
 @media (prefers-color-scheme: dark) {
   .book {
@@ -42,17 +39,7 @@
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transform: rotateY(32deg);
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.book:hover .object,
-.book:focus-visible .object,
-.facing .object {
-  transform: translateY(-8px) rotateY(0deg);
-}
-.book:focus-visible .cover {
-  outline: 1px dashed var(--accent);
-  outline-offset: 4px;
+  transform: rotateY(24deg);
 }
 
 .cover,
@@ -129,20 +116,6 @@
   transform: translateZ(calc(var(--d) / -2)) rotateY(90deg);
 }
 
-/* ribbon marker hanging from the head of the book being read */
-.ribbon {
-  position: absolute;
-  top: -4px;
-  right: 20px;
-  width: 8px;
-  height: 32px;
-  background: var(--accent);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
-}
-
-.loading {
-  cursor: default;
-}
 .loading .cover,
 .loading .spine {
   background: var(--surface);
@@ -156,9 +129,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .object {
-    transition: none;
-  }
   .loading .cover,
   .loading .spine {
     animation: none;

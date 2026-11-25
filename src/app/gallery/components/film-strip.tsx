@@ -27,7 +27,7 @@ function EdgeNumber({ n }: { n: number }): React.ReactNode {
  */
 export function FilmStrip({ photos }: FilmStripProps): React.ReactNode {
   return (
-    <Rail className={styles.film}>
+    <Rail className={styles.film} label="Photos">
       {photos.map((photo, i) => (
         <figure key={photo.id} className={styles.frame}>
           <div className={styles.image} style={{ aspectRatio: photo.w / photo.h }}>

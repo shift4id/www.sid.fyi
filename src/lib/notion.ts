@@ -12,14 +12,7 @@ export interface Book {
   title: string;
   author: string;
   image: string;
-  /** Optional "Status" select column; "Reading" hangs a ribbon on the spine. */
-  reading?: boolean;
   type: "book";
-}
-
-function optionalSelect(page: Page, name: string): string | undefined {
-  const property = page.properties[name] as { select?: { name: string } | null } | undefined;
-  return property?.select?.name;
 }
 
 function getBookData(page: Page): Book {
@@ -28,7 +21,6 @@ function getBookData(page: Page): Book {
     title: (page.properties.Title as { title: RichText[] }).title[0].text.content,
     author: (page.properties.Author as { rich_text: RichText[] }).rich_text[0].text.content,
     image: (page.properties.Image as { url: string }).url,
-    reading: optionalSelect(page, "Status")?.toLowerCase() === "reading",
     type: "book",
   };
 }

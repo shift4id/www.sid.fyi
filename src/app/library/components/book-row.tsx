@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import { Rail } from "@/components/rail";
 import type { Book } from "@/lib/notion";
 import { cn } from "@/utils/cn";
@@ -33,37 +30,30 @@ interface BookRowProps {
 }
 
 /**
- * The library as a single row of cloth-bound books, turned so their spines show. Hovering or
- * tapping a book turns it to face you; every book is the same size, so the loading row matches.
+ * The library as a single row of cloth-bound books, turned slightly so their spines show.
+ * Every book is the same size, so the loading row matches the loaded one exactly.
  */
 export function BookRow({ books }: BookRowProps): React.ReactNode {
-  const [facing, setFacing] = useState<string | null>(null);
-
   return (
-    <Rail className={styles.row}>
+    <Rail className={styles.row} label="Books">
       {books
         ? books.map((book) => (
-            <button
+            <div
               key={book.id}
-              aria-label={`${book.title} by ${book.author}`}
-              aria-pressed={facing === book.id}
-              className={cn(styles.book, facing === book.id && styles.facing)}
-              onClick={() => setFacing((id) => (id === book.id ? null : book.id))}
+              className={styles.book}
               style={{ "--cloth": cloths[hash(book.id) % cloths.length] } as React.CSSProperties}
-              type="button"
             >
               <span className={styles.object}>
                 <span className={styles.cover}>
                   <span className={styles.title}>{book.title}</span>
                   <span className={styles.author}>{book.author}</span>
-                  {book.reading ? <span aria-hidden className={styles.ribbon} /> : null}
                 </span>
                 <span aria-hidden className={styles.spine}>
                   <span>{book.title}</span>
                 </span>
                 <span aria-hidden className={styles.pages} />
               </span>
-            </button>
+            </div>
           ))
         : placeholders.map((id) => (
             <span key={id} className={cn(styles.book, styles.loading)}>

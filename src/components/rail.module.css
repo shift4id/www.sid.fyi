@@ -27,3 +27,30 @@
   flex: none;
   scroll-snap-align: start;
 }
+
+.rail:focus-visible {
+  outline: 1px dashed var(--accent);
+  outline-offset: 4px;
+}
+
+.arrow {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.arrow:hover:not(:disabled),
+.arrow:focus-visible {
+  color: var(--fg);
+}
+.arrow:focus-visible {
+  outline: 1px dashed var(--accent);
+}
+.arrow:disabled {
+  cursor: default;
+  opacity: 0.3;
+}
