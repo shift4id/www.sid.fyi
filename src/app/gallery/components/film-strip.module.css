@@ -1,0 +1,73 @@
+/*
+ * A strip of negatives running edge to edge across the window. The film stays dark in both
+ * themes; the sprocket holes are drawn with "local" backgrounds so they scroll with the frames,
+ * and they're cut in the page color so the page shows through.
+ */
+.film {
+  --film: #202020;
+  --hole: 8px;
+  --frame-h: 192px;
+  align-items: flex-start;
+  gap: 8px;
+  padding-block: 28px 24px;
+  background-color: var(--film);
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 6px, var(--bg) 6px 14px, transparent 14px 20px),
+    repeating-linear-gradient(90deg, transparent 0 6px, var(--bg) 6px 14px, transparent 14px 20px);
+  background-position:
+    0 8px,
+    0 calc(100% - 8px);
+  background-size: 100% var(--hole);
+  background-repeat: no-repeat;
+  background-attachment: local;
+}
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* every frame shares one height; its width follows the photo's proportions */
+.image {
+  position: relative;
+  height: var(--frame-h);
+  overflow: hidden;
+  background: #101010;
+}
+.image :global(img) {
+  filter: brightness(0.92);
+  transition: filter 0.25s ease;
+}
+.frame:hover .image :global(img) {
+  filter: brightness(1.04);
+}
+.blank {
+  aspect-ratio: 3 / 2;
+  background: linear-gradient(160deg, #303030, #101010);
+  opacity: 0.6;
+}
+
+.edge {
+  color: #f0a030;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+.arrow {
+  font-size: 8px;
+}
+
+@media (max-width: 639px) {
+  .film {
+    --frame-h: 144px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image :global(img) {
+    transition: none;
+  }
+}

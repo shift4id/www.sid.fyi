@@ -1,0 +1,29 @@
+/*
+ * A horizontal row that runs to the edges of the window while its first item lines up with the
+ * text column. --gutter is the space between the window edge and the column (see the body's
+ * max-w-2xl and px-4 / sm:px-6 in the root layout).
+ */
+.rail {
+  --gutter: 16px;
+  display: flex;
+  align-items: flex-end;
+  margin-inline: calc(-1 * var(--gutter));
+  padding-inline: var(--gutter);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: var(--gutter);
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+@media (min-width: 640px) {
+  .rail {
+    --gutter: max(24px, calc((100vw - 42rem) / 2 + 24px));
+  }
+}
+.rail::-webkit-scrollbar {
+  display: none;
+}
+.rail > * {
+  flex: none;
+  scroll-snap-align: start;
+}

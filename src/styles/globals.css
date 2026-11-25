@@ -44,6 +44,10 @@
 }
 
 @layer base {
+  /* full-bleed rows reach 100vw; clip at the window so they never cause sideways page scroll */
+  html {
+    overflow-x: clip;
+  }
   body {
     /* faint paper grain */
     background-image: radial-gradient(var(--grain) 1px, transparent 1px);
